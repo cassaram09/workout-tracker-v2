@@ -38,9 +38,11 @@ class ExerciseForm extends Component {
       this.props.updateExercise(exercise, this.props.index)
     }
 
-    this.removeSet = () => {
+    this.removeSet = (index) => {
       var exercise = deepClone(this.props.exercise)
-      exercise.exercise_sets.pop()
+      exercise.exercise_sets = exercise.exercise_sets.filter(function(set, ix){
+        return ix != index
+      })
       this.props.updateExercise(exercise, this.props.index)
     }
 
@@ -64,7 +66,7 @@ class ExerciseForm extends Component {
 
     var sets = this.props.exercise.exercise_sets.map((set, index) => {
       return (
-        <ExerciseSet set={set} index={index} updateSet={ (event) => this.updateSet(index, event) }/>
+        <ExerciseSet set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
       )
     })
 

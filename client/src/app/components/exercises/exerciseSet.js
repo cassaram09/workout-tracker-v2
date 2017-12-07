@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class ExerciseSet extends Component {
+  constructor(props){
+    super(props)
+
+    this.removeSet = () => {
+      this.props.removeSet(this.props.index)
+    }
+
+  }
+  
 
   render(){
     const index = this.props.index;
@@ -19,6 +28,12 @@ class ExerciseSet extends Component {
             <input className="form-control" type='text' value={this.props.set.repetitions} name='repetitions' onChange={this.props.updateSet}/> 
           </div>
         </td>
+        <td>
+          <div className='form-group'>
+             <button onClick={this.removeSet}>Remove</button>
+          </div>
+        </td>
+       
       </tr>
     )
   }
