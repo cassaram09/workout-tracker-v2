@@ -234,7 +234,7 @@ class Resource extends HTTP {
         var url = this.url + Defaults[name].url;
         var method = Defaults[name].method;
         var reducerFn =  Defaults[name].reducerFn
-        this.registerNewAction(url, name, method, reducerFn)
+        this.registerNewAction({url, name, method, reducerFn})
       }
       return this;
     }

@@ -1,5 +1,4 @@
 import Resource from '/src/app/utils/resource';
-import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
 
 const User = new Resource({
