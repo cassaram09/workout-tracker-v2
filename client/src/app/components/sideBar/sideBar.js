@@ -25,6 +25,7 @@ class SideBar extends Component {
         <nav className='sidebar__nav'>
           <ul>
             <li><Link to='/'>Home</Link></li>
+            <li><Link to='/profile'>Profile</Link></li>
             <li><Link to='/workouts'>Workouts</Link></li>
             <li><Link to='/logout' onClick={this.logOut}>Logout</Link></li>
           </ul>
