@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :workouts
     resources :exercises
     resources :users, except: [:new, :edit]
-    get '/current-user' => 'users#current_user'
+    get '/current-user' => 'users#get_current_user'
   end
 
   get '/login' => 'sessions#new'

@@ -6,12 +6,24 @@ import Store from '/src/app/store/store'
 import HomePage from '/src/app/components/home/homePage';
 import Login from '/src/app/components/login/login';
 
+import $R_User from '/src/app/utils/user'
 
 
-// import Main from './containers/main/main';
-// import Login from './containers/login/login'
 
 class App extends Component {
+
+  componentWillMount(){
+    if (this.props.session == true) {
+      $R_User.dispatchAction('getCurrentUser')(Store.dispatch)
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if (this.props.session == true && !this.props.user.id) {
+      $R_User.dispatchAction('getCurrentUser')(Store.dispatch)
+    }
+  }
+
   render() {
    if ( this.props.session == true ){
       return (
@@ -34,6 +46,7 @@ class App extends Component {
 const mapStateToProps = (state, ownProps) => { 
   return {
     session: state.session,
+    user: state.user
   }
 };
 

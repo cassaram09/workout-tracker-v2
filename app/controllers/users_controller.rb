@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   end
 
-  def current_user
+  def get_current_user
     @user = User.find_by(id: current_user.id)
     render json: @user
   end
