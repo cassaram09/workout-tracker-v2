@@ -10,32 +10,31 @@ const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state
 
 //login action
 const loginReducer = (state, action) => {
+  if ( action.data.jwt ) {
+    sessionStorage.setItem('jwt', action.data.jwt)
+    history.push('/')
+    API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
+    return !!sessionStorage.jwt
+  }
+
   if ( action.data.error ) {
     return {error: action.data.error}
   }
-  sessionStorage.setItem('jwt', action.data.jwt)
-  history.push('/')
-  API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-  return !!sessionStorage.jwt
 }
-
-Auth.registerNewAction({name: 'login', url: '/login', method: 'POST', reducerFn: loginReducer})
-
 
 //sign up action
 const signUpReducer = (state, action) => {
+  if ( action.data.jwt ) {
+    sessionStorage.setItem('jwt', action.data.jwt)
+    history.push('/')
+    API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
+    return !!sessionStorage.jwt
+  }
+
   if ( action.data.error ) {
     return {error: action.data.error}
   }
-  sessionStorage.setItem('jwt', action.data.jwt)
-  history.push('/');
-  API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-  return !!sessionStorage.jwt
 }
-
-Auth.registerNewAction({name: 'signup', url: '/signup', method: 'POST', reducerFn: signUpReducer})
-
-
 
 // logout resource action
 const logOutAction = () => {
@@ -54,6 +53,20 @@ const logOutReducer = (state, action) => {
   }
   return !!sessionStorage.jwt
 }
+
+Auth.registerNewAction({
+  name: 'login', 
+  url: '/login', 
+  method: 'POST', 
+  reducerFn: loginReducer
+})
+
+Auth.registerNewAction({
+  name: 'signup', 
+  url: '/signup', 
+  method: 'POST', 
+  reducerFn: signUpReducer
+})
 
 Auth.registerNewAction({
   name: 'logout', 
