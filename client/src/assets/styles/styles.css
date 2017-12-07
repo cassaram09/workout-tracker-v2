@@ -9,7 +9,7 @@ Styling for bare, unclassed elements. This layer binds onto bare HTML element (o
 body {
   padding: 0px;
   margin: 0px;
-  background: #fff; }
+  background: white; }
 
 h1 {
   font-family: Arial, sans-serif;
@@ -60,4 +60,11 @@ input::placeholder, textarea::placeholder {
   font-family: Courier, sans-serif; }
 
 /* inject:scss */
+.home {
+  height: 100vh;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 /* endinject */
