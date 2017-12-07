@@ -2242,5 +2242,41 @@ span {
   text-decoration: underline;
   color: blue; }
 
+.workouts {
+  padding: 20px; }
+
+.workouts__row {
+  border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  background: #bbb;
+  transition: opacity 250ms linear;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap; }
+  .workouts__row:last-child {
+    margin-bottom: 0px; }
+  .workouts__row:hover {
+    opacity: 0.7; }
+  .workouts__row:active {
+    transform: translateY(1px); }
+
+.workouts__row__title {
+  flex: 0 0 100%; }
+
+.workouts__row__date {
+  flex: 1 1 25%; }
+
+.workouts__row__start-time {
+  flex: 1 1 25%; }
+
+.workouts__row__end-time {
+  flex: 1 1 25%; }
+
+.workouts__row__details {
+  flex: 1 1 25%;
+  text-align: right; }
+
 /* endinject */
 /* ----- UTILITIES ----- */

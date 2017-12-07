@@ -17,9 +17,11 @@ class Workouts extends Component {
 
     if ( this.props.workouts.length > 0 ){
       workouts = this.props.workouts.map(function(workout){
-        return (<div className='workout' key={workout.id}>
-          <h3>{workout.name}</h3>
-          <p>on {workout.date}</p>
+        return (<div className='workouts__row' key={workout.id}>
+          <h3 className='workouts__row__title'>{workout.name}</h3>
+          <p className='workouts__row__date'>Date: {workout.date}</p>
+          <p className='workouts__row__start-time'>Start: {workout.start_time}</p>
+          <p className='workouts__row__end-time'>End: {workout.end_time}</p>
         </div>)
       })
     }
