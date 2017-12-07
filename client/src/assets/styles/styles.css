@@ -2135,6 +2135,7 @@ span {
   border-radius: 3px;
   border: 2px solid #4A4D54;
   text-decoration: none;
+  padding: 5px 20px;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -2163,13 +2164,31 @@ span {
   align-items: center; }
 
 .login {
-  flex: 1 1 auto; }
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
   .login .error {
     padding: 0px 0px 10px;
     color: red; }
-  .login button.login-button {
-    background: #0066cc;
-    color: white; }
+
+.login__form {
+  margin: 20px;
+  background: grey;
+  padding: 20px;
+  box-shadow: 1px 1px 0px 1px #777; }
+
+.field-group {
+  margin: 10px 0px; }
+
+.label {
+  display: block;
+  margin-bottom: 5px; }
+
+.login__sign-up-link {
+  text-decoration: underline;
+  color: blue; }
 
 .main {
   background: white;

@@ -35,12 +35,21 @@ class Login extends Component {
     return(
       <div className='login'>
         <form className='login__form' onSubmit={this.onSave} >
-          <label htmlFor='email'>Email</label>
-          <input className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
-          <label htmlFor='password'>Password</label>
-          <input className='login__form__password' type='password' onChange={this.onChange} name='password'/>
-          <button className='button login__form__submit 'type='submit'>Login</button>
+          <div className='field-group'>
+            <label className='label' htmlFor='email'>Email</label>
+            <input className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
+          </div>
+          <div className='field-group'>
+            <label className='label' htmlFor='password'>Password</label>
+            <input className='login__form__password' type='password' onChange={this.onChange} name='password'/>
+          </div>
+          <div className='field-group'>
+            <button className='button login__form__submit 'type='submit'>Login</button>
+          </div>
         </form>
+        <div className='login__sign-up-link'>
+          <a href='#'>Don't have an account? Sign up.</a>
+        </div>
       </div>
     )
   }

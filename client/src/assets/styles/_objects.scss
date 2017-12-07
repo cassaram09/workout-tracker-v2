@@ -21,6 +21,7 @@
   border-radius: 3px;
   border: 2px solid $neutral-mid;
   text-decoration: none;
+  padding: 5px 20px;
   @include animate(0.2s);
 
   &.-large {

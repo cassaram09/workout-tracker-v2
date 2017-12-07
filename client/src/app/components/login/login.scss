@@ -1,13 +1,33 @@
 .login{
-  flex: 1 1 auto;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   .error {
     padding: 0px 0px 10px;
     color: red;
   }
+}
 
-  button.login-button {
-    background: #0066cc;
-    color: white;
-  }
+.login__form{
+  margin: 20px;
+  background: grey;
+  padding: 20px;
+  box-shadow: 1px 1px 0px 1px #777;
+}
+
+.field-group{
+  margin: 10px 0px;
+}
+
+.label{
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login__sign-up-link{
+  text-decoration: underline;
+  color: blue;
 }
