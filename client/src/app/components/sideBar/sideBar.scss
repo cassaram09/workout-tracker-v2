@@ -1,0 +1,25 @@
+.header{ 
+  background: #f9fbff;
+  color: #333;
+  flex: 0 0 200px;
+  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  border-bottom: none;
+
+  nav{
+    ul {
+      list-style: none;
+      text-align: center;
+      li{
+        a{
+          text-decoration: none;
+          color: #0066cc;
+          display: block;
+          margin: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

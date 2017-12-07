@@ -1,0 +1,13 @@
+.login{
+  flex: 1 1 auto;
+
+  .error {
+    padding: 0px 0px 10px;
+    color: red;
+  }
+
+  button.login-button {
+    background: #0066cc;
+    color: white;
+  }
+}

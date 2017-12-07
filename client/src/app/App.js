@@ -3,8 +3,10 @@ import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Store from '/src/app/store/store'
-import HomePage from '/src/app/components/home/homePage';
+import Main from '/src/app/components/main/main';
 import Login from '/src/app/components/login/login';
+import SideBar from '/src/app/components/sideBar/sideBar';
+
 
 import $R_User from '/src/app/utils/user'
 
@@ -28,8 +30,8 @@ class App extends Component {
    if ( this.props.session == true ){
       return (
         <div className='app'>
-          <HomePage/>
-          
+          <SideBar session={this.props.session} user={this.props.user} />
+          <Main session={this.props.session} user={this.props.user} />
         </div>
       )
     } else {
