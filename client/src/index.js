@@ -1,8 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '/src/app/app';
+import { Router } from 'react-router-dom';
+import { Provider } from 'react-redux'; 
 import registerServiceWorker from './registerServiceWorker';
+
 import '/src/assets/styles/styles.min.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from '/src/app/app';
+import Store from '/src/app/store/store'
+import history from '/src/app/utils/history'
+
+ReactDOM.render(
+  <Provider store={Store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
+   document.getElementById('root')
+);
+
 registerServiceWorker();
