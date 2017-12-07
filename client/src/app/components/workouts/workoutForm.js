@@ -73,6 +73,7 @@ class WorkoutForm extends Component {
           removeExercise={this.removeExercise}
           toggleEdit={this.props.toggleEdit} 
           index={index} 
+          key={index}
         />
       )
     })
@@ -107,7 +108,11 @@ class WorkoutForm extends Component {
                </td>
             </tr>
           </tbody>
+
+          
         </Table>
+
+        {exercises}
 
         <button onClick={this.addExercise}>Add Exercise</button>
 
