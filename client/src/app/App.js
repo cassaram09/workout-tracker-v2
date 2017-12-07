@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 
 import Store from '/src/app/store/store'
 import HomePage from '/src/app/components/home/homePage';
+import Login from '/src/app/components/login/login';
+
 
 
 // import Main from './containers/main/main';
@@ -14,13 +16,15 @@ class App extends Component {
    if ( this.props.session == true ){
       return (
         <div className='app'>
-          <h1>You're logged in.</h1>
+          <HomePage/>
+          
         </div>
       )
     } else {
       return (
         <div className='app'>
-          <HomePage/>
+          <h1>Login</h1>
+          <Login />
         </div>
       )
     }
