@@ -16,11 +16,11 @@ class Profile extends Component {
     }
 
     this.updateField = (event) => {
-      var user = Object.assign({}, this.props.user)
+      var user = deepClone(this.state.user)
       var field = event.target.name
       var value = event.target.value
       user[field] = value
-      this.setState(user)
+      this.setState({user: user})
     }
 
     this.save = () => {
@@ -32,15 +32,18 @@ class Profile extends Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    return this.setState({user: nextProps.user});
+  componentWillReceiveProps(nextProps){
+    if ( nextProps.user.id ){
+      this.setState({user: nextProps.user})
+    }
   }
 
   render(){
 
-    var {name, email, height, weight, age, gender, avatar} = this.state.user;
+    var {name, email, height, weight, age, gender, drinker, avatar} = this.state.user;
 
-    if ( !this.state.editing ){
+
+
       return (
         <div className='page profile'>
           <h1>Profile</h1>
@@ -52,19 +55,28 @@ class Profile extends Component {
 
           <div className='field-group'>
             <label>Drinker</label>
-            <input type='checkbox' checked={true} name="drinker" value='true' onChange={this.updateField}/>
+            <input type='checkbox' checked={drinker ? true : false} name="drinker" value='true' onChange={this.updateField}/>
           </div>
 
-           <div class='field-group'>
+           <div className='field-group'>
+            <label>Name</label>
+            <input type='text' name="name" value={name} onChange={this.updateField}/>
+          </div>
+
+          <div className='field-group'>
+            <label>Email</label>
+            <input type='text' name="email" value={email} onChange={this.updateField}/>
+          </div>
+
+           <div className='field-group'>
             <input
               type="submit"
-              className="btn btn-primary"
+              className="button"
               onClick={this.save}
             />
           </div>
         </div>
       )
-    } 
   }
 
 }
