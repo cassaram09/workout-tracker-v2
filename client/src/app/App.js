@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '/src/app/utils/constants'
 
 class App extends Component {
   render() {
