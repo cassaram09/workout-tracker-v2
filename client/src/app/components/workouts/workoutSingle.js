@@ -41,7 +41,7 @@ class WorkoutSingle extends Component {
         )
       })
       return (
-        <div className="workout-single">
+        <div className="page workout-single">
           <h1>{name}</h1>
           <p>On: {date}</p>
           <p>Start: {start_time}</p>

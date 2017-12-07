@@ -45,8 +45,8 @@ class Profile extends Component {
 
     if ( !this.state.editing ){
       return (
-        <div className='profile'>
-          <h2>Profile</h2>
+        <div className='page profile'>
+          <h1>Profile</h1>
         </div>
       )
     } 

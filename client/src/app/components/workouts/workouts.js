@@ -30,7 +30,7 @@ class Workouts extends Component {
     }
     
     return (
-      <div className="workouts">
+      <div className="page workouts">
         <h1>Workouts</h1>
         {workouts}
       </div>

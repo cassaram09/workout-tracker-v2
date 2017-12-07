@@ -2152,18 +2152,14 @@ span {
     background: white;
     border: 2px solid #4A4D54; }
 
+.page {
+  padding: 20px; }
+
 /* inject:scss */
 .app {
   height: 100vh;
   display: flex;
   justify-content: center; }
-
-.home {
-  height: 100%;
-  background: red;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
 
 .login {
   display: flex;
@@ -2241,9 +2237,6 @@ span {
 .sign-up__sign-up-link {
   text-decoration: underline;
   color: blue; }
-
-.workouts {
-  padding: 20px; }
 
 .workouts__row {
   border: 1px solid grey;
