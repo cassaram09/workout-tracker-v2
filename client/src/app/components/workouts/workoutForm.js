@@ -95,16 +95,16 @@ class WorkoutForm extends Component {
           <tbody>
             <tr>
               <td>
-               <input type='text' name='name' onChange={this.updateWorkoutField}/>
+               <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField}/>
               </td>
                <td>
-               <input type='date' name='date' onChange={this.updateWorkoutField}/>
+               <input type='date' name='date' value={this.props.workout.date} onChange={this.updateWorkoutField}/>
                </td>
                 <td>
-               <input type='time' name='start_time' onChange={this.updateWorkoutField}/>
+               <input type='time' name='start_time' value={this.props.workout.start_time} onChange={this.updateWorkoutField}/>
                </td>
                 <td>
-               <input type='time' name='end_time' onChange={this.updateWorkoutField}/>
+               <input type='time' name='end_time' value={this.props.workout.end_time} onChange={this.updateWorkoutField}/>
                </td>
             </tr>
           </tbody>

@@ -5,6 +5,8 @@ import {bindActionCreators} from 'redux';
 
 import moment from 'moment';
 import $R_Workout from '/src/app/utils/workout'
+import WorkoutForm from '/src/app/components/workouts/workoutForm'
+
 
 import {deepClone, findById} from '/src/app/utils/tools'
 
@@ -12,9 +14,31 @@ class WorkoutSingle extends Component {
   constructor(props){
     super(props)
 
+    this.end_time = new Date().getHours() + 1  + ':' + new Date().getMinutes()
+    this.start_time = new Date().getHours() + ':' + new Date().getMinutes()
+
+    this.state = {
+      workout: this.props.workout,
+      editing: false
+    }
+
+    this.update = (value) => {
+      var state = deepClone(this.state)
+      state.workout = value
+      return this.setState(state);
+    }
+
+    this.save = (state) => {
+      return this.props.actions.dispatchAction('update', state)
+    }
+
     this.delete = (event) => {
       event.preventDefault();
       return this.props.actions.dispatchAction('delete', this.state.workout.id);
+    }
+
+    this.toggleEdit = () =>{
+      this.setState({editing: !this.state.editing})
     }
 
   }
@@ -24,11 +48,17 @@ class WorkoutSingle extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
+    if ( !this.state.workout && nextProps.workout && nextProps.workout.id ){
+      this.setState({workout: nextProps.workout})
+    }
 
+    if ( this.state.workout && nextProps.workout && nextProps.workout.updated_at != this.props.workout.updated_at) {
+      this.setState({workout: nextProps.workout, editing: false})
+    }
   }
 
   render() {
-    if (this.props.workout) {
+    if (this.props.workout && !this.state.editing ) {
       const { name, date, start_time, end_time } = this.props.workout;
 
       console.log(this.props.workout)
@@ -45,17 +75,20 @@ class WorkoutSingle extends Component {
       })
       return (
         <div className="page workout-single">
-          <h1>{name}</h1>
+          <h1>{name}</h1> <button onClick={this.toggleEdit}>Edit</button>
           <p>On: {date}</p>
           <p>Start: {start_time}</p>
           <p>End: {end_time}</p>
           {exercises}
+
         </div>
       )
     } else {
       return (
         <div className="workout-single">
-          
+          <p>Editing</p>
+          <button onClick={this.toggleEdit}>Back</button>
+          { this.state.workout && <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} /> }
         </div>
       )
     }
