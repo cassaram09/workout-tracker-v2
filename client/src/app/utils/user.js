@@ -1,14 +1,28 @@
-import Resource from 'r3-library';
+import Resource from '/src/app/utils/resource';
+import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
 
-const User = new Resource('user', API.base + '/users', API.headers)
-  .configureState({})
-  .registerNewAction(API.base + '/current-user', 'getCurrentUser', 'GET', (state, action) => {
+const User = new Resource({
+  name: 'user', 
+  url:  API.base + '/users', 
+  headers: API.headers, 
+  state: {} 
+})
 
-    return action.data 
-  })
-  .addReducerAction('update', (state, action) => action.data)
-  .addResourceAction('/users', 'update', 'PATCH')
+// fetches data for the current user
+User.registerNewAction({
+  name: 'getCurrentUser', 
+  url: API.base + '/current-user', 
+  method: 'GET', 
+  reducerFn: ( (state, action) => action.data ) 
+})
 
+// updates data for the current user, returns updated user
+User.registerNewAction({
+  name: 'update', 
+  url: User.url, 
+  method: 'PATCH', 
+  reducerFn: ( (state, action) => action.data ) 
+})
 
 export default User;

@@ -1,4 +1,4 @@
-import Resource from 'r3-library';
+import Resource from '/src/app/utils/resource';
 import {browserRouter} from 'react-router-dom'
 import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
@@ -6,12 +6,10 @@ import API from '/src/app/utils/api';
 const state = !!sessionStorage.jwt
 const headers = {'Content-Type': "application/json"}
 
-const Auth = new Resource('auth', '', headers)
-  .registerDefaults()
-  .configureState(state);
+const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state})
 
-// login action
-Auth.registerNewAction('/login', 'login', 'POST', (state, action) => {
+//login action
+const loginReducer = (state, action) => {
   if ( action.data.error ) {
     return {error: action.data.error}
   }
@@ -19,32 +17,50 @@ Auth.registerNewAction('/login', 'login', 'POST', (state, action) => {
   history.push('/')
   API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
   return !!sessionStorage.jwt
-})
+}
 
-// sign up action
-Auth.registerNewAction('/signup', 'signup', 'POST', (state, action) => {
+Auth.registerNewAction({name: 'login', url: '/login', method: 'POST', reducerFn: loginReducer})
+
+
+//sign up action
+const signUpReducer = (state, action) => {
+  if ( action.data.error ) {
+    return {error: action.data.error}
+  }
   sessionStorage.setItem('jwt', action.data.jwt)
   history.push('/');
   API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
   return !!sessionStorage.jwt
-})
+}
 
-// logout action
-Auth.resourceActions.auth_logout = () => {
+Auth.registerNewAction({name: 'signup', url: '/signup', method: 'POST', reducerFn: signUpReducer})
+
+
+
+// logout resource action
+const logOutAction = () => {
   return new Promise((resolve, reject) => {
     sessionStorage.removeItem('jwt');
     !sessionStorage.jwt ? resolve({session: false}) : reject(Error("Error"));
   });
 }
 
-// logout reducer
-Auth.addReducerAction('logout', (state, action) => {
+// logout Reducer fn
+const logOutReducer = (state, action) => {
   if ( sessionStorage.jwt ) {
     sessionStorage.removeItem('jwt');
     history.push('/');
     return !!sessionStorage.jwt
   }
   return !!sessionStorage.jwt
+}
+
+Auth.registerNewAction({
+  name: 'logout', 
+  url: '/logout', 
+  method: 'POST',
+  resourceFn: logOutAction, 
+  reducerFn: logOutReducer
 })
 
 export default Auth;
