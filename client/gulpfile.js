@@ -13,7 +13,7 @@ var paths = {
 gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
-  var scss =  gulp.src('./src/assets/styles/index.scss')
+  var scss =  gulp.src('./src/assets/styles/styles.scss')
 
   scss
   .pipe(sass())

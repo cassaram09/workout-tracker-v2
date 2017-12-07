@@ -1,0 +1,63 @@
+/* ========== SETTINGS ========== */
+/*
+This holds any global settings for your project. 
+This layer should only house settings that need to be accessed from anywhere.
+*/
+/*
+Styling for bare, unclassed elements. This layer binds onto bare HTML element (or 'type') selectors only.
+*/
+body {
+  padding: 0px;
+  margin: 0px;
+  background: #fff; }
+
+h1 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+h2 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+h3 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+h4 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+h5 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+h6 {
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+p {
+  font-family: Courier, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+a {
+  font-family: Courier, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+span {
+  font-family: Courier, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+input::placeholder, textarea::placeholder {
+  font-family: Courier, sans-serif; }
+
+/* inject:scss */
+/* endinject */
