@@ -40,6 +40,11 @@
     border: 2px solid $neutral-dark;
   }
 
+  &.-light{
+    background: #fff;
+    color: $neutral-mid;
+  }
+
 }
 
 .page{

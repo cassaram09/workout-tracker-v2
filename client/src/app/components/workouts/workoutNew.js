@@ -40,7 +40,8 @@ class NewWorkout extends Component {
 
   render() {
     return (
-      <div className="newWorkoutPage">
+      <div className="page new-workout">
+        <h1>New Workout</h1>
         <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} />
       </div>
     )

@@ -81,7 +81,8 @@ class WorkoutForm extends Component {
     return (
 
       <div className='workoutForm'>
-        <button onClick={this.save} >Save</button>
+        { this.props.cancel && <button className='button -light workout-single__button' onClick={this.props.cancel}>Cancel</button> }
+        <button className='button workout-single__button' onClick={this.save}>Save</button>
         <Table responsive>
           <thead>
             <tr>

@@ -75,7 +75,7 @@ class WorkoutSingle extends Component {
       })
       return (
         <div className="page workout-single">
-          <h1>{name}</h1> <button onClick={this.toggleEdit}>Edit</button>
+          <h1>{name}</h1> <button className='button' onClick={this.toggleEdit}>Edit</button>
           <p>On: {date}</p>
           <p>Start: {start_time}</p>
           <p>End: {end_time}</p>
@@ -83,12 +83,18 @@ class WorkoutSingle extends Component {
 
         </div>
       )
+    } else if  (this.props.workout && this.state.editing ){
+      const { name, date, start_time, end_time } = this.props.workout;
+      return (
+        <div className="page workout-single">
+          <h1>{name}</h1> 
+          <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} />
+        </div>
+      )
     } else {
       return (
-        <div className="workout-single">
-          <p>Editing</p>
-          <button onClick={this.toggleEdit}>Back</button>
-          { this.state.workout && <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} /> }
+        <div className="page workout-single">
+          <h1>Loading...</h1>
         </div>
       )
     }
