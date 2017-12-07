@@ -34,10 +34,12 @@ class Login extends Component {
   render(){
     return(
       <div className='login'>
-        <form onSubmit={this.onSave} >
-          <input type='text'  onChange={this.onChange} name='email'/>
-          <input type='password' onChange={this.onChange} name='password'/>
-          <button type='submit'>Login</button>
+        <form className='login__form' onSubmit={this.onSave} >
+          <label htmlFor='email'>Email</label>
+          <input className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
+          <label htmlFor='password'>Password</label>
+          <input className='login__form__password' type='password' onChange={this.onChange} name='password'/>
+          <button className='button login__form__submit 'type='submit'>Login</button>
         </form>
       </div>
     )

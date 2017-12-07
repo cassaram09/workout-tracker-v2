@@ -1,102 +1,29 @@
-/* ========== SETTINGS ========== */
+/* ----- SETTINGS ----- */
 
-/*
-This holds any global settings for your project. 
-This layer should only house settings that need to be accessed from anywhere.
-*/
+// Add color, font variables, etc. here. No CSS allowed!
 
-// ----- COLORS ----- //
+$primary: #618DFF;
+$secondary: #6DEADC;
 
-$seafoam-blue: #67d8bb;
-$light-grey-blue: #82bad8;
-$perrywinkle: #9a52e5;
-$lightish-purple: #9081e2;
-$warm-pink: #fb5078;
-$orangeish: #fe9037;
-$goldenrod: #f8c910;
-$light-grey: #657a81;
-$light-blue: #53c7e5;
-$lighter-grey: #d3d8db;
-$dark-grey: #52535f;
-$dark-sky-blue: #53c7e5;
-$slate-grey: #52535f;
-$pale-grey: #ededef;
-$steel: #85868f;
-$black: #000;
-$white: #fff;
+$neutral-light: #F8FCFF;
+$neutral-grey: #EFF4F5;
+$neutral-mid: #4A4D54;
+$neutral-dark: #4A4D54;
+
+$success: #A6F686;
+$error: #F9656B;
 
 
-// FONTS //
+/* -- styles -- */
 
-$headings-font-family: Arial, sans-serif;
-$body-font-family: Courier, sans-serif;
-/*
-Styling for bare, unclassed elements. This layer binds onto bare HTML element (or 'type') selectors only.
-*/
+$border-radius: 2px;
 
-body {
-  padding: 0px;
-  margin: 0px;
-  background: white;
-}
 
-h1 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
+/* -- TYPOGRAPHY -- */
 
-h2 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
+@import url('https://fonts.googleapis.com/css?family=Glegoo:400,700');
+@import url("https://use.typekit.net/etu1qor.css");
 
-h3 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-h4 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-h5 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-h6 {
-  font-family: $headings-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-p {
-  font-family: $body-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-a {
-  font-family: $body-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-span {
-  font-family: $body-font-family;
-  margin: 0px;
-  padding: 0px;
-}
-
-input, textarea{
-  &::placeholder{
-    font-family: $body-font-family;
-  }
-}
+$title-font: 'Glegoo', serif;
+$body-font: 'europa', sans-serif;
 

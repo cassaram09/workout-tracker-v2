@@ -37,7 +37,6 @@ class App extends Component {
     } else {
       return (
         <div className='app'>
-          <h1>Login</h1>
           <Login />
         </div>
       )

@@ -1,0 +1,58 @@
+/* ----- TOOLS ----- */
+
+// Mixins and other globals tools / functions 
+
+@mixin clearFix {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+@mixin animate($time) {
+  -webkit-transition: all $time ease;
+  -moz-transition: all $time ease;
+  -o-transition: all $time ease;
+  -ms-transition: all $time ease;
+  transition: all $time ease;
+}
+
+@mixin sprites($xaxis,$yaxis) {
+  background-image: url('../_img/sprite.png');
+  background-repeat: no-repeat;
+  background-position: $xaxis $yaxis;
+}
+
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin rotate($degrees) {
+  -ms-transform: rotate($degrees);
+  -webkit-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+
+@mixin wideFlex {
+  width: 100%;
+  max-width: 1150px;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin cover {
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

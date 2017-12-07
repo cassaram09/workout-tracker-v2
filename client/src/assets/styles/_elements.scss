@@ -1,0 +1,156 @@
+/*
+Styling for bare, unclassed elements. This layer binds onto bare HTML element (or 'type') selectors only.
+*/
+
+/* ----- ELEMENTS ----- */
+
+// Add sensible, non styled defaults for tags. 
+
+html {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background: white;
+}
+
+section {
+  padding: 0px;
+  margin: 0px;
+  clear: both;
+}
+
+img {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+ol {
+  padding: 0px;
+  margin: 0px;
+}
+
+li {
+  padding: 0px;
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 200;
+}
+
+h1, h3, h5 {
+  &.-light {
+    color: $neutral-light;
+  }
+  &.-dark {
+    color: $neutral-dark;
+  }
+}
+
+h2, h4, h6 {
+  &.-light {
+    color: $neutral-light;
+  }
+  &.-dark {
+    color: $neutral-dark;
+  }
+}
+
+h1 {
+  padding: 20px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 3.4em;
+  line-height: 1.4em;
+}
+
+h2 {
+  padding: 15px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 2.6em;
+  line-height: 1.3em;
+}
+
+h3 {
+  padding: 10px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 2.2em;
+  line-height: 1.35em;
+}
+
+h4 {
+  padding: 10px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 1.8em;
+  line-height: 1.3em;
+}
+
+h5 {
+  padding: 10px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 1.4em;
+}
+
+h6 {  
+  padding: 10px 0px;
+  margin: 0px;
+  font-family: $title-font;
+  font-size: 1em;
+  line-height: 1.4em;
+  color: $primary;
+}
+
+p {
+  padding: 10px 0px;
+  margin: 0px;
+  font-family: $body-font;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  font-weight: 400;
+  &.-light {
+    color: $neutral-light;
+  }
+  &.-dark {
+    color: $neutral-mid;
+  }
+
+  a {
+    color: $primary;
+    &:hover{
+      outline-width: 0;
+      opacity: .5;
+    }
+  }
+
+}
+
+a {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  color: inherit;
+  @include animate(0.2s);
+
+  &:hover{
+    outline-width: 0;
+  }
+}
+
+span {
+  padding: 0px;
+  margin: 0px;
+  font-family: $body-font;
+}

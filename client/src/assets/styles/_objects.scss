@@ -1,0 +1,42 @@
+/* ----- OBJECTS ----- */
+
+// Generic use items such as columns, block, wrappers, containers, etc.
+
+@import './vendor/animate.scss';
+@import './vendor/simple-grid.scss';
+
+.container__wide{
+  margin: 0px auto;
+  max-width: 1400px;
+}
+
+.button {
+  margin-top: 20px;
+  font-family: $title-font;
+  color: $neutral-light;
+  background-color: $neutral-mid;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+  border: 2px solid $neutral-mid;
+  text-decoration: none;
+  @include animate(0.2s);
+
+  &.-large {
+    font-size: 1.2em;
+    padding: 20px 50px;
+  }
+
+  &.-small {
+    font-size: 1em;
+    padding: 15px 25px;
+  }
+
+  &:hover{
+    color: $neutral-dark;
+    background: white;
+    border: 2px solid $neutral-dark;
+  }
+
+}

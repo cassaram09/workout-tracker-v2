@@ -1,0 +1,21 @@
+/* ----- GENERIC ----- */
+
+// Reset and normalize styles here. 
+
+@import './vendor/normalize.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+.left { float: left; }
+
+.right { float: right; }
