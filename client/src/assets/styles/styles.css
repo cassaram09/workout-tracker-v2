@@ -2154,10 +2154,12 @@ span {
 
 /* inject:scss */
 .app {
-  height: 100vh; }
+  height: 100vh;
+  display: flex;
+  justify-content: center; }
 
 .home {
-  height: 100vh;
+  height: 100%;
   background: red;
   display: flex;
   justify-content: center;
@@ -2190,16 +2192,7 @@ span {
   text-decoration: underline;
   color: blue; }
 
-.main {
-  background: white;
-  color: black;
-  flex: 1 1 auto;
-  padding: 20px;
-  height: 100vh;
-  border-right: 2px solid #333;
-  border-bottom: none; }
-
-.header {
+.sidebar {
   background: #f9fbff;
   color: #333;
   flex: 0 0 200px;
@@ -2207,15 +2200,20 @@ span {
   height: 100vh;
   border-right: 1px solid #ddd;
   border-bottom: none; }
-  .header nav ul {
-    list-style: none;
-    text-align: center; }
-    .header nav ul li a {
-      text-decoration: none;
-      color: #0066cc;
-      display: block;
-      margin: 5px;
-      cursor: pointer; }
+
+.sidebar__nav ul {
+  list-style: none;
+  text-align: center; }
+  .sidebar__nav ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    display: block;
+    margin: 5px;
+    cursor: pointer; }
+
+.main {
+  height: 100vh;
+  flex: 1 1 auto; }
 
 /* endinject */
 /* ----- UTILITIES ----- */

@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 
 import Store from '/src/app/store/store';  
 import $R_Auth from '/src/app/utils/auth';
+import Home from '/src/app/components/home/home'
 
 class SideBar extends Component {
   constructor(props){
@@ -19,14 +20,16 @@ class SideBar extends Component {
   
   render() {    
     return(
-      <header className="header">
-        Logged in as {this.props.user.email}
-        <nav>
+      <div className="sidebar">
+        <p className='logged-in-as'>Logged in as {this.props.user.email}</p>
+        <nav className='sidebar__nav'>
           <ul>
-            {this.props.session && <li><a href='/logout' onClick={this.logOut}>Logout</a></li>}
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/workouts'>Workouts</Link></li>
+            <li><Link to='/logout' onClick={this.logOut}>Logout</Link></li>
           </ul>
         </nav>
-      </header>
+      </div>
     )
   }
 }
