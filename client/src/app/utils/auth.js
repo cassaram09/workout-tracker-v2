@@ -62,7 +62,7 @@ Auth.registerNewAction({
 })
 
 Auth.registerNewAction({
-  name: 'signup', 
+  name: 'signUp', 
   url: '/signup', 
   method: 'POST', 
   reducerFn: signUpReducer

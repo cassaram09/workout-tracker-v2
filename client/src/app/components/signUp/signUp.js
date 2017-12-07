@@ -12,6 +12,7 @@ class SignUp extends Component {
 
     this.state={
       user: {
+        name: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -38,6 +39,10 @@ class SignUp extends Component {
     return(
       <div className='sign-up'>
         <form className='sign-up__form' onSubmit={this.onSave} >
+          <div className='field-group'>
+            <label className='label' htmlFor='name'>Name</label>
+            <input className='sign-up__form__name' type='text'  onChange={this.onChange} name='name'/>
+          </div>
           <div className='field-group'>
             <label className='label' htmlFor='email'>Email</label>
             <input className='sign-up__form__email' type='text'  onChange={this.onChange} name='email'/>
