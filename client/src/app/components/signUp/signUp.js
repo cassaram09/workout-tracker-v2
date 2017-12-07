@@ -3,16 +3,18 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 
+
 import $R_Auth from '/src/app/utils/auth';
 
-class Login extends Component {
+class SignUp extends Component {
   constructor(){
     super()
 
     this.state={
       user: {
         email: '',
-        password: ''
+        password: '',
+        password_confirmation: ''
       }
     }
 
@@ -27,29 +29,33 @@ class Login extends Component {
     // dispatches the API call action
     this.onSave = (event) => {
       event.preventDefault();
-      this.props.actions.dispatchAction('login', this.state);
+      this.props.actions.dispatchAction('signUp', this.state);
     }
   }
 
   // return the form
   render(){
     return(
-      <div className='login'>
-        <form className='login__form' onSubmit={this.onSave} >
+      <div className='sign-up'>
+        <form className='sign-up__form' onSubmit={this.onSave} >
           <div className='field-group'>
             <label className='label' htmlFor='email'>Email</label>
-            <input className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
+            <input className='sign-up__form__email' type='text'  onChange={this.onChange} name='email'/>
           </div>
           <div className='field-group'>
             <label className='label' htmlFor='password'>Password</label>
-            <input className='login__form__password' type='password' onChange={this.onChange} name='password'/>
+            <input className='sign-up__form__password' type='password' onChange={this.onChange} name='password'/>
           </div>
           <div className='field-group'>
-            <button className='button login__form__submit 'type='submit'>Login</button>
+            <label className='label' htmlFor='password'>Confirm Password</label>
+            <input className='sign-up__form__password-confirmation' type='password' onChange={this.onChange} name='password_confirmation'/>
+          </div>
+          <div className='field-group'>
+            <button className='button sign-up__form__submit 'type='submit'>SignUp</button>
           </div>
         </form>
-        <div className='login__sign-up-link'>
-         <Link to='/signup'>Don't have an account? Sign up</Link>
+         <div className='login__sign-up-link'>
+         <Link to='/'>Back to login</Link>
         </div>
       </div>
     )
@@ -63,7 +69,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(SignUp);
 
 
 

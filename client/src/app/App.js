@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
+import {Switch, Route} from 'react-router-dom'
 
 import Store from '/src/app/store/store'
 import Main from '/src/app/components/main/main';
 import Login from '/src/app/components/login/login';
+import SignUp from '/src/app/components/signUp/signUp';
+
 import SideBar from '/src/app/components/sideBar/sideBar';
 
 
@@ -37,7 +40,10 @@ class App extends Component {
     } else {
       return (
         <div className='app'>
-          <Login />
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route exact path='/signup' component={SignUp} />
+          </Switch>
         </div>
       )
     }
