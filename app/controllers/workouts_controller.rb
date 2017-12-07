@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
   
   def index
-    @workouts = Workout.where(user_id: current_user.id).order(date: :desc)
+    @workouts = Workout.where(user_id: current_user.id).order(date: :asc, start_time: :asc)
     render json: @workouts
   end
 

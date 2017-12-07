@@ -15,21 +15,18 @@ class Profile extends Component {
       user: this.props.user,
     }
 
-    this.update = (user) => {
-      var state = deepClone(this.state)
-      state.user = user;
-      return this.setState(state)
-    }
-
-    this.toggleAlert = () =>{
-      return this.setState({show: true})
+    this.updateField = (event) => {
+      var user = Object.assign({}, this.props.user)
+      var field = event.target.name
+      var value = event.target.value
+      user[field] = value
+      this.setState(user)
     }
 
     this.save = () => {
       var state = deepClone(this.state)
-      delete state.user.avatar;
       this.props.actions.dispatchAction('update', state).then((response) =>{
-        this.toggleAlert()
+        alert('updated')
       })
     }
 
@@ -47,6 +44,24 @@ class Profile extends Component {
       return (
         <div className='page profile'>
           <h1>Profile</h1>
+          <div className='field-group'>
+            <label>Sex</label><br/>
+            <input type='radio' checked={gender == 'male' ? true : false} name="gender" value='male' onChange={this.updateField}/>Male
+            <input type='radio' checked={gender == 'female' ? true : false} name="gender" value='female' onChange={this.updateField}/>Female
+          </div>
+
+          <div className='field-group'>
+            <label>Drinker</label>
+            <input type='checkbox' checked={true} name="drinker" value='true' onChange={this.updateField}/>
+          </div>
+
+           <div class='field-group'>
+            <input
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.save}
+            />
+          </div>
         </div>
       )
     } 

@@ -19,7 +19,7 @@ User.registerNewAction({
 // updates data for the current user, returns updated user
 User.registerNewAction({
   name: 'update', 
-  url: User.url, 
+  url: User.url + '/:id', 
   method: 'PATCH', 
   reducerFn: ( (state, action) => action.data ) 
 })

@@ -33,5 +33,8 @@ module WorkoutTrackerV2
     config.active_record.time_zone_aware_types = [:datetime, :time]
     config.time_zone = 'Eastern Time (US & Canada)'
     config.active_record.default_timezone = :local
+
+    Paperclip::Attachment.default_options[:default_url] = ""
+
   end
 end
