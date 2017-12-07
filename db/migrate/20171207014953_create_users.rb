@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.boolean :vegetarian
       t.string :profile_image
       t.string :password_digest
-      add_attachment :users, :avatar
+      t.attachment :avatar
     end
   end
 end
