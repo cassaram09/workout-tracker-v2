@@ -1,50 +1,50 @@
-// import Resource from 'r3-library'
-// import API from '../api/api'
-// import {browserHistory} from 'react-router'
+import Resource from 'r3-library';
+import {browserRouter} from 'react-router-dom'
+import history from '/src/app/utils/history'
+import API from '/src/app/utils/api';
 
-// var res = Resource;
+const state = !!sessionStorage.jwt
+const headers = {'Content-Type': "application/json"}
 
-// const url = ''
+const Auth = new Resource('auth', '', headers)
+  .registerDefaults()
+  .configureState(state);
 
-// const state = !!sessionStorage.jwt
+// login action
+Auth.registerNewAction('/login', 'login', 'POST', (state, action) => {
+  if ( action.data.error ) {
+    return {error: action.data.error}
+  }
+  sessionStorage.setItem('jwt', action.data.jwt)
+  history.push('/')
+  API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
+  return !!sessionStorage.jwt
+})
 
-// const headers = {'Content-Type': "application/json"}
+// sign up action
+Auth.registerNewAction('/signup', 'signup', 'POST', (state, action) => {
+  sessionStorage.setItem('jwt', action.data.jwt)
+  history.push('/');
+  API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
+  return !!sessionStorage.jwt
+})
 
-// const Auth = new Resource('auth', url, headers).registerDefaults().configureState(state)
+// logout action
+Auth.resourceActions.auth_logout = () => {
+  return new Promise((resolve, reject) => {
+    sessionStorage.removeItem('jwt');
+    !sessionStorage.jwt ? resolve({session: false}) : reject(Error("Error"));
+  });
+}
 
-// Auth.registerNewAction(url + '/login', 'login', 'POST', function(state, action){
-//   if ( action.data.error ) {
-//     console.log(`%c LOGIN UNSUCCESSFUL`, 'color: red')
-//     return state
-//   }
-//   sessionStorage.setItem('jwt', action.data.jwt)
-//   browserHistory.push('/');
-//   API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-//   console.log(`%c LOGIN SUCCESSFUL`, 'color: blue')
-//   return !!sessionStorage.jwt
-// })
+// logout reducer
+Auth.addReducerAction('logout', (state, action) => {
+  if ( sessionStorage.jwt ) {
+    sessionStorage.removeItem('jwt');
+    history.push('/');
+    return !!sessionStorage.jwt
+  }
+  return !!sessionStorage.jwt
+})
 
-// Auth.registerNewAction(url + '/signup', 'signup', 'POST', function(state, action){
-//   sessionStorage.setItem('jwt', action.data.jwt)
-//   browserHistory.push('/');
-//   API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-//   console.log(`%c SIGNUP SUCCESSFUL`, 'color: blue')
-//   return !!sessionStorage.jwt
-// })
-
-// Auth.resourceActions.auth_logout = () => {
-//   var promise = new Promise((resolve, reject) => {
-//     sessionStorage.removeItem('jwt');
-//     !sessionStorage.jwt ? resolve({jwt: 'deleted'}) : reject(Error("Error"));
-//   });
-//   return promise; 
-// }
-
-// Auth.addReducerAction('logout', function(state, action){
-//   browserHistory.push('/')
-//   console.log(`%c LOGOUT SUCCESSFUL`, 'color: blue')
-//   return !!sessionStorage.jwt
-// })
-
-// export default Auth;
-
+export default Auth;
