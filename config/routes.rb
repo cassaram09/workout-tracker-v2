@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  resources :exercise_sets
-  resources :workouts
-  resources :exercises
-  resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  scope '/api/v1' do
+    resources :workouts
+    resources :exercises
+    resources :users, except: [:new, :edit]
+    get '/current-user' => 'users#current_user'
+  end
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  post '/signup' => 'users#create'
+
 end
