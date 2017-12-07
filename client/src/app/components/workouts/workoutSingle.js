@@ -37,6 +37,9 @@ class WorkoutSingle extends Component {
         return (
           <div className='exercise' key={exercise.id}>
             <h3>{exercise.name}</h3>
+            {exercise.exercise_sets.map(function(set, index){
+              return (<p>Set {index + 1} {set.weight} : {set.repetitions}</p>)
+            })}
           </div>
         )
       })
