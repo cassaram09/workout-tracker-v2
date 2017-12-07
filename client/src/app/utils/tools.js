@@ -24,6 +24,12 @@ const deepClone = source => {
   return target;
 }
 
+const findById = (state, id) => {
+  const collection = Object.assign([], state)
+  return collection.filter(obj => obj.id == id)[0]
+}
+
 export {
-  deepClone
+  deepClone,
+  findById
 }

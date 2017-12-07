@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router-dom'
+
 import {connect} from 'react-redux';  
 import {bindActionCreators} from 'redux'; 
 
@@ -17,12 +18,14 @@ class Workouts extends Component {
 
     if ( this.props.workouts.length > 0 ){
       workouts = this.props.workouts.map(function(workout){
-        return (<div className='workouts__row' key={workout.id}>
-          <h3 className='workouts__row__title'>{workout.name}</h3>
-          <p className='workouts__row__date'>Date: {workout.date}</p>
-          <p className='workouts__row__start-time'>Start: {workout.start_time}</p>
-          <p className='workouts__row__end-time'>End: {workout.end_time}</p>
-        </div>)
+        return (
+          <Link to={`workouts/${workout.id}`} className='workouts__row' key={workout.id}>
+            <h3 className='workouts__row__title'>{workout.name}</h3>
+            <p className='workouts__row__date'>Date: {workout.date}</p>
+            <p className='workouts__row__start-time'>Start: {workout.start_time}</p>
+            <p className='workouts__row__end-time'>End: {workout.end_time}</p>
+          </Link>
+        )
       })
     }
     
