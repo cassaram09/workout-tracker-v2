@@ -46,8 +46,7 @@ const logOutAction = () => {
 
 // logout Reducer fn
 const logOutReducer = (state, action) => {
-  if ( sessionStorage.jwt ) {
-    sessionStorage.removeItem('jwt');
+  if ( !sessionStorage.jwt ) {
     history.push('/');
     return !!sessionStorage.jwt
   }
