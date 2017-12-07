@@ -5,7 +5,7 @@ import moment from 'moment';
 
 // import CalendarModal from '../common/calendarModal'
 // import TimeInput from '../common/timeInput'
-// import ExerciseForm from '../exercises/exerciseForm'
+import ExerciseForm from '/src/app/components/exercises/exerciseForm'
 import {deepClone} from '/src/app/utils/tools'
 
 
@@ -13,9 +13,9 @@ class WorkoutForm extends Component {
   constructor(props) {
     super(props);
 
-    this.updateWorkoutField = (value, field) => {
+    this.updateWorkoutField = (event) => {
       var workout = deepClone(this.props.workout)
-      workout[field] = value
+      workout[event.target.name] = event.target.value
       this.props.update(workout)
     }
 
@@ -65,11 +65,17 @@ class WorkoutForm extends Component {
     const date = moment(this.props.workout.date).format('l')
     const { start_time, end_time, name } = this.props.workout
 
-    // var exercises = this.props.workout.exercises.map((exercise, index)=> {
-    //   return ( 
-       
-    //   )
-    // })
+    var exercises = this.props.workout.exercises.map((exercise, index)=> {
+      return ( 
+        <ExerciseForm 
+          exercise={exercise} 
+          updateExercise={this.updateExercise} 
+          removeExercise={this.removeExercise}
+          toggleEdit={this.props.toggleEdit} 
+          index={index} 
+        />
+      )
+    })
 
     return (
 
@@ -83,10 +89,22 @@ class WorkoutForm extends Component {
               <th>Start</th>
               <th>Finish</th>
             </tr>
+
           </thead>
           <tbody>
             <tr>
-              
+              <td>
+               <input type='text' name='name' onChange={this.updateWorkoutField}/>
+              </td>
+               <td>
+               <input type='date' name='date' onChange={this.updateWorkoutField}/>
+               </td>
+                <td>
+               <input type='time' name='start_time' onChange={this.updateWorkoutField}/>
+               </td>
+                <td>
+               <input type='time' name='end_time' onChange={this.updateWorkoutField}/>
+               </td>
             </tr>
           </tbody>
         </Table>
@@ -108,13 +126,7 @@ export default WorkoutForm;
 
 
 
- // <ExerciseForm 
- //          exercise={exercise} 
- //          updateExercise={this.updateExercise} 
- //          removeExercise={this.removeExercise}
- //          toggleEdit={this.props.toggleEdit} 
- //          index={index} 
- //        />
+
 
  // <td>
  //                <InlineEdit value={name} name={"name"} onChange={this.updateWorkoutField}/>

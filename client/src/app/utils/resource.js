@@ -211,19 +211,19 @@ class Resource extends HTTP {
       return this;
     }
 
-    //  Update/overwrrite a reducer action (such as a default action. 
-    // this.updateReducerAction = (name, callback) => {
-    //   var actionName = prefix + name;
-    //   this.reducerActions[actionName] = callback;
-    //   return this;
-    // }
+    //Update/overwrrite a reducer action (such as a default action. 
+    this.updateReducerAction = (name, callback) => {
+      var actionName = this.prefix + name;
+      this.reducerActions[actionName] = callback;
+      return this;
+    }
 
-    // //  Update/overwrrite a resource action (such as a default action. 
-    // this.updateResourceAction = (name, callback) => {
-    //   var actionName = prefix + name;
-    //   this.reducerActions[actionName] = callback;
-    //   return this;
-    // }
+    //  Update/overwrrite a resource action (such as a default action. 
+    this.updateResourceAction = (name, callback) => {
+      var actionName = this.prefix + name;
+      this.reducerActions[actionName] = callback;
+      return this;
+    }
 
     /*
         Registers the default action/reducers for CRUD operations: query(index),
