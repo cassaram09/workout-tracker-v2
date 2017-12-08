@@ -17,10 +17,10 @@ function Main(props) {
       <Switch>
 
         <Route exact path='/' component={Home} />
-        <Route path='/profile' component={Profile} />
+        <Route exact path='/profile' component={Profile} />
         <Route exact path='/workouts/new' component={WorkoutNew} />
         <Route exact path='/workouts/:id' component={WorkoutSingle} />
-        <Route path='/workouts' component={Workouts} />
+        <Route exact path='/workouts' component={Workouts} />
        
       </Switch>
     </main>

@@ -23,6 +23,9 @@
         display: block;
         margin: 5px;
         cursor: pointer;
+        &.active{
+           color: red;
+        }
       }
     }
   }
@@ -36,4 +39,16 @@
   font-size: 10px;
   text-align: center;
   margin: 20px 0px;
+}
+
+.sidebar__nav__item{
+  color: black;
+
+  .active{
+   
+  }
+
+  &:hover{
+    color: white;
+  }
 }

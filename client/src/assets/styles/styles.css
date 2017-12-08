@@ -2246,6 +2246,8 @@ input {
     display: block;
     margin: 5px;
     cursor: pointer; }
+    .sidebar__nav ul li a.active {
+      color: red; }
 
 .sidebar__title {
   text-align: center; }
@@ -2254,6 +2256,11 @@ input {
   font-size: 10px;
   text-align: center;
   margin: 20px 0px; }
+
+.sidebar__nav__item {
+  color: black; }
+  .sidebar__nav__item:hover {
+    color: white; }
 
 .sign-up {
   display: flex;
