@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 
   .error {
     padding: 0px 0px 10px;
@@ -12,22 +13,17 @@
 }
 
 .login__form{
+  background: white;
   margin: 20px;
-  background: grey;
+  box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
-  box-shadow: 1px 1px 0px 1px #777;
-}
-
-.field-group{
-  margin: 10px 0px;
-}
-
-.label{
-  display: block;
-  margin-bottom: 5px;
 }
 
 .login__sign-up-link{
+  background: white;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px;
   text-decoration: underline;
   color: blue;
 }

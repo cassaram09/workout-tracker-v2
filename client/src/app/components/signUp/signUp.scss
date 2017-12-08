@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 
   .error {
     padding: 0px 0px 10px;
@@ -12,22 +13,16 @@
 }
 
 .sign-up__form{
+  background: white;
   margin: 20px;
-  background: grey;
   padding: 20px;
-  box-shadow: 1px 1px 0px 1px #777;
-}
-
-.field-group{
-  margin: 10px 0px;
-}
-
-.label{
-  display: block;
-  margin-bottom: 5px;
+  box-shadow: 1px 1px 1px 1px #aaa;
 }
 
 .sign-up__sign-up-link{
   text-decoration: underline;
   color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px;
 }

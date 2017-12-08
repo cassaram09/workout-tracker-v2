@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
+import {Motorcycle} from '/src/app/utils/constants'
+
 
 import $R_Auth from '/src/app/utils/auth';
 
@@ -34,7 +36,7 @@ class Login extends Component {
   // return the form
   render(){
     return(
-      <div className='login'>
+      <div className='login' style={{background: `url(${Motorcycle}) center center no-repeat`, backgroundSize: 'cover'}}>
         <form className='login__form' onSubmit={this.onSave} >
           <div className='field-group'>
             <label className='label' htmlFor='email'>Email</label>
