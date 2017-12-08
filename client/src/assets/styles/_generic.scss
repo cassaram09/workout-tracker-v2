@@ -19,3 +19,23 @@
 .left { float: left; }
 
 .right { float: right; }
+
+
+
+@media screen and (max-width: 768px){
+  body{
+    .app{
+      flex-direction: column;
+    }
+
+    .sidebar{
+      flex: 0 0 100px;
+    }
+
+    .sidebar__nav{
+      ul {
+        flex-direction: row;
+      }
+    }
+  }
+}

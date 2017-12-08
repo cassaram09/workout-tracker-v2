@@ -114,7 +114,7 @@ h6 {
 }
 
 p {
-  padding: 10px 0px;
+  padding: 0px;
   margin: 0px;
   font-family: $body-font;
   font-size: 1.3em;
@@ -153,4 +153,10 @@ span {
   padding: 0px;
   margin: 0px;
   font-family: $body-font;
+}
+
+input{
+  height: 30px;
+  padding: 0px 5px;
+  width: 100%;
 }

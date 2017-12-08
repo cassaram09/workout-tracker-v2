@@ -21,7 +21,7 @@ class SideBar extends Component {
   render() {    
     return(
       <div className="sidebar">
-        <p className='logged-in-as'>Logged in as {this.props.user.email}</p>
+        <h4 className='sidebar__title'>My Fitness Friend</h4>
         <nav className='sidebar__nav'>
           <ul>
             <li><Link to='/'>Home</Link></li>

@@ -12,6 +12,10 @@
   ul {
     list-style: none;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     li{
       a{
         text-decoration: none;
@@ -22,4 +26,14 @@
       }
     }
   }
+}
+
+.sidebar__title{
+  text-align: center;
+}
+
+.sidebar__logged-in{
+  font-size: 10px;
+  text-align: center;
+  margin: 20px 0px;
 }

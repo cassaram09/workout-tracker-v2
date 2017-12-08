@@ -80,42 +80,42 @@ class WorkoutForm extends Component {
 
     return (
 
-      <div className='workoutForm'>
-        { this.props.cancel && <button className='button -light workout-single__button' onClick={this.props.cancel}>Cancel</button> }
-        <button className='button workout-single__button' onClick={this.save}>Save</button>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Start</th>
-              <th>Finish</th>
-            </tr>
-
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-               <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField}/>
-              </td>
-               <td>
-               <input type='date' name='date' value={this.props.workout.date} onChange={this.updateWorkoutField}/>
-               </td>
-                <td>
-               <input type='time' name='start_time' value={this.props.workout.start_time} onChange={this.updateWorkoutField}/>
-               </td>
-                <td>
-               <input type='time' name='end_time' value={this.props.workout.end_time} onChange={this.updateWorkoutField}/>
-               </td>
-            </tr>
-          </tbody>
-
+      <div className='workout-form'>
+        <div className='workout-form__actions row'>
           
-        </Table>
+          { this.props.cancel && (
+            <div className='col-2'>
+              <button className='button -light workout-single__button' onClick={this.props.cancel}>Cancel</button>
+            </div> 
+          )}
+          <div className='col-2'>
+            <button className='button workout-single__button' onClick={this.save}>Save</button>
+          </div>
+
+        </div>
+
+        <div className='workout-form__fields row'>
+          <div className='col-3'>
+            <h4>Name</h4>
+            <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField}/>
+          </div>
+          <div className='col-3'>
+            <h4>Date</h4>
+            <input type='date' name='date' value={this.props.workout.date} onChange={this.updateWorkoutField}/>
+          </div>
+          <div className='col-3'>
+            <h4>Start</h4>
+            <input type='time' name='start_time' value={this.props.workout.start_time} onChange={this.updateWorkoutField}/>
+          </div>
+          <div className='col-3'>
+            <h4>End</h4>
+            <input type='time' name='end_time' value={this.props.workout.end_time} onChange={this.updateWorkoutField}/>
+          </div>
+        </div>
 
         {exercises}
 
-        <button onClick={this.addExercise}>Add Exercise</button>
+        <button className='button' onClick={this.addExercise}>Add Exercise</button>
 
       </div>
     
@@ -129,20 +129,3 @@ class WorkoutForm extends Component {
 // }
 
 export default WorkoutForm;
-
-
-
-
-
- // <td>
- //                <InlineEdit value={name} name={"name"} onChange={this.updateWorkoutField}/>
- //              </td>
- //              <td>
- //                <CalendarModal updateField={this.updateWorkoutField} value={date} name={'date'} />
- //              </td>
- //              <td>
- //                <TimeInput updateField={this.updateWorkoutField} value={start_time} name={'start_time'} />
- //              </td>
- //              <td>
- //                <TimeInput updateField={this.updateWorkoutField}  value={end_time} name={'end_time'}/>
- //              </td>

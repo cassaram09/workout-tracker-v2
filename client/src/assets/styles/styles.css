@@ -425,6 +425,14 @@ template {
 .right {
   float: right; }
 
+@media screen and (max-width: 768px) {
+  body .app {
+    flex-direction: column; }
+  body .sidebar {
+    flex: 0 0 100px; }
+  body .sidebar__nav ul {
+    flex-direction: row; } }
+
 /* ----- TOOLS ----- */
 /* ----- GENERIC ----- */
 /* -- NORMALIZE -- */
@@ -848,6 +856,14 @@ template {
 .right {
   float: right; }
 
+@media screen and (max-width: 768px) {
+  body .app {
+    flex-direction: column; }
+  body .sidebar {
+    flex: 0 0 100px; }
+  body .sidebar__nav ul {
+    flex-direction: row; } }
+
 /*
 Styling for bare, unclassed elements. This layer binds onto bare HTML element (or 'type') selectors only.
 */
@@ -940,7 +956,7 @@ h6 {
   color: #618DFF; }
 
 p {
-  padding: 10px 0px;
+  padding: 0px;
   margin: 0px;
   font-family: "europa", sans-serif;
   font-size: 1.3em;
@@ -973,6 +989,11 @@ span {
   padding: 0px;
   margin: 0px;
   font-family: "europa", sans-serif; }
+
+input {
+  height: 30px;
+  padding: 0px 5px;
+  width: 100%; }
 
 /* ----- OBJECTS ----- */
 /* -- ANIMATE -- */
@@ -2125,7 +2146,6 @@ span {
   max-width: 1400px; }
 
 .button {
-  margin-top: 20px;
   font-family: "Glegoo", serif;
   color: #F8FCFF;
   background-color: #4A4D54;
@@ -2156,32 +2176,21 @@ span {
     color: #4A4D54; }
 
 .page {
-  padding: 20px; }
+  padding: 20px;
+  margin: 0px auto;
+  max-width: 1200px; }
 
 /* inject:scss */
 .app {
   height: 100vh;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex-direction: row; }
 
-.sidebar {
-  background: #f9fbff;
-  color: #333;
-  flex: 0 0 200px;
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
-  height: 100vh;
-  border-right: 1px solid #ddd;
-  border-bottom: none; }
-
-.sidebar__nav ul {
-  list-style: none;
-  text-align: center; }
-  .sidebar__nav ul li a {
-    text-decoration: none;
-    color: #0066cc;
-    display: block;
-    margin: 5px;
-    cursor: pointer; }
+  margin-bottom: 20px; }
 
 .login {
   display: flex;
@@ -2212,7 +2221,39 @@ span {
 
 .main {
   height: 100vh;
-  flex: 1 1 auto; }
+  flex: 1 1 auto;
+  overflow: scroll; }
+
+.sidebar {
+  background: #f9fbff;
+  color: #333;
+  flex: 0 0 200px;
+  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  border-bottom: none; }
+
+.sidebar__nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .sidebar__nav ul li a {
+    text-decoration: none;
+    color: #0066cc;
+    display: block;
+    margin: 5px;
+    cursor: pointer; }
+
+.sidebar__title {
+  text-align: center; }
+
+.sidebar__logged-in {
+  font-size: 10px;
+  text-align: center;
+  margin: 20px 0px; }
 
 .sign-up {
   display: flex;
@@ -2240,6 +2281,17 @@ span {
 .sign-up__sign-up-link {
   text-decoration: underline;
   color: blue; }
+
+.workout-form__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.workout-form__fields {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  width: 100%; }
 
 .workout-single__button {
   margin-right: 20px; }
