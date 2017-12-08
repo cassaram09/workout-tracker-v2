@@ -66,7 +66,7 @@ class ExerciseForm extends Component {
 
     var sets = this.props.exercise.exercise_sets.map((set, index) => {
       return (
-        <ExerciseSet set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
+        <ExerciseSet key={set.id} set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
       )
     })
 

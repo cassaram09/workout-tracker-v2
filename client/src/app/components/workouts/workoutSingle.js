@@ -68,7 +68,7 @@ class WorkoutSingle extends Component {
           <div className='workout-single__exercise row' key={exercise.id}>
             <h3>{exercise.name}</h3>
             {exercise.exercise_sets.map(function(set, index){
-              return (<p>Set {index + 1} {set.weight} : {set.repetitions}</p>)
+              return (<p key={set.id}>Set {index + 1} {set.weight} : {set.repetitions}</p>)
             })}
           </div>
         )
@@ -78,7 +78,9 @@ class WorkoutSingle extends Component {
           <h1>{name}</h1> 
 
           <div className='workout-single__actions row'>
-            <button className='button' onClick={this.toggleEdit}>Edit</button>
+            <div className='col-2'>
+              <button className='button' onClick={this.toggleEdit}>Edit</button>
+            </div>
           </div>
             
           <div className='workout-single__details row'>
