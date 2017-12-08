@@ -2,11 +2,13 @@
 
 @import "./src/app/app.scss";
 
+@import "./src/app/components/avatar/avatar.scss";
+
 @import "./src/app/components/exercises/exercise-form.scss";
 
-@import "./src/app/components/login/login.scss";
-
 @import "./src/app/components/home/home.scss";
+
+@import "./src/app/components/login/login.scss";
 
 @import "./src/app/components/main/main.scss";
 

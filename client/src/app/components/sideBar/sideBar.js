@@ -8,6 +8,7 @@ import { withRouter } from 'react-router'
 import Store from '/src/app/store/store';  
 import $R_Auth from '/src/app/utils/auth';
 import Home from '/src/app/components/home/home'
+import Avatar from '/src/app/components/avatar/avatar'
 
 class SideBar extends Component {
   constructor(props){
@@ -30,12 +31,11 @@ class SideBar extends Component {
     return true;
   }
 
-
- 
   render() {    
     return(
       <div className="sidebar">
         <h4 className='sidebar__title'>My Fitness Friend</h4>
+        <Avatar type='sidebar__avatar'/>
         <nav className='sidebar__nav'>
           <ul>
             <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/'>Home</NavLink></li>

@@ -2187,6 +2187,24 @@ input {
   justify-content: center;
   flex-direction: row; }
 
+.avatar {
+  width: 50px;
+  height: 50px; }
+  .avatar img {
+    object-fit: cover;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+    display: block;
+    box-shadow: 1px 1px 3px -1px #333;
+    -moz-box-shadow: 1px 1px 3px -1px #333;
+    -webkit-box-shadow: 1px 1px 3px -1px #333;
+    -o-box-shadow: 1px 1px 3px -1px #333;
+    background: white; }
+  .avatar.sidebar__avatar {
+    margin: 20px auto; }
+
 .exercise-form {
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
@@ -2248,6 +2266,9 @@ input {
     cursor: pointer; }
     .sidebar__nav ul li a.active {
       color: red; }
+
+.sidebar__avatar {
+  margin: 0px auto; }
 
 .sidebar__title {
   text-align: center; }
