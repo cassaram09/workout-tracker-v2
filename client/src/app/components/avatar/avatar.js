@@ -9,10 +9,14 @@ class Avatar extends Component {
   //   url: string,
   // }
 
+  shouldComponentUpdate(nextProps){
+    return nextProps.user.avatar != this.props.user.avatar
+  }
+
   render(){
     return (
       <div className={ `avatar ${this.props.type}` }>
-        <img src={this.props.user.image || DefaultAvatar} />
+        <img src={this.props.user.avatar || DefaultAvatar} />
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import Resource from '/src/app/utils/resource';
 import API from '/src/app/utils/api';
+import request from 'superagent';
 
 const User = new Resource({
   name: 'user', 
@@ -22,6 +23,25 @@ User.registerNewAction({
   url: User.url + '/:id', 
   method: 'PATCH', 
   reducerFn: ( (state, action) => action.data ) 
+})
+
+// handle image upload
+const uploadImageAction = (data) => {
+  return new Promise((resolve, reject) => {
+    const req = request.patch(User.url + '/' + data.id).set('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`)
+      req.attach('user[avatar]', data.file);
+      req.end(function(error, response){
+        resolve(response.body);
+      });
+  });
+}
+
+User.registerNewAction({
+  name: 'uploadImage', 
+  url: User.url + '/:id', 
+  method: 'PATCH', 
+  reducerFn: ( (state, action) => action.data ),
+  resourceFn: uploadImageAction
 })
 
 export default User;

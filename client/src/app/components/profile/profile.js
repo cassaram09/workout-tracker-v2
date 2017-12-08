@@ -30,6 +30,13 @@ class Profile extends Component {
       })
     }
 
+    this.uploadFile = (event) =>{
+      event.preventDefault();
+      var id = this.props.user.id
+      var file = event.target.files[0]
+      this.props.actions.dispatchAction('uploadImage', {file: file, id: id})
+    }
+
   }
 
   componentWillReceiveProps(nextProps){
@@ -40,40 +47,62 @@ class Profile extends Component {
 
   render(){
 
-    var {name, email, height, weight, age, gender, drinker, avatar} = this.state.user;
+    var {name, email, height, smoker, weight, age, gender, drinker, avatar} = this.state.user;
 
 
 
       return (
         <div className='page profile'>
           <h1>Profile</h1>
-          <div className='field-group'>
-            <label>Sex</label><br/>
-            <input type='radio' checked={gender == 'male' ? true : false} name="gender" value='male' onChange={this.updateField}/>Male
-            <input type='radio' checked={gender == 'female' ? true : false} name="gender" value='female' onChange={this.updateField}/>Female
-          </div>
+          <div className='profile__form'>
 
-          <div className='field-group'>
-            <label>Drinker</label>
-            <input type='checkbox' checked={drinker ? true : false} name="drinker" value='true' onChange={this.updateField}/>
-          </div>
+            <div className='field-group'>
+              <label>Name</label>
+              <input type='text' name="name" value={name} onChange={this.updateField}/>
+            </div>
 
-           <div className='field-group'>
-            <label>Name</label>
-            <input type='text' name="name" value={name} onChange={this.updateField}/>
-          </div>
+            <div className='field-group'>
+              <label>Email</label>
+              <input type='text' name="email" value={email} onChange={this.updateField}/>
+            </div>
 
-          <div className='field-group'>
-            <label>Email</label>
-            <input type='text' name="email" value={email} onChange={this.updateField}/>
-          </div>
+            <div className='field-group'>
+              <label>Height (inches)</label>
+              <input type='number' name="height" value={height || 0} onChange={this.updateField}/>
+            </div>
 
-           <div className='field-group'>
-            <input
-              type="submit"
-              className="button"
-              onClick={this.save}
-            />
+            <div className='field-group'>
+              <label>Weight (lbs)</label>
+              <input type='number' name="weight" value={weight || 0} onChange={this.updateField}/>
+            </div>
+
+            <div className='field-group'>
+              <label>Age</label>
+              <input type='number' name="age" value={age || 0} onChange={this.updateField}/>
+            </div>
+
+            <div className='field-group'>
+              <label>Smoker</label>
+              <input type='checkbox' checked={smoker ? true : false} name="smoker" value='true' onChange={this.updateField}/>
+            </div>
+
+            <div className='field-group'>
+              <label>Drinker</label>
+              <input type='checkbox' checked={drinker ? true : false} name="drinker" value='true' onChange={this.updateField}/>
+            </div>
+
+            <div className='field-group'>
+              <label>Image</label>
+              <input type='file' name="avatar"  onChange={this.uploadFile} />
+            </div>
+
+             <div className='field-group'>
+              <input
+                type="submit"
+                className="button"
+                onClick={this.save}
+              />
+            </div>
           </div>
         </div>
       )
