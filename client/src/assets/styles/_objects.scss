@@ -44,6 +44,46 @@
     color: $neutral-mid;
   }
 
+
+  &:active { 
+    transform: translateY(1px);
+  }
+
+}
+
+input[type='file']{
+  padding: 0px;
+
+  &::-webkit-file-upload-button{
+    font-family: $title-font;
+    color: $neutral-light;
+    background-color: $neutral-mid;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3px;
+    border: 2px solid $neutral-mid;
+    text-decoration: none;
+    padding: 0px 20px;
+    height: 30px;
+    @include animate(0.2s);
+
+    &:hover{
+      color: $neutral-dark;
+      background: white;
+      border: 2px solid $neutral-dark;
+    }
+
+    &.-light{
+      background: #fff;
+      color: $neutral-mid;
+    }
+
+
+    &:active { 
+      transform: translateY(1px);
+    }
+  }
 }
 
 .page{

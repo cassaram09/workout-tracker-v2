@@ -91,10 +91,7 @@ class Profile extends Component {
               <input type='checkbox' checked={drinker ? true : false} name="drinker" value='true' onChange={this.updateField}/>
             </div>
 
-            <div className='field-group'>
-              <label>Image</label>
-              <input type='file' name="avatar"  onChange={this.uploadFile} />
-            </div>
+           
 
              <div className='field-group'>
               <input
@@ -104,6 +101,15 @@ class Profile extends Component {
               />
             </div>
           </div>
+
+           <div className='profile__form'>
+
+             <div className='field-group'>
+              <label>Upload Image</label>
+              <input type='file' name="avatar" className='file-button' onChange={this.uploadFile}  />
+            </div>
+
+            </div>
         </div>
       )
   }

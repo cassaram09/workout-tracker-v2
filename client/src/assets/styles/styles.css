@@ -985,6 +985,14 @@ a {
   a:hover {
     outline-width: 0; }
 
+label {
+  padding: 0px;
+  margin: 0px 0px 10px 0px;
+  font-family: "europa", sans-serif;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  font-weight: 400; }
+
 span {
   padding: 0px;
   margin: 0px;
@@ -2174,6 +2182,37 @@ input {
   .button.-light {
     background: #fff;
     color: #4A4D54; }
+  .button:active {
+    transform: translateY(1px); }
+
+input[type='file'] {
+  padding: 0px; }
+  input[type='file']::-webkit-file-upload-button {
+    font-family: "Glegoo", serif;
+    color: #F8FCFF;
+    background-color: #4A4D54;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    border-radius: 3px;
+    border: 2px solid #4A4D54;
+    text-decoration: none;
+    padding: 0px 20px;
+    height: 30px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease; }
+    input[type='file']::-webkit-file-upload-button:hover {
+      color: #4A4D54;
+      background: white;
+      border: 2px solid #4A4D54; }
+    input[type='file']::-webkit-file-upload-button.-light {
+      background: #fff;
+      color: #4A4D54; }
+    input[type='file']::-webkit-file-upload-button:active {
+      transform: translateY(1px); }
 
 .page {
   padding: 20px;
@@ -2347,19 +2386,18 @@ input {
   box-shadow: 1px 1px 1px 1px #aaa; }
 
 .workouts__row {
-  border: 1px solid grey;
-  padding: 10px;
-  margin-bottom: 10px;
   opacity: 1;
-  background: #bbb;
-  transition: opacity 250ms linear;
+  transition: opacity 100ms linear;
   cursor: pointer;
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px; }
   .workouts__row:last-child {
     margin-bottom: 0px; }
   .workouts__row:hover {
-    opacity: 0.7; }
+    opacity: 0.5; }
   .workouts__row:active {
     transform: translateY(1px); }
 
