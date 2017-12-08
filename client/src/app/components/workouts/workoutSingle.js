@@ -65,7 +65,7 @@ class WorkoutSingle extends Component {
 
       const exercises = this.props.workout.exercises.map(function(exercise){
         return (
-          <div className='exercise' key={exercise.id}>
+          <div className='workout-single__exercise row' key={exercise.id}>
             <h3>{exercise.name}</h3>
             {exercise.exercise_sets.map(function(set, index){
               return (<p>Set {index + 1} {set.weight} : {set.repetitions}</p>)
@@ -75,11 +75,28 @@ class WorkoutSingle extends Component {
       })
       return (
         <div className="page workout-single">
-          <h1>{name}</h1> <button className='button' onClick={this.toggleEdit}>Edit</button>
-          <p>On: {date}</p>
-          <p>Start: {start_time}</p>
-          <p>End: {end_time}</p>
-          {exercises}
+          <h1>{name}</h1> 
+
+          <div className='workout-single__actions row'>
+            <button className='button' onClick={this.toggleEdit}>Edit</button>
+          </div>
+            
+          <div className='workout-single__details row'>
+            <div className='col-3'>
+              <h4>Date</h4>
+              <p>On: {date}</p>
+            </div>
+            <div className='col-3'>
+              <h4>Start</h4>
+              <p>Start: {start_time}</p>
+            </div>
+            <div className='col-3'>
+              <h4>End</h4>
+              <p>End: {end_time}</p>
+            </div>
+          </div>
+
+           {exercises}
 
         </div>
       )
