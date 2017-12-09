@@ -899,7 +899,8 @@ li {
   margin: 0px; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 200; }
+  font-weight: 200;
+  color: #618DFF; }
 
 h1.-light, h3.-light, h5.-light {
   color: #F8FCFF; }
@@ -2307,12 +2308,12 @@ input[type='file'] {
   justify-content: center; }
   .sidebar__nav ul li a {
     text-decoration: none;
-    color: #0066cc;
+    color: #4A4D54;
     display: block;
     margin: 5px;
     cursor: pointer; }
     .sidebar__nav ul li a.active {
-      color: red; }
+      color: #618DFF; }
 
 .sidebar__avatar {
   margin: 0px auto; }
@@ -2329,30 +2330,6 @@ input[type='file'] {
   color: black; }
   .sidebar__nav__item:hover {
     color: white; }
-
-.sign-up {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-  .sign-up .error {
-    padding: 0px 0px 10px;
-    color: red; }
-
-.sign-up__form {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.sign-up__sign-up-link {
-  text-decoration: underline;
-  color: blue;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px; }
 
 .workout-form__actions {
   margin-bottom: 20px;
@@ -2414,6 +2391,30 @@ input[type='file'] {
 .workouts__row__details {
   flex: 1 1 25%;
   text-align: right; }
+
+.sign-up {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .sign-up .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.sign-up__form {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.sign-up__sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px; }
 
 /* endinject */
 /* ----- UTILITIES ----- */
