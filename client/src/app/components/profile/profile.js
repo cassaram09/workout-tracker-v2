@@ -25,9 +25,8 @@ class Profile extends Component {
 
     this.save = () => {
       var state = deepClone(this.state)
-      this.props.actions.dispatchAction('update', state).then((response) =>{
-        alert('updated')
-      })
+      delete state.user.avatar
+      this.props.actions.dispatchAction('update', state)
     }
 
     this.uploadFile = (event) =>{
