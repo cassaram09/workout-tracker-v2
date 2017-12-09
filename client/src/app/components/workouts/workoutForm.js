@@ -92,6 +92,11 @@ class WorkoutForm extends Component {
             <button className='button workout-single__button' onClick={this.save}>Save</button>
           </div>
 
+          { this.props.delete && (<div className='col-2'>
+            <button className='button workout-single__button' onClick={this.props.delete}>Delete</button>
+          </div>
+          )}
+
         </div>
 
         <div className='workout-form__fields row'>

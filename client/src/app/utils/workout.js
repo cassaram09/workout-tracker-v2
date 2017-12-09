@@ -15,4 +15,15 @@ Workout.updateReducerAction('create', (state, action) => {
   return [ ...state.filter(element => element.id !== action.data.id), Object.assign({}, action.data)]
 })
 
+Workout.updateReducerAction('delete', (state, action) => {
+  history.push(`/workouts`)
+  const newState = Object.assign([], state);
+  const indexToDelete = state.findIndex(exercise => {
+    return exercise.id == action.data.id
+  })
+  newState.splice(indexToDelete, 1);
+  return newState;
+})
+
+
 export default Workout;

@@ -34,7 +34,7 @@ class WorkoutSingle extends Component {
 
     this.delete = (event) => {
       event.preventDefault();
-      return this.props.actions.dispatchAction('delete', this.state.workout.id);
+      return this.props.actions.dispatchAction('delete', {id: this.state.workout.id});
     }
 
     this.toggleEdit = () =>{
@@ -107,7 +107,7 @@ class WorkoutSingle extends Component {
       return (
         <div className="page workout-single">
           <h1>{name}</h1> 
-          <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} />
+          <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} delete={this.delete} />
         </div>
       )
     } else {

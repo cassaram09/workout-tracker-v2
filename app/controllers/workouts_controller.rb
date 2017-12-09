@@ -57,8 +57,8 @@ class WorkoutsController < ApplicationController
   end
 
   def destroy
-    @workout = Workout.find_by(params[:id], user_id: current_user.id)
-    if @workout.delete
+    @workout = Workout.find_by(id: workout_params[:id], user_id: current_user.id)
+    if @workout.destroy
       render json: @workout
     end
   end
