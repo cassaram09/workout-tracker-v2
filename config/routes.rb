@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :exercises
     resources :users, except: [:new, :edit]
     get '/current-user' => 'users#get_current_user'
+    get '/dashboard' => 'users#dashboard'
   end
 
   get '/login' => 'sessions#new'

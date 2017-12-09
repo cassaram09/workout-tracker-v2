@@ -27,6 +27,15 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def dashboard
+    @user = User.find_by(id: current_user.id)
+    render json: {
+      last_workout: @user.workouts.last,
+      workout_hours: @user.workout_hours,
+      total_workouts: @user.workouts.length
+    }
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :avatar, :name, :age, :weight, :height, :gender, :body_fat, :bmr, :smoker, :drinker, :vegetarian)
