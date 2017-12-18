@@ -19,10 +19,10 @@ class ExerciseSet extends Component {
           <p>{index + 1}</p>
         </div>
         <div className='col-3'>
-          <input className="form-control" type='text' value={this.props.set.weight} name='weight' onChange={this.props.updateSet}/> 
+          <input className="form-control" type='text' value={this.props.set.weight || ''} name='weight' onChange={this.props.updateSet} placeholder='Weight'/> 
         </div>
         <div className='col-3'>
-          <input className="form-control" type='text' value={this.props.set.repetitions} name='repetitions' onChange={this.props.updateSet}/> 
+          <input className="form-control" type='text' value={this.props.set.repetitions || ''} name='repetitions' onChange={this.props.updateSet} placeholder='Reps'/> 
         </div>
         <div className='col-5'>
          <button onClick={this.removeSet} className='button'>Remove</button>

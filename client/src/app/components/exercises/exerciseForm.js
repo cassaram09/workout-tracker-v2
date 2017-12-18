@@ -66,15 +66,14 @@ class ExerciseForm extends Component {
 
     var sets = this.props.exercise.exercise_sets.map((set, index) => {
       return (
-        <ExerciseSet key={set.id} set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
+        <ExerciseSet key={set.id || index} set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
       )
     })
 
     return (
       <div className='exercise-form' >
         <div className='form-group' >
-          <h5>Exercise {this.props.index + 1}</h5>
-          <input className="form-control" type='text' value={this.props.exercise.name} name='name' onChange={this.updateName}/> 
+          <input className="form-control" type='text' value={this.props.exercise.name} name='name' onChange={this.updateName} placeholder='Name' /> 
         </div>
 
         <div className='exercise-form__fields row'>
@@ -89,7 +88,7 @@ class ExerciseForm extends Component {
           </div>
         </div>
 
-         {sets}
+        {sets}
 
         <div className='row' >
           <div className='col-2'>

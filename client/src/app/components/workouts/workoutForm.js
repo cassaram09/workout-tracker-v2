@@ -101,20 +101,16 @@ class WorkoutForm extends Component {
 
         <div className='workout-form__fields row'>
           <div className='col-3'>
-            <h4>Name</h4>
-            <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField}/>
+            <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField} placeholder='Name' />
           </div>
           <div className='col-3'>
-            <h4>Date</h4>
-            <input type='date' name='date' value={this.props.workout.date} onChange={this.updateWorkoutField}/>
+            <input type='date' name='date' value={this.props.workout.date || ''} onChange={this.updateWorkoutField} placeholder='Date' />
           </div>
           <div className='col-3'>
-            <h4>Start</h4>
-            <input type='time' name='start_time' value={this.props.workout.start_time} onChange={this.updateWorkoutField}/>
+            <input type='time' name='start_time' value={this.props.workout.start_time} onChange={this.updateWorkoutField} placeholder='Start time' />
           </div>
           <div className='col-3'>
-            <h4>End</h4>
-            <input type='time' name='end_time' value={this.props.workout.end_time} onChange={this.updateWorkoutField}/>
+            <input type='time' name='end_time' value={this.props.workout.end_time} onChange={this.updateWorkoutField} placeholder='End time' />
           </div>
         </div>
 

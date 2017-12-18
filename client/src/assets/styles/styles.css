@@ -1,8 +1,8 @@
 /* ----- SETTINGS ----- */
 /* -- styles -- */
 /* -- TYPOGRAPHY -- */
-@import url("https://fonts.googleapis.com/css?family=Glegoo:400,700");
-@import url("https://use.typekit.net/etu1qor.css");
+@import url("https://fonts.googleapis.com/css?family=Arimo:400,700");
+@import url("https://fonts.googleapis.com/css?family=Hind:400,700");
 /* ----- GENERIC ----- */
 /* -- NORMALIZE -- */
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -917,41 +917,41 @@ h2.-dark, h4.-dark, h6.-dark {
 h1 {
   padding: 20px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 3.4em;
   line-height: 1.4em; }
 
 h2 {
   padding: 15px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 2.6em;
   line-height: 1.3em; }
 
 h3 {
   padding: 10px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 2.2em;
   line-height: 1.35em; }
 
 h4 {
   padding: 10px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1.8em;
   line-height: 1.3em; }
 
 h5 {
   padding: 10px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1.4em; }
 
 h6 {
   padding: 10px 0px;
   margin: 0px;
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1em;
   line-height: 1.4em;
   color: #618DFF; }
@@ -959,7 +959,7 @@ h6 {
 p {
   padding: 0px;
   margin: 0px;
-  font-family: "europa", sans-serif;
+  font-family: "Hind", sans-serif;
   font-size: 1.3em;
   line-height: 1.6em;
   font-weight: 400; }
@@ -989,7 +989,7 @@ a {
 label {
   padding: 0px;
   margin: 0px 0px 10px 0px;
-  font-family: "europa", sans-serif;
+  font-family: "Hind", sans-serif;
   font-size: 1.3em;
   line-height: 1.6em;
   font-weight: 400; }
@@ -997,12 +997,16 @@ label {
 span {
   padding: 0px;
   margin: 0px;
-  font-family: "europa", sans-serif; }
+  font-family: "Hind", sans-serif; }
 
 input {
   height: 30px;
   padding: 0px 5px;
-  width: 100%; }
+  width: 100%;
+  border: none;
+  background: #efefef;
+  font-size: 1.4em;
+  padding: 20px 5px; }
 
 /* ----- OBJECTS ----- */
 /* -- ANIMATE -- */
@@ -2155,7 +2159,7 @@ input {
   max-width: 1400px; }
 
 .button {
-  font-family: "Glegoo", serif;
+  font-family: "Arimo", sans-serif;
   color: #F8FCFF;
   background-color: #4A4D54;
   cursor: pointer;
@@ -2189,7 +2193,7 @@ input {
 input[type='file'] {
   padding: 0px; }
   input[type='file']::-webkit-file-upload-button {
-    font-family: "Glegoo", serif;
+    font-family: "Arimo", sans-serif;
     color: #F8FCFF;
     background-color: #4A4D54;
     cursor: pointer;
