@@ -1005,8 +1005,8 @@ input {
   width: 100%;
   border: none;
   background: #efefef;
-  font-size: 1.4em;
-  padding: 20px 5px; }
+  font-size: 1.2em;
+  padding: 20px 10px; }
 
 /* ----- OBJECTS ----- */
 /* -- ANIMATE -- */
@@ -2226,6 +2226,21 @@ input[type='file'] {
   padding: 20px;
   margin: 0px auto;
   max-width: 1200px; }
+
+.header {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); }
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 0px; }
+  .footer p {
+    color: white; }
 
 /* inject:scss */
 .app {

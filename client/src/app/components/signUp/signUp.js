@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 
-import {Motorcycle} from '/src/app/utils/constants'
+import { Barbell } from '/src/app/utils/constants'
 
 import $R_Auth from '/src/app/utils/auth';
 
@@ -38,7 +38,12 @@ class SignUp extends Component {
   // return the form
   render(){
     return(
-      <div className='sign-up' style={{background: `url(${Motorcycle}) center center no-repeat`, backgroundSize: 'cover'}}>
+      <div className='sign-up' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
+       <div className='header'>
+          <div className='container'>
+            <h1>My Fitness Friend</h1>
+          </div>
+        </div>
         <form className='sign-up__form' onSubmit={this.onSave} >
           <div className='field-group'>
             <label className='label' htmlFor='name'>Name</label>
@@ -63,6 +68,12 @@ class SignUp extends Component {
 
         <div className='login__sign-up-link'>
           <Link to='/'>Back to login</Link>
+        </div>
+
+         <div className='footer'>
+          <div className='container'>
+            <p>Copyright Matt Cassara 2017.</p>
+          </div>
         </div>
       </div>
     )

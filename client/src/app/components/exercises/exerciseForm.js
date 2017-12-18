@@ -72,23 +72,32 @@ class ExerciseForm extends Component {
 
     return (
       <div className='exercise-form' >
-        <div className='form-group' >
-          <input className="form-control" type='text' value={this.props.exercise.name} name='name' onChange={this.updateName} placeholder='Name' /> 
+        <div className='form-group row' >
+          <div className='col-12'>
+          <input className="form-control" type='text' value={this.props.exercise.name} name='name' onChange={this.updateName} placeholder='Name' />
+          </div> 
         </div>
 
-        <div className='exercise-form__fields row'>
-          <div className='col-1'>
-            <h5>Set</h5>
-          </div>
-          <div className='col-3'>
-            <h5>Weight</h5>
-          </div>
-          <div className='col-3'>
-            <h5>Reps</h5>
-          </div>
-        </div>
-
-        {sets}
+        <table className='exercise-form__fields row'>
+          <thead>
+            <tr>
+              <th>
+                <h5>Set</h5>
+              </th>
+              <th>
+                <h5>Weight</h5>
+              </th>
+              <th>
+                <h5>Reps</h5>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+           {sets}
+          </tbody>
+        </table>
+ 
+       
 
         <div className='row' >
           <div className='col-2'>

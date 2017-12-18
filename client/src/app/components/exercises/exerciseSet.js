@@ -14,20 +14,20 @@ class ExerciseSet extends Component {
     const index = this.props.index;
     
     return (  
-      <div className='exercise-set__fields row'>
-        <div className='col-1'>
-          <p>{index + 1}</p>
-        </div>
-        <div className='col-3'>
+      <tr className='exercise-set__fields'>
+        <td>
+          {index + 1}
+        </td>
+        <td>
           <input className="form-control" type='text' value={this.props.set.weight || ''} name='weight' onChange={this.props.updateSet} placeholder='Weight'/> 
-        </div>
-        <div className='col-3'>
+        </td>
+        <td>
           <input className="form-control" type='text' value={this.props.set.repetitions || ''} name='repetitions' onChange={this.props.updateSet} placeholder='Reps'/> 
-        </div>
-        <div className='col-5'>
-         <button onClick={this.removeSet} className='button'>Remove</button>
-        </div>
-      </div> 
+        </td>
+        <td>
+          <button onClick={this.removeSet} className='button'>X</button>
+        </td>
+      </tr>
     )
   }
 
