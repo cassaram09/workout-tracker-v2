@@ -16,9 +16,9 @@ class Profile extends Component {
     }
 
     this.updateField = (event) => {
-      var user = deepClone(this.state.user)
-      var field = event.target.name
-      var value = event.target.value
+      const user = deepClone(this.state.user)
+      const field = event.target.name
+      const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
       user[field] = value
       this.setState({user: user})
     }
@@ -82,12 +82,12 @@ class Profile extends Component {
 
             <div className='field-group'>
               <label>Smoker</label>
-              <input type='checkbox' checked={smoker ? true : false} name="smoker" value='true' onChange={this.updateField}/>
+              <input className='input__checkbox' type='checkbox' checked={smoker} name="smoker" onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
               <label>Drinker</label>
-              <input type='checkbox' checked={drinker ? true : false} name="drinker" value='true' onChange={this.updateField}/>
+              <input className='input__checkbox' type='checkbox' checked={drinker} name="drinker" onChange={this.updateField}/>
             </div>
 
            

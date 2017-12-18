@@ -2230,21 +2230,6 @@ input[type='file'] {
   justify-content: center;
   flex-direction: row; }
 
-.exercise-form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px; }
-
-.home__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.home__reports {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
 .avatar {
   width: 50px;
   height: 50px; }
@@ -2262,6 +2247,21 @@ input[type='file'] {
     background: white; }
   .avatar.sidebar__avatar {
     margin: 20px auto; }
+
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px; }
+
+.home__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.home__reports {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
 
 .login {
   display: flex;
@@ -2292,6 +2292,83 @@ input[type='file'] {
   height: 100vh;
   flex: 1 1 auto;
   overflow: scroll; }
+
+.profile__form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px; }
+  .profile__form .field-group {
+    max-width: 300px; }
+
+.input__checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 10px; }
+
+.sidebar {
+  background: #f9fbff;
+  color: #333;
+  flex: 0 0 200px;
+  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  border-bottom: none; }
+
+.sidebar__nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .sidebar__nav ul li a {
+    text-decoration: none;
+    color: #4A4D54;
+    display: block;
+    margin: 5px;
+    cursor: pointer; }
+    .sidebar__nav ul li a.active {
+      color: #618DFF; }
+
+.sidebar__avatar {
+  margin: 0px auto; }
+
+.sidebar__title {
+  text-align: center; }
+
+.sidebar__logged-in {
+  font-size: 10px;
+  text-align: center;
+  margin: 20px 0px; }
+
+.sidebar__nav__item {
+  color: black; }
+  .sidebar__nav__item:hover {
+    color: white; }
+
+.sign-up {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .sign-up .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.sign-up__form {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.sign-up__sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px; }
 
 .workout-form__actions {
   margin-bottom: 20px;
@@ -2353,78 +2430,6 @@ input[type='file'] {
 .workouts__row__details {
   flex: 1 1 25%;
   text-align: right; }
-
-.sign-up {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-  .sign-up .error {
-    padding: 0px 0px 10px;
-    color: red; }
-
-.sign-up__form {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.sign-up__sign-up-link {
-  text-decoration: underline;
-  color: blue;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px; }
-
-.profile__form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px; }
-  .profile__form .field-group {
-    max-width: 300px; }
-
-.sidebar {
-  background: #f9fbff;
-  color: #333;
-  flex: 0 0 200px;
-  padding: 20px;
-  height: 100vh;
-  border-right: 1px solid #ddd;
-  border-bottom: none; }
-
-.sidebar__nav ul {
-  list-style: none;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center; }
-  .sidebar__nav ul li a {
-    text-decoration: none;
-    color: #4A4D54;
-    display: block;
-    margin: 5px;
-    cursor: pointer; }
-    .sidebar__nav ul li a.active {
-      color: #618DFF; }
-
-.sidebar__avatar {
-  margin: 0px auto; }
-
-.sidebar__title {
-  text-align: center; }
-
-.sidebar__logged-in {
-  font-size: 10px;
-  text-align: center;
-  margin: 20px 0px; }
-
-.sidebar__nav__item {
-  color: black; }
-  .sidebar__nav__item:hover {
-    color: white; }
 
 /* endinject */
 /* ----- UTILITIES ----- */
