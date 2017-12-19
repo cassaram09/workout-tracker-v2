@@ -7,7 +7,6 @@ import { withRouter } from 'react-router'
 
 import Store from '/src/app/store/store';  
 import $R_Auth from '/src/app/utils/auth';
-import Home from '/src/app/components/home/home'
 import Avatar from '/src/app/components/avatar/avatar'
 
 class SideBar extends Component {
