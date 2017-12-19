@@ -20,6 +20,8 @@ const loginReducer = (state, action) => {
   if ( action.data.error ) {
     return {error: action.data.error}
   }
+
+  return state;
 }
 
 //sign up action
@@ -34,13 +36,15 @@ const signUpReducer = (state, action) => {
   if ( action.data.error ) {
     return {error: action.data.error}
   }
+
+  return state;
 }
 
 // logout resource action
 const logOutAction = () => {
   return new Promise((resolve, reject) => {
     sessionStorage.removeItem('jwt');
-    !sessionStorage.jwt ? resolve({session: false}) : reject(Error("Error"));
+    return !sessionStorage.jwt ? resolve({session: false}) : reject(Error("Error"));
   });
 }
 

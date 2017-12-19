@@ -35,12 +35,6 @@ class Home extends Component {
 
         { this.state.reports && (
           <div>
-        <Link to={`workouts/${this.state.reports.last_workout.id}`} className='workouts__row row'>
-          <h3 className='workouts__row__title'>{this.state.reports.last_workout.name}</h3>
-          <p className='workouts__row__date'>Date: {this.state.reports.last_workout.date}</p>
-          <p className='workouts__row__start-time'>Start: {this.state.reports.last_workout.start_time}</p>
-          <p className='workouts__row__end-time'>End: {this.state.reports.last_workout.end_time}</p>
-        </Link>
         <div className='home__reports row'>
           <h3>Total Workouts</h3>
           <p>{this.state.reports.total_workouts}</p>
