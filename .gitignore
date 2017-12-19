@@ -17,7 +17,7 @@
 .byebug_history
 
 # Ignore ENV file
-.en
+.env
 
 # Ignore node modules
 node_modules
