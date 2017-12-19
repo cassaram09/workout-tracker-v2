@@ -13,12 +13,12 @@
 .button {
   font-family: $title-font;
   color: $neutral-light;
-  background-color: $neutral-mid;
+  background-color: $primary;
   cursor: pointer;
   text-align: center;
   display: inline-block;
   border-radius: 3px;
-  border: 2px solid $neutral-mid;
+  border: 2px solid $primary;
   text-decoration: none;
   padding: 5px 20px;
   @include animate(0.2s);
@@ -34,14 +34,21 @@
   }
 
   &:hover{
-    color: $neutral-dark;
+    color: $primary;
     background: white;
-    border: 2px solid $neutral-dark;
+    border: 2px solid $primary;
   }
 
   &.-light{
-    background: #fff;
+    background: $neutral-light;
     color: $neutral-mid;
+    border: 2px solid $neutral-light;
+
+    &:hover{
+      background: $primary;
+      color: $neutral-light;
+      border: 2px solid $primary;
+    }
   }
 
 

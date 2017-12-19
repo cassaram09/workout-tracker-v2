@@ -2161,12 +2161,12 @@ input {
 .button {
   font-family: "Arimo", sans-serif;
   color: #F8FCFF;
-  background-color: #4A4D54;
+  background-color: #618DFF;
   cursor: pointer;
   text-align: center;
   display: inline-block;
   border-radius: 3px;
-  border: 2px solid #4A4D54;
+  border: 2px solid #618DFF;
   text-decoration: none;
   padding: 5px 20px;
   -webkit-transition: all 0.2s ease;
@@ -2181,12 +2181,17 @@ input {
     font-size: 1em;
     padding: 15px 25px; }
   .button:hover {
-    color: #4A4D54;
+    color: #618DFF;
     background: white;
-    border: 2px solid #4A4D54; }
+    border: 2px solid #618DFF; }
   .button.-light {
-    background: #fff;
-    color: #4A4D54; }
+    background: #F8FCFF;
+    color: #4A4D54;
+    border: 2px solid #F8FCFF; }
+    .button.-light:hover {
+      background: #618DFF;
+      color: #F8FCFF;
+      border: 2px solid #618DFF; }
   .button:active {
     transform: translateY(1px); }
 
@@ -2249,6 +2254,51 @@ input[type='file'] {
   justify-content: center;
   flex-direction: row; }
 
+.home__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.home__reports {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  background: #F8FCFF; }
+
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+
+.login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .login h1 {
+    padding: 0px 0px 10px; }
+  .login p {
+    color: white; }
+  .login .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.login__form {
+  margin-top: 20px; }
+
+.login__sign-up-link {
+  text-decoration: underline;
+  color: white; }
+  .login__sign-up-link:hover {
+    color: #618DFF; }
+
 .avatar {
   width: 50px;
   height: 50px; }
@@ -2267,54 +2317,17 @@ input[type='file'] {
   .avatar.sidebar__avatar {
     margin: 20px auto; }
 
-.exercise-form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px; }
-
-.home__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.home__reports {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.login {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-  .login h1 {
-    padding: 0px 0px 10px; }
-  .login p {
-    color: white; }
-  .login .error {
-    padding: 0px 0px 10px;
-    color: red; }
-
-.login__form {
-  margin-top: 10px; }
-
-.login__sign-up-link {
-  text-decoration: underline;
-  color: white; }
-  .login__sign-up-link:hover {
-    color: #618DFF; }
-
 .main {
   height: 100vh;
   flex: 1 1 auto;
-  overflow: scroll; }
+  overflow: scroll;
+  background: #4A4D54; }
 
 .profile__form {
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  background: #F8FCFF; }
   .profile__form .field-group {
     max-width: 300px; }
 
@@ -2322,6 +2335,73 @@ input[type='file'] {
   width: 15px;
   height: 15px;
   margin: 10px; }
+
+.workout-form__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-form__fields {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  width: 100%;
+  background: #F8FCFF; }
+
+.workout-single__button {
+  margin-right: 20px; }
+
+.workout-single__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__details {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__exercise {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  opacity: 1;
+  transition: opacity 100ms linear;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+  .workouts__row:last-child {
+    margin-bottom: 0px; }
+  .workouts__row:hover {
+    opacity: 0.5; }
+  .workouts__row:active {
+    transform: translateY(1px); }
+
+.workouts__row__title {
+  flex: 0 0 100%; }
+
+.workouts__row__date {
+  flex: 1 1 25%; }
+
+.workouts__row__start-time {
+  flex: 1 1 25%; }
+
+.workouts__row__end-time {
+  flex: 1 1 25%; }
+
+.workouts__row__details {
+  flex: 1 1 25%;
+  text-align: right; }
 
 .sidebar {
   background: #f9fbff;
@@ -2387,67 +2467,6 @@ input[type='file'] {
   margin: 10px;
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px 39px; }
-
-.workout-form__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.workout-form__fields {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  width: 100%; }
-
-.workout-single__button {
-  margin-right: 20px; }
-
-.workout-single__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.workout-single__details {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.workout-single__exercise {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.workouts__row {
-  opacity: 1;
-  transition: opacity 100ms linear;
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px; }
-  .workouts__row:last-child {
-    margin-bottom: 0px; }
-  .workouts__row:hover {
-    opacity: 0.5; }
-  .workouts__row:active {
-    transform: translateY(1px); }
-
-.workouts__row__title {
-  flex: 0 0 100%; }
-
-.workouts__row__date {
-  flex: 1 1 25%; }
-
-.workouts__row__start-time {
-  flex: 1 1 25%; }
-
-.workouts__row__end-time {
-  flex: 1 1 25%; }
-
-.workouts__row__details {
-  flex: 1 1 25%;
-  text-align: right; }
 
 /* endinject */
 /* ----- UTILITIES ----- */
