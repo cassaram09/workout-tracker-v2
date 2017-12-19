@@ -6,6 +6,14 @@
   flex-direction: column;
   width: 100%;
 
+  h1{
+    padding: 0px 0px 10px;
+  }
+
+  p{
+    color: white;
+  }
+
   .error {
     padding: 0px 0px 10px;
     color: red;
@@ -13,17 +21,14 @@
 }
 
 .login__form{
-  background: white;
-  margin: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
+  margin-top: 10px;
 }
 
 .login__sign-up-link{
-  background: white;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px;
   text-decoration: underline;
-  color: blue;
+  color: white;
+
+  &:hover{
+    color: $primary;
+  }
 }

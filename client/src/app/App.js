@@ -40,10 +40,22 @@ class App extends Component {
     } else {
       return (
         <div className='app'>
+          <div className='header'>
+            <div className='container'>
+              <h1>MyFitnessFriend</h1>
+            </div>
+          </div>
+
           <Switch>
             <Route exact path='/' component={Login} />
             <Route exact path='/signup' component={SignUp} />
           </Switch>
+
+          <div className='footer'>
+            <div className='container'>
+              <p>Copyright Matt Cassara 2017.</p>
+            </div>
+          </div>
         </div>
       )
     }

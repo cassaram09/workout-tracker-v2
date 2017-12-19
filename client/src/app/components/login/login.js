@@ -37,31 +37,35 @@ class Login extends Component {
   render(){
     return(
       <div className='login' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
-        <div className='header'>
-          <div className='container'>
-            <h1>My Fitness Friend</h1>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-5'>
+              <h1>Join the fitness revolution</h1>
+              <p>The world's first workout tracker, built with React and Redux. Get those gains.</p>
+            </div>
+            <div className='col-2'>
+            </div>
+            <div className='col-5'>
+              <form className='login__form' onSubmit={this.onSave} >
+                <div className='field-group'>
+                  <input placeholder='Email' className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
+                </div>
+                <div className='field-group'>
+                  <input placeholder='Password' className='login__form__password' type='password' onChange={this.onChange} name='password'/>
+                </div>
+                <div className='field-group'>
+                  <button className='button login__form__submit -light' type='submit'>Login</button>
+                </div>
+              </form>
+
+              <div className='login__sign-up-link'>
+               <Link to='/signup'>Don't have an account? Sign up here</Link>
+              </div>
+            </div>
+
           </div>
-        </div>
-        <form className='login__form' onSubmit={this.onSave} >
-          <div className='field-group'>
-            <label className='label' htmlFor='email'>Email</label>
-            <input className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
-          </div>
-          <div className='field-group'>
-            <label className='label' htmlFor='password'>Password</label>
-            <input className='login__form__password' type='password' onChange={this.onChange} name='password'/>
-          </div>
-          <div className='field-group'>
-            <button className='button login__form__submit 'type='submit'>Login</button>
-          </div>
-        </form>
-        <div className='login__sign-up-link'>
-         <Link to='/signup'>Don't have an account? Sign up</Link>
-        </div>
-        <div className='footer'>
-          <div className='container'>
-            <p>Copyright Matt Cassara 2017.</p>
-          </div>
+          
+
         </div>
       </div>
     )

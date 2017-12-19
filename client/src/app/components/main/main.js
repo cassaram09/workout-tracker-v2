@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route} from 'react-router-dom'
 
-import Home from '/src/app/components/home/home'
+import Dashboard from '/src/app/components/dashboard/dashboard'
 import Profile from '/src/app/components/profile/profile'
 import Workouts from '/src/app/components/workouts/workouts'
 import WorkoutSingle from '/src/app/components/workouts/workoutSingle'
@@ -16,7 +16,7 @@ function Main(props) {
     <main className='main'>
       <Switch>
 
-        <Route exact path='/' component={Home} />
+        <Route exact path='/' component={Dashboard} />
         <Route exact path='/profile' component={Profile} />
         <Route exact path='/workouts/new' component={WorkoutNew} />
         <Route exact path='/workouts/:id' component={WorkoutSingle} />
