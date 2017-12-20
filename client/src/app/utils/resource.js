@@ -3,6 +3,11 @@ class HTTP {
 
   static createRequest(url, method, body, headers) {
 
+    /* If we set URL params, let's automatically match the a key to them.
+     * eg /api/v1/widgets/:id, look 
+    */
+
+    debugger
     var urlParams = url.match(/:(\w+)/ig)
 
     if (urlParams) {
