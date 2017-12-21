@@ -12,7 +12,7 @@ import Store from '/src/app/store/store'
 
 class Workouts extends Component {
   componentWillMount(){
-    $R_Workout.dispatchAction('query')(Store.dispatch)
+    $R_Workout.dispatchAction('query')
   }
 
   render() {

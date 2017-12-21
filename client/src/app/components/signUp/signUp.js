@@ -32,7 +32,7 @@ class SignUp extends Component {
     // dispatches the API call action
     this.onSave = (event) => {
       event.preventDefault();
-      return $R_Auth.dispatchAction('signUp', this.state)(Store.dispatch)
+      return $R_Auth.dispatchAction('signUp', this.state)
     }
   }
 

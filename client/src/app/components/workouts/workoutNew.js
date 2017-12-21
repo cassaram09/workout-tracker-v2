@@ -35,7 +35,7 @@ class NewWorkout extends Component {
     }
 
     this.save = (state) => {
-      return $R_Workout.dispatchAction('create', state)(Store.dispatch)
+      return $R_Workout.dispatchAction('create', state)
     }
   }
 

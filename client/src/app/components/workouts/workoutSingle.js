@@ -32,12 +32,12 @@ class WorkoutSingle extends Component {
     }
 
     this.save = (state) => {
-      return $R_Workout.dispatchAction('update', state)(Store.dispatch)
+      return $R_Workout.dispatchAction('update', state)
     }
 
     this.delete = (event) => {
       event.preventDefault();
-      return $R_Workout.dispatchAction('delete', {id: this.state.workout.id})(Store.dispatch)
+      return $R_Workout.dispatchAction('delete', {id: this.state.workout.id})
 
     }
 
@@ -48,7 +48,7 @@ class WorkoutSingle extends Component {
   }
 
   componentDidMount(){
-    return $R_Workout.dispatchAction('get', {id: this.props.match.params.id})(Store.dispatch)
+    return $R_Workout.dispatchAction('get', {id: this.props.match.params.id})
   }
 
   componentWillUpdate(nextProps, nextState) {

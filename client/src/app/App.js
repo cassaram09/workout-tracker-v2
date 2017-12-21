@@ -19,13 +19,13 @@ class App extends Component {
 
   componentWillMount(){
     if (this.props.session == true) {
-      $R_User.dispatchAction('getCurrentUser')(Store.dispatch)
+      $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   componentDidUpdate(prevProps, prevState){
     if (this.props.session == true && !this.props.user.id) {
-      $R_User.dispatchAction('getCurrentUser')(Store.dispatch)
+      $R_User.dispatchAction('getCurrentUser')
     }
   }
 

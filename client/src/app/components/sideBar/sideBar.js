@@ -15,7 +15,7 @@ class SideBar extends Component {
 
     this.logOut = (event) => {
       event.preventDefault();
-      return $R_Auth.dispatchAction('logout')(Store.dispatch)
+      return $R_Auth.dispatchAction('logout')
     }
 
     this.activeNavLink = (match, location) => {

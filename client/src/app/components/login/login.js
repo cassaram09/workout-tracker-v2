@@ -30,7 +30,7 @@ class Login extends Component {
     // dispatches the API call action
     this.onSave = (event) => {
       event.preventDefault();
-      return $R_Auth.dispatchAction('login', this.state)(Store.dispatch)
+      return $R_Auth.dispatchAction('login', this.state)
     }
   }
 
