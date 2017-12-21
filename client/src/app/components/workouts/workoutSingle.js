@@ -4,7 +4,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 
 import moment from 'moment';
+
 import $R_Workout from '/src/app/utils/workout'
+import Store from '/src/app/store/store'
+
 import WorkoutForm from '/src/app/components/workouts/workoutForm'
 
 
@@ -29,12 +32,13 @@ class WorkoutSingle extends Component {
     }
 
     this.save = (state) => {
-      return this.props.actions.dispatchAction('update', state)
+      return $R_Workout.dispatchAction('update', state)(Store.dispatch)
     }
 
     this.delete = (event) => {
       event.preventDefault();
-      return this.props.actions.dispatchAction('delete', {id: this.state.workout.id});
+      return $R_Workout.dispatchAction('delete', {id: this.state.workout.id})(Store.dispatch)
+
     }
 
     this.toggleEdit = () =>{
@@ -44,7 +48,7 @@ class WorkoutSingle extends Component {
   }
 
   componentDidMount(){
-    this.props.actions.dispatchAction('get', {id: this.props.match.params.id});
+    return $R_Workout.dispatchAction('get', {id: this.props.match.params.id})(Store.dispatch)
   }
 
   componentWillUpdate(nextProps, nextState) {

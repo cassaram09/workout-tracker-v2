@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { Barbell } from '/src/app/utils/constants'
 
+import Store from '/src/app/store/store';  
 import $R_Auth from '/src/app/utils/auth';
 
 class SignUp extends Component {
@@ -31,7 +32,7 @@ class SignUp extends Component {
     // dispatches the API call action
     this.onSave = (event) => {
       event.preventDefault();
-      this.props.actions.dispatchAction('signUp', this.state);
+      return $R_Auth.dispatchAction('signUp', this.state)(Store.dispatch)
     }
   }
 
@@ -70,13 +71,7 @@ class SignUp extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Auth.dispatchAction}, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;
 
 
 

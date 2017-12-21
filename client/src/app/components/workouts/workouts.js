@@ -6,11 +6,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 
 import $R_Workout from '/src/app/utils/workout'
+import Store from '/src/app/store/store'
+
 
 
 class Workouts extends Component {
   componentWillMount(){
-    this.props.actions.dispatchAction('query')
+    $R_Workout.dispatchAction('query')(Store.dispatch)
   }
 
   render() {
@@ -38,12 +40,6 @@ class Workouts extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Workout.dispatchAction}, dispatch)
-  }
-}
-
 function mapStateToProps(state, ownProps){
   return{
     workouts: state.workouts
@@ -54,4 +50,4 @@ Workouts.propTypes = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Workouts);
+export default connect(mapStateToProps)(Workouts);

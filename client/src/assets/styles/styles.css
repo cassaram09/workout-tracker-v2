@@ -2287,6 +2287,12 @@ input[type='file'] {
 .workouts__row {
   background: #F8FCFF; }
 
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+
 .login {
   display: flex;
   height: 100vh;
@@ -2461,12 +2467,6 @@ input[type='file'] {
 .workouts__row__details {
   flex: 1 1 25%;
   text-align: right; }
-
-.exercise-form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
 
 /* endinject */
 /* ----- UTILITIES ----- */

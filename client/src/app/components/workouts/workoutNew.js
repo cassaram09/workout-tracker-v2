@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 
 import $R_Workout from '/src/app/utils/workout'
+import Store from '/src/app/store/store'
 
 import moment from 'moment';
 import WorkoutForm from '/src/app/components/workouts/workoutForm'
@@ -34,7 +35,7 @@ class NewWorkout extends Component {
     }
 
     this.save = (state) => {
-      return this.props.actions.dispatchAction('create', state);
+      return $R_Workout.dispatchAction('create', state)(Store.dispatch)
     }
   }
 
@@ -52,10 +53,4 @@ NewWorkout.propTypes = {
 
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Workout.dispatchAction}, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(NewWorkout);
+export default NewWorkout;

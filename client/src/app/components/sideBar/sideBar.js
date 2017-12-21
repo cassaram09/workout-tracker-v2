@@ -15,7 +15,7 @@ class SideBar extends Component {
 
     this.logOut = (event) => {
       event.preventDefault();
-      this.props.actions.dispatchAction('logout')
+      return $R_Auth.dispatchAction('logout')(Store.dispatch)
     }
 
     this.activeNavLink = (match, location) => {
@@ -49,10 +49,4 @@ class SideBar extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Auth.dispatchAction}, dispatch)
-  }
-}
-
-export default withRouter(connect(null, mapDispatchToProps)(SideBar));
+export default withRouter(SideBar);

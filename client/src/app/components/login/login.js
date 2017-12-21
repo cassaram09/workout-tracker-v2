@@ -6,6 +6,7 @@ import { Barbell } from '/src/app/utils/constants'
 
 
 import $R_Auth from '/src/app/utils/auth';
+import Store from '/src/app/store/store'
 
 class Login extends Component {
   constructor(){
@@ -29,7 +30,7 @@ class Login extends Component {
     // dispatches the API call action
     this.onSave = (event) => {
       event.preventDefault();
-      this.props.actions.dispatchAction('login', this.state);
+      return $R_Auth.dispatchAction('login', this.state)(Store.dispatch)
     }
   }
 
@@ -73,13 +74,7 @@ class Login extends Component {
 
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Auth.dispatchAction}, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;
 
 
 

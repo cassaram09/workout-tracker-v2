@@ -10,6 +10,7 @@ const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state
 
 //login action
 const loginReducer = (state, action) => {
+
   if ( action.data.jwt ) {
     sessionStorage.setItem('jwt', action.data.jwt)
     history.push('/')

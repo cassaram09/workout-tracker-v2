@@ -6,7 +6,7 @@ const User = new Resource({
   name: 'user', 
   url:  API.base + '/users', 
   headers: API.headers, 
-  state: {} 
+  state: {}
 })
 
 // fetches data for the current user

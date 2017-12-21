@@ -8,7 +8,7 @@ const Exercise = new Resource({
   state: []
 })
 
-Exercise.registerDefaults()
+Exercise.registerRemoteActions()
 
 export default Exercise;
 

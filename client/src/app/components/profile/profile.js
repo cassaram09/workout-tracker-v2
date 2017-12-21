@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'; 
 
 import $R_User from '/src/app/utils/user'
+import Store from '/src/app/store/store'
 import { deepClone } from '/src/app/utils/tools'
 
 
@@ -26,14 +27,14 @@ class Profile extends Component {
     this.save = () => {
       var state = deepClone(this.state)
       delete state.user.avatar
-      this.props.actions.dispatchAction('update', state)
+      return $R_User.dispatchAction('update', state)(Store.dispatch)
     }
 
     this.uploadFile = (event) =>{
       event.preventDefault();
       var id = this.props.user.id
       var file = event.target.files[0]
-      this.props.actions.dispatchAction('uploadImage', {file: file, id: id})
+      return $R_User.dispatchAction('uploadImage', {file: file, id: id})(Store.dispatch)
     }
 
   }
@@ -123,9 +124,4 @@ function mapStateToProps(state, ownProps) {
   return {user: state.user};
 };
 
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators({dispatchAction: $R_User.dispatchAction}, dispatch)
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps)(Profile);

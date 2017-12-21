@@ -8,7 +8,7 @@ const Workout = new Resource({
   headers: API.headers
 })
 
-Workout.registerDefaults();
+Workout.registerRemoteActions();
 
 Workout.updateReducerAction('create', (state, action) => {
   history.push(`/workouts/${action.data.id}`)
