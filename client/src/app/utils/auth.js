@@ -1,4 +1,4 @@
-import Resource from '/src/app/utils/resource';
+import Resource from 'r3-library';
 import {browserRouter} from 'react-router-dom'
 import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
