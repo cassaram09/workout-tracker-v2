@@ -50,6 +50,7 @@ class WorkoutsController < ApplicationController
     exercises_to_delete = exercises_for_deletion(workout_params)
     @workout = Workout.find_by(id: workout_params[:id], user_id: current_user[:id])
     if @workout.update(workout_params)
+      @workout.touch
       ExerciseSet.where(id: sets_to_delete).destroy_all
       Exercise.where(id: exercises_to_delete).destroy_all
       render json: @workout
