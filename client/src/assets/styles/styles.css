@@ -2345,9 +2345,6 @@ input[type='file'] {
   border-right: 1px solid #ddd;
   border-bottom: none; }
 
-.sidebar__nav.-mobile {
-  display: none; }
-
 .sidebar__nav.-mobile-body {
   display: none; }
 
@@ -2388,6 +2385,38 @@ input[type='file'] {
   top: 20px;
   right: 20px; }
 
+#toggleNav {
+  cursor: pointer;
+  padding-top: 5px;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  z-index: 200; }
+
+.sidebar__nav.-mobile {
+  display: none; }
+  .sidebar__nav.-mobile:hover #topLine, .sidebar__nav.-mobile:hover #middleLine, .sidebar__nav.-mobile:hover #bottomLine {
+    background: #618DFF; }
+  .sidebar__nav.-mobile .menu-line {
+    -ms-transform: 0.3s ease-in-out;
+    /* IE 9 */
+    -webkit-transform: 0.3s ease-in-out;
+    /* Safari */
+    transition: 0.3s ease-in-out;
+    background: #bbb;
+    height: 3px;
+    width: 30px;
+    display: block;
+    margin: 5px; }
+  .sidebar__nav.-mobile #topLine.rotated {
+    transform: rotate(45deg) translate(6px, 6px); }
+  .sidebar__nav.-mobile #middleLine {
+    opacity: 1; }
+    .sidebar__nav.-mobile #middleLine.rotated {
+      opacity: 0; }
+  .sidebar__nav.-mobile #bottomLine.rotated {
+    transform: rotate(-45deg) translate(5px, -5px); }
+
 @media screen and (max-width: 768px) {
   body .sidebar {
     display: flex;
@@ -2398,9 +2427,10 @@ input[type='file'] {
     text-align: center;
     font-size: 18px; }
   body .avatar.sidebar__avatar {
-    margin: 0px 20px;
-    width: 30px;
-    height: 30px; }
+    display: none; }
+    body .avatar.sidebar__avatar.-mobile {
+      display: block;
+      margin: 0px auto; }
   body .sidebar__nav {
     display: none; }
     body .sidebar__nav.-mobile {
