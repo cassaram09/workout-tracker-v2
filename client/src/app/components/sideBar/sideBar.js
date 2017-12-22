@@ -24,6 +24,14 @@ class SideBar extends Component {
       }
       return match.path == location.pathname
     }
+
+    this.showNav = event => {
+      document.querySelector('.sidebar__nav.-mobile-body').style.top = '0%'
+    }
+
+     this.hideNav = event => {
+      document.querySelector('.sidebar__nav.-mobile-body').style.top = '-100%'
+    }
   }
   
   shouldComponentUpdate(){
@@ -35,6 +43,20 @@ class SideBar extends Component {
       <div className="sidebar">
         <h4 className='sidebar__title'>My Fitness Friend</h4>
         <Avatar type='sidebar__avatar'/>
+        <nav className='sidebar__nav -mobile'>
+          <p onClick={this.showNav}>Menu</p>
+
+          <div className='sidebar__nav -mobile-body'>
+            <div className='sidebar__nav__close-button' onClick={this.hideNav}>Close</div>
+            <ul>
+              <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/'>Home</NavLink></li>
+              <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/profile'>Profile</NavLink></li>
+              <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/workouts'>Workouts</NavLink></li>
+              <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/workouts/new'>New Workout</NavLink></li>
+              <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/logout' onClick={this.logOut}>Logout</NavLink></li>
+            </ul>
+          </div>
+        </nav>
         <nav className='sidebar__nav'>
           <ul>
             <li><NavLink isActive={this.activeNavLink} activeClass='activeLink' to='/'>Home</NavLink></li>

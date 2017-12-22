@@ -9,6 +9,12 @@
 }
 
 .sidebar__nav{
+  &.-mobile{
+    display: none;
+  }
+  &.-mobile-body{
+    display: none;
+  }
   ul {
     list-style: none;
     text-align: center;
@@ -54,5 +60,60 @@
 
   &:hover{
     color: white;
+  }
+}
+
+.sidebar__nav__close-button{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+@media screen and (max-width: 768px){
+  body{
+    .sidebar{ 
+      display: flex;
+      flex: 0 0 50px;
+      padding: 5px 20px;
+      align-items: center;
+    }
+
+    .sidebar__title{
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .avatar.sidebar__avatar{
+      margin: 0px 20px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .sidebar__nav{
+      display: none;
+      &.-mobile{
+        display: block;
+      }
+      &.-mobile-body{
+        padding: 20px;
+        display: flex;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: white;
+        top: -100%;
+        left: 0px;
+        z-index: 100;
+        transition: 0.2s top ease-in-out;
+        justify-content: center;
+        ul{
+          flex-direction:column;
+          li{
+            margin: 20px;
+          }
+        }
+      }
+    }
+
   }
 }

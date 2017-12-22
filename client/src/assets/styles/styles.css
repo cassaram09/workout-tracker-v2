@@ -2345,6 +2345,12 @@ input[type='file'] {
   border-right: 1px solid #ddd;
   border-bottom: none; }
 
+.sidebar__nav.-mobile {
+  display: none; }
+
+.sidebar__nav.-mobile-body {
+  display: none; }
+
 .sidebar__nav ul {
   list-style: none;
   text-align: center;
@@ -2376,6 +2382,45 @@ input[type='file'] {
   color: black; }
   .sidebar__nav__item:hover {
     color: white; }
+
+.sidebar__nav__close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px; }
+
+@media screen and (max-width: 768px) {
+  body .sidebar {
+    display: flex;
+    flex: 0 0 50px;
+    padding: 5px 20px;
+    align-items: center; }
+  body .sidebar__title {
+    text-align: center;
+    font-size: 18px; }
+  body .avatar.sidebar__avatar {
+    margin: 0px 20px;
+    width: 30px;
+    height: 30px; }
+  body .sidebar__nav {
+    display: none; }
+    body .sidebar__nav.-mobile {
+      display: block; }
+    body .sidebar__nav.-mobile-body {
+      padding: 20px;
+      display: flex;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: white;
+      top: -100%;
+      left: 0px;
+      z-index: 100;
+      transition: 0.2s top ease-in-out;
+      justify-content: center; }
+      body .sidebar__nav.-mobile-body ul {
+        flex-direction: column; }
+        body .sidebar__nav.-mobile-body ul li {
+          margin: 20px; } }
 
 .sign-up {
   display: flex;
