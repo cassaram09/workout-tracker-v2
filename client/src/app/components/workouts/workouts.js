@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
-
 import {connect} from 'react-redux';  
-import {bindActionCreators} from 'redux'; 
+import moment from 'moment';
 
 import $R_Workout from '/src/app/utils/workout'
 import Store from '/src/app/store/store'
-
-
 
 class Workouts extends Component {
   componentWillMount(){
@@ -23,14 +20,14 @@ class Workouts extends Component {
         return (
           <Link to={`workouts/${workout.id}`} className='workouts__row row' key={workout.id}>
             <h3 className='workouts__row__title'>{workout.name}</h3>
-            <p className='workouts__row__date'>Date: {workout.date}</p>
-            <p className='workouts__row__start-time'>Start: {workout.start_time}</p>
-            <p className='workouts__row__end-time'>End: {workout.end_time}</p>
+            <p className='workouts__row__date'>Date: {moment(workout.date).format("M/D/YY")}</p>
+            <p className='workouts__row__start-time'>Start: {moment(workout.start_time, 'hh:mm').format('h:mma')}</p>
+            <p className='workouts__row__end-time'>End: {moment(workout.end_time, 'hh:mm').format('h:mma')}</p>
           </Link>
         )
       })
     }
-    
+
     return (
       <div className="page workouts">
         <h1>Workouts</h1>

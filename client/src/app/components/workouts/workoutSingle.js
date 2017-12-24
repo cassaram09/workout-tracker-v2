@@ -90,15 +90,15 @@ class WorkoutSingle extends Component {
           <div className='workout-single__details row'>
             <div className='col-3'>
               <h4>Date</h4>
-              <p>On: {date}</p>
+              <p>On: {moment(date).format('M/D/YY')}</p>
             </div>
             <div className='col-3'>
               <h4>Start</h4>
-              <p>Start: {start_time}</p>
+              <p>Start: {moment(start_time, 'hh:mm').format('h:mma')}</p>
             </div>
             <div className='col-3'>
               <h4>End</h4>
-              <p>End: {end_time}</p>
+              <p>End: {moment(end_time, 'hh:mm').format('h:mma')}</p>
             </div>
           </div>
 
