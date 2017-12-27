@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
 
 import { Barbell } from '/src/app/utils/constants'
-
-import Store from '/src/app/store/store';  
 import $R_Auth from '/src/app/utils/auth';
 
 class SignUp extends Component {
@@ -21,40 +17,37 @@ class SignUp extends Component {
       }
     }
 
-    // handle field changes
-    this.onChange = (event) =>{
+    this.onChange = event =>{
       const field = event.target.name;
       const user = this.state.user;
       user[field] = event.target.value
       this.setState({user: user})
     }
 
-    // dispatches the API call action
-    this.onSave = (event) => {
+    this.onSave = event => {
       event.preventDefault();
       return $R_Auth.dispatchAction('signUp', this.state)
     }
   }
 
-  // return the form
   render(){
     return(
       <div className='sign-up' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
         <form className='sign-up__form' onSubmit={this.onSave} >
           <div className='field-group'>
-            <label className='label' htmlFor='name'>Name</label>
+            <label className='field-group__label' htmlFor='name'>Name</label>
             <input className='sign-up__form__name' type='text'  onChange={this.onChange} name='name'/>
           </div>
           <div className='field-group'>
-            <label className='label' htmlFor='email'>Email</label>
+            <label className='field-group__label' htmlFor='email'>Email</label>
             <input className='sign-up__form__email' type='text'  onChange={this.onChange} name='email'/>
           </div>
           <div className='field-group'>
-            <label className='label' htmlFor='password'>Password</label>
+            <label className='field-group__label' htmlFor='password'>Password</label>
             <input className='sign-up__form__password' type='password' onChange={this.onChange} name='password'/>
           </div>
           <div className='field-group'>
-            <label className='label' htmlFor='password'>Confirm Password</label>
+            <label className='field-group__label' htmlFor='password'>Confirm Password</label>
             <input className='sign-up__form__password-confirmation' type='password' onChange={this.onChange} name='password_confirmation'/>
           </div>
           <div className='field-group'>
@@ -68,10 +61,6 @@ class SignUp extends Component {
       </div>
     )
   }
-
 }
 
 export default SignUp;
-
-
-

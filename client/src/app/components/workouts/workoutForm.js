@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Grid, Row, Col, Table} from 'react-bootstrap'
 import moment from 'moment';
 
-// import CalendarModal from '../common/calendarModal'
-// import TimeInput from '../common/timeInput'
 import ExerciseForm from '/src/app/components/exercises/exerciseForm'
 import {deepClone} from '/src/app/utils/tools'
-
 
 class WorkoutForm extends Component {
   constructor(props) {
@@ -123,10 +119,5 @@ class WorkoutForm extends Component {
     )
   }
 }
-
-// WorkoutForm.propTypes = {
-//   onSave: React.PropTypes.func.isRequired,
-//   onChange: React.PropTypes.func.isRequired,
-// }
 
 export default WorkoutForm;
