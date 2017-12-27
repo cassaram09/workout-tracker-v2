@@ -12,6 +12,7 @@ class SideBar extends Component {
     this.state = {
       showNav: false
     }
+
     this.logOut = event => {
       event.preventDefault();
       if (this.state.showNav){
@@ -30,13 +31,13 @@ class SideBar extends Component {
     this.toggleNav = event => {
       if ( !this.state.showNav ) {
         this.setState({showNav: true})
-        document.querySelector('.sidebar__nav.-mobile').style.top = '0%'
+        document.querySelector('.sidebar__nav').style.top = '0%'
         for ( let line of document.querySelectorAll('.sidebar__nav__icon') ){
           line.className += ' rotated'
         }
       } else{
         this.setState({showNav: false})
-        document.querySelector('.sidebar__nav.-mobile').style.top = '-100%'
+        document.querySelector('.sidebar__nav').style.top = '-100%'
          for ( let line of document.querySelectorAll('.sidebar__nav__icon') ){
           line.className += 'menu-line'
         }
@@ -52,56 +53,35 @@ class SideBar extends Component {
     return(
       <div className="sidebar">
         <h4 className='sidebar__title'>My Fitness Friend</h4>
-        <Avatar type='sidebar__avatar'/>
 
-        <div class='sidebar__nav__toggle' onClick={this.toggleNav}>
+        <div className='sidebar__nav__toggle' onClick={this.toggleNav}>
           <span className='sidebar__nav__icon -top'></span>
           <span className='sidebar__nav__icon -middle'></span>
           <span className='sidebar__nav__icon -bottom'></span>
         </div>
 
-        <nav className='sidebar__nav -mobile' role="navigation">
-          <ul className='sidebar__nav__list -mobile'>
-            <li className='sidebar__nav__list__item -mobile'>
-              <Avatar type='sidebar__avatar -mobile'/>
+        <nav className={'sidebar__nav'}  role="navigation">
+          <ul className={'sidebar__nav__list'}>
+            <li className={'sidebar__nav__list__item'}>
+              <Avatar type={'sidebar__avatar'}/>
             </li>
-            <li className='sidebar__nav__list__item -mobile'>
+            <li className={'sidebar__nav__list__item'}>
               <NavLink isActive={this.activeNavLink} onClick={this.toggleNav} activeclass='activeLink' to='/'>Home</NavLink>
             </li>
-            <li className='sidebar__nav__list__item -mobile'>
+            <li className={'sidebar__nav__list__item'}>
               <NavLink isActive={this.activeNavLink} onClick={this.toggleNav} activeclass='activeLink' to='/profile'>Profile</NavLink>
             </li>
-            <li className='sidebar__nav__list__item -mobile'>
+            <li className={'sidebar__nav__list__item'}>
               <NavLink isActive={this.activeNavLink} onClick={this.toggleNav} activeclass='activeLink' to='/workouts'>Workouts</NavLink>
             </li>
-            <li className='sidebar__nav__list__item -mobile'>
+            <li className={'sidebar__nav__list__item'}>
               <NavLink isActive={this.activeNavLink} onClick={this.toggleNav} activeclass='activeLink' to='/workouts/new'>New Workout</NavLink>
             </li>
-            <li className='sidebar__nav__list__item -mobile'>
+            <li className={'sidebar__nav__list__item'}>
               <NavLink isActive={this.activeNavLink} onClick={this.logOut} activeclass='activeLink' to='/logout'>Logout</NavLink>
             </li>
           </ul>
         </nav>
-
-        <nav className='sidebar__nav' role="navigation">
-          <ul className='sidebar__nav__list'>
-            <li className='sidebar__nav__list__item'>
-              <NavLink isActive={this.activeNavLink} activeclass='activeLink' to='/'>Home</NavLink>
-            </li>
-            <li className='sidebar__nav__list__item'>
-              <NavLink isActive={this.activeNavLink} activeclass='activeLink' to='/profile'>Profile</NavLink>
-            </li>
-            <li className='sidebar__nav__list__item'>
-              <NavLink isActive={this.activeNavLink} activeclass='activeLink' to='/workouts'>Workouts</NavLink>
-            </li>
-            <li className='sidebar__nav__list__item'>
-              <NavLink isActive={this.activeNavLink} activeclass='activeLink' to='/workouts/new'>New Workout</NavLink></li>
-            <li className='sidebar__nav__list__item'>
-              <NavLink isActive={this.activeNavLink} activeclass='activeLink' to='/logout' onClick={this.logOut}>Logout</NavLink>
-            </li>
-          </ul>
-        </nav>
-
       </div>
     )
   }

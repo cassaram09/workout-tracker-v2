@@ -429,9 +429,7 @@ template {
   body .app {
     flex-direction: column; }
   body .sidebar {
-    flex: 0 0 100px; }
-  body .sidebar__nav ul {
-    flex-direction: row; } }
+    flex: 0 0 100px; } }
 
 /* ----- TOOLS ----- */
 /* ----- GENERIC ----- */
@@ -860,9 +858,7 @@ template {
   body .app {
     flex-direction: column; }
   body .sidebar {
-    flex: 0 0 100px; }
-  body .sidebar__nav ul {
-    flex-direction: row; } }
+    flex: 0 0 100px; } }
 
 /*
 Styling for bare, unclassed elements. This layer binds onto bare HTML element (or 'type') selectors only.
@@ -2353,18 +2349,8 @@ input[type='file'] {
   border-right: 1px solid #ddd;
   border-bottom: none; }
 
-.sidebar__nav.-mobile {
-  display: none;
-  padding: 20px;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: white;
-  top: -100%;
-  left: 0px;
-  z-index: 99;
-  transition: 0.2s top ease-in-out;
-  justify-content: center; }
+.sidebar__nav {
+  display: block; }
 
 .sidebar__nav__list {
   list-style: none;
@@ -2373,8 +2359,6 @@ input[type='file'] {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center; }
-  .sidebar__nav__list.-mobile {
-    flex-direction: column; }
 
 .sidebar__nav__list__item a {
   text-decoration: none;
@@ -2384,9 +2368,6 @@ input[type='file'] {
   cursor: pointer; }
   .sidebar__nav__list__item a.active {
     color: #618DFF; }
-
-.sidebar__nav__list__item.-mobile {
-  margin: 20px; }
 
 .sidebar__avatar {
   margin: 0px auto; }
@@ -2434,16 +2415,23 @@ input[type='file'] {
     text-align: center;
     font-size: 18px; }
   body .avatar.sidebar__avatar {
-    display: none; }
-    body .avatar.sidebar__avatar.-mobile {
-      display: block;
-      margin: 0px auto; }
+    margin: 0px auto; }
   body .sidebar__nav__toggle {
     display: block; }
   body .sidebar__nav {
-    display: none; }
-    body .sidebar__nav.-mobile {
-      display: flex; } }
+    display: flex;
+    padding: 20px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: white;
+    top: -100%;
+    left: 0px;
+    z-index: 99;
+    transition: 0.2s top ease-in-out;
+    justify-content: center; }
+  body .sidebar__nav__list__item {
+    margin: 20px; } }
 
 .sign-up {
   display: flex;

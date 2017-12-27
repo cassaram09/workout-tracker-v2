@@ -9,20 +9,7 @@
 }
 
 .sidebar__nav{
-  
-  &.-mobile{
-    display: none;
-    padding: 20px;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: white;
-    top: -100%;
-    left: 0px;
-    z-index: 99;
-    transition: 0.2s top ease-in-out;
-    justify-content: center;
-  }
+  display: block;
 }
 
 .sidebar__nav__list {
@@ -32,10 +19,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-
-  &.-mobile{
-    flex-direction:column;
-  }
 }
 
 .sidebar__nav__list__item {
@@ -49,10 +32,6 @@
     &.active{
        color: $primary;
     }
-  }
-
-  &.-mobile{
-    margin: 20px;
   }
 }
 
@@ -125,12 +104,7 @@
     }
 
     .avatar.sidebar__avatar{
-      display: none;
-
-      &.-mobile{
-        display: block;
-        margin: 0px auto;
-      }
+      margin: 0px auto;
     }
 
     .sidebar__nav__toggle{
@@ -138,12 +112,21 @@
     }
 
     .sidebar__nav{
-      display: none;
-
-      &.-mobile{
-        display: flex;
-      }
+      display: flex;
+      padding: 20px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: white;
+      top: -100%;
+      left: 0px;
+      z-index: 99;
+      transition: 0.2s top ease-in-out;
+      justify-content: center;
     }
 
+    .sidebar__nav__list__item {
+      margin: 20px;
+    }
   }
 }
