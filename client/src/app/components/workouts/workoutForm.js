@@ -35,6 +35,11 @@ class WorkoutForm extends Component {
 
     this.save = (event) => {
       event.preventDefault();
+
+      if ( !this.props.workout.name ) {
+       return alert('Name is required')
+      }
+      
       var workout = deepClone(this.props.workout)
 
       workout.date = moment(workout.date).unix();
