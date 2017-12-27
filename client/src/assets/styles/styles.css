@@ -2272,13 +2272,13 @@ input[type='file'] {
   .avatar.sidebar__avatar {
     margin: 20px auto; }
 
-.home__actions {
+.dashboard__actions {
   margin-bottom: 20px;
   padding: 20px;
   box-shadow: 1px 1px 1px 1px #aaa;
   background: #F8FCFF; }
 
-.home__reports {
+.dashboard__reports {
   margin-bottom: 20px;
   padding: 20px;
   box-shadow: 1px 1px 1px 1px #aaa;
@@ -2292,6 +2292,12 @@ input[type='file'] {
   padding: 20px;
   margin-bottom: 20px;
   background: #F8FCFF; }
+
+.exercise-form__fields th {
+  text-align: left; }
+
+.exercise-set__button {
+  padding: 5px 10px; }
 
 .login {
   display: flex;

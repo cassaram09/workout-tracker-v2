@@ -62,13 +62,21 @@ class ExerciseForm extends Component {
 
   render(){
 
-    var length = this.props.exercise.exercise_sets.length
+    const length = this.props.exercise.exercise_sets.length
 
-    var sets = this.props.exercise.exercise_sets.map((set, index) => {
-      return (
-        <ExerciseSet key={set.id || index} set={set} index={index} removeSet={this.removeSet} updateSet={ (event) => this.updateSet(index, event) }/>
+    var sets;
+
+    if ( length == 0 ) {
+      sets = (
+        <ExerciseSet key={0} set={{repetitions: 0, set_id: 0, weight: 0}} index={0} removeSet={this.removeSet} updateSet={ event => this.updateSet(0, event) }/>
       )
-    })
+    } else {
+      sets = this.props.exercise.exercise_sets.map((set, index) => {
+        return (
+          <ExerciseSet key={set.id || index} set={set} index={index} removeSet={this.removeSet} updateSet={ event => this.updateSet(index, event) }/>
+        )
+      })
+    }
 
     return (
       <div className='exercise-form' >

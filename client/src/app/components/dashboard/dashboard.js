@@ -6,7 +6,7 @@ import request from 'superagent';
 
 import {deepClone, findById} from '/src/app/utils/tools'
 
-class Home extends Component {
+class Dashboard extends Component {
   constructor(props){
     super(props)
 
@@ -24,10 +24,10 @@ class Home extends Component {
 
   render(){
     return (
-      <div className='page home'>
-        <h1 className='home__title'>Your Dashboard</h1>
+      <div className='dashboard page'>
+        <h1 className='dashboard__title'>Your Dashboard</h1>
 
-        <div className='home__actions row'>
+        <div className='dashboard__actions row'>
           <div className='col-2'>
             <Link className='button' to={'/workouts/new'}>New Workout</Link>
           </div>
@@ -35,7 +35,7 @@ class Home extends Component {
 
         { this.state.reports && (
           <div>
-        <div className='home__reports row'>
+        <div className='dashboard__reports row'>
           <h3>Total Workouts</h3>
           <p>{this.state.reports.total_workouts}</p>
           <h3>Total Hours</h3>
@@ -56,8 +56,8 @@ function mapStateToProps(state, ownProps){
 }
 
 
-Home.propTypes = {
+Dashboard.propTypes = {
 
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Dashboard);
