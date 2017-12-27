@@ -80,17 +80,12 @@ class WorkoutForm extends Component {
         <div className='workout-form__actions row'>
           
           { this.props.cancel && (
-            <div className='col-2'>
-              <button className='button -light workout-single__button' onClick={this.props.cancel}>Cancel</button>
-            </div> 
+              <button className='button -cancel workout-form__actions__button' onClick={this.props.cancel}>Cancel</button>
           )}
-          <div className='col-2'>
-            <button className='button workout-single__button' onClick={this.save}>Save</button>
-          </div>
+            <button className='button workout-form__actions__button' onClick={this.save}>Save</button>
 
-          { this.props.delete && (<div className='col-2'>
-            <button className='button workout-single__button' onClick={this.props.delete}>Delete</button>
-          </div>
+          { this.props.delete && (
+            <button className='button -warning workout-form__actions__button' onClick={this.props.delete}>Delete</button>
           )}
 
         </div>

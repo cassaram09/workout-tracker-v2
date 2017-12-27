@@ -76,9 +76,7 @@ class WorkoutSingle extends Component {
           <h1 className="workout-single__title">{name}</h1> 
 
           <div className='workout-single__actions row'>
-            <div className='col-2'>
-              <button className='button' onClick={this.toggleEdit}>Edit</button>
-            </div>
+            <button className='button' onClick={this.toggleEdit}>Edit</button>
           </div>
             
           <div className='workout-single__details row'>

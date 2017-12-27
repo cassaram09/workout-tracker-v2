@@ -40,7 +40,7 @@
   }
 
   &.-light{
-    background: $neutral-light;
+    background: red;
     color: $neutral-mid;
     border: 2px solid $neutral-light;
 
@@ -48,6 +48,30 @@
       background: $primary;
       color: $neutral-light;
       border: 2px solid $primary;
+    }
+  }
+
+  &.-warning{
+    background: red;
+    color: $neutral-light;
+    border: 2px solid red;
+
+    &:hover{
+      background: $neutral-light;
+      color: red;
+      border: 2px solid red;
+    }
+  }
+
+  &.-cancel{
+    background: $neutral-mid;
+    color: $neutral-light;
+    border: 2px solid $neutral-mid;
+
+    &:hover{
+      background: $neutral-light;
+      color: $neutral-mid;
+      border: 2px solid $neutral-mid;
     }
   }
 

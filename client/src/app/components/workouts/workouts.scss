@@ -9,7 +9,7 @@
   display: flex;
   flex-wrap: wrap;
    box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 20px;
   background: $neutral-light;
 
@@ -28,6 +28,7 @@
 
 .workouts__row__title{
   flex: 0 0 100%;
+  padding: 0px;
 }
 
 .workouts__row__date{

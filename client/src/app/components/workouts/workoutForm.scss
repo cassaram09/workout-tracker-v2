@@ -4,7 +4,7 @@
 
 .workout-form__actions{
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 1px 1px 1px 1px #aaa;
   background: $neutral-light;
 
@@ -12,8 +12,12 @@
 
 .workout-form__fields {
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 1px 1px 1px 1px #aaa;
   width: 100%;
   background: $neutral-light;
+}
+
+.workout-form__actions__button{
+  margin-right: 20px;
 }
