@@ -48,7 +48,7 @@ class App extends Component {
 
           <div className='footer'>
             <div className='container'>
-              <p>Copyright Matt Cassara 2017.</p>
+              <p className='footer__text'>Copyright Matt Cassara 2017.</p>
             </div>
           </div>
         </div>

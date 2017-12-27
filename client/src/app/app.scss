@@ -4,3 +4,19 @@
   justify-content: center;
   flex-direction: row;
 }
+
+ .footer__text{
+  font-size: 0.8em;
+}
+
+@media screen and (max-width: 768px){
+  body{
+    .app{
+      flex-direction: column;
+    }
+
+    .app__title{
+      font-size: 1.5em;
+    }
+  }
+}
