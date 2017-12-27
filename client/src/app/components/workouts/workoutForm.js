@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { object, func } from 'prop-types';
 import moment from 'moment';
 
 import ExerciseForm from '/src/app/components/exercises/exerciseForm'
@@ -118,6 +118,12 @@ class WorkoutForm extends Component {
     
     )
   }
+}
+
+WorkoutForm.propTypes={
+  workout: object.isRequired,
+  update: func.isRequired,
+  save: func.isRequired,
 }
 
 export default WorkoutForm;

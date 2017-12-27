@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {connect} from 'react-redux';  
-import {bindActionCreators} from 'redux'; 
-
 import $R_Workout from '/src/app/utils/workout'
-import Store from '/src/app/store/store'
-
-import moment from 'moment';
 import WorkoutForm from '/src/app/components/workouts/workoutForm'
 import {deepClone} from '/src/app/utils/tools'
 
@@ -42,15 +36,11 @@ class NewWorkout extends Component {
   render() {
     return (
       <div className="page new-workout">
-        <h1>New Workout</h1>
+        <h1 className="new-workout__title">New Workout</h1>
         <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} />
       </div>
     )
   }
-}
-
-NewWorkout.propTypes = {
-
 }
 
 export default NewWorkout;
