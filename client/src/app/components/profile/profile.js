@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';  
-import {bindActionCreators} from 'redux'; 
 
 import $R_User from '/src/app/utils/user'
 import Store from '/src/app/store/store'
 import { deepClone } from '/src/app/utils/tools'
-
 
 class Profile extends Component {
   constructor(props){
@@ -47,69 +45,58 @@ class Profile extends Component {
 
   render(){
 
-    var {name, email, height, smoker, weight, age, gender, drinker, avatar} = this.state.user;
-
-
+    const {name, email, height, smoker, weight, age, gender, drinker, avatar} = this.state.user;
 
       return (
-        <div className='page profile'>
-          <h1>Profile</h1>
+        <div className='profile page'>
+          <h1 className='profile__title'>Profile</h1>
           <div className='profile__form'>
-
             <div className='field-group'>
-              <label>Name</label>
+              <label className='field-group__label'>Name</label>
               <input type='text' name="name" value={name} onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Email</label>
+              <label className='field-group__label'>Email</label>
               <input type='text' name="email" value={email} onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Height (inches)</label>
+              <label className='field-group__label'>Height (inches)</label>
               <input type='number' name="height" value={height || 0} onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Weight (lbs)</label>
+              <label className='field-group__label'>Weight (lbs)</label>
               <input type='number' name="weight" value={weight || 0} onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Age</label>
+              <label className='field-group__label'>Age</label>
               <input type='number' name="age" value={age || 0} onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Smoker</label>
+              <label className='field-group__label'>Smoker</label>
               <input className='input__checkbox' type='checkbox' checked={smoker} name="smoker" onChange={this.updateField}/>
             </div>
 
             <div className='field-group'>
-              <label>Drinker</label>
+              <label className='field-group__label'>Drinker</label>
               <input className='input__checkbox' type='checkbox' checked={drinker} name="drinker" onChange={this.updateField}/>
             </div>
 
-           
-
-             <div className='field-group'>
-              <input
-                type="submit"
-                className="button"
-                onClick={this.save}
-              />
+            <div className='field-group'>
+              <input type="submit" className="button" onClick={this.save}/>
             </div>
           </div>
 
            <div className='profile__form'>
-
-             <div className='field-group'>
-              <label>Upload Image</label>
-              <input type='file' name="avatar" className='file-button' onChange={this.uploadFile}  />
+            <div className='field-group'>
+              <label className='field-group__label'>Upload Image</label>
+              <input type='file' name="avatar" className='profile__form__image-upload' onChange={this.uploadFile}  />
             </div>
-
-            </div>
+          </div>
         </div>
       )
   }

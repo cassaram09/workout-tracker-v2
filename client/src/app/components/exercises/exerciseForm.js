@@ -105,8 +105,6 @@ class ExerciseForm extends Component {
           </tbody>
         </table>
  
-       
-
         <div className='row' >
           <div className='col-2'>
             <button onClick={this.addSet} className='button'>Add Set</button>
