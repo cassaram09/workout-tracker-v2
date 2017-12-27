@@ -8,8 +8,6 @@ import Workouts from '/src/app/components/workouts/workouts'
 import WorkoutSingle from '/src/app/components/workouts/workoutSingle'
 import WorkoutNew from '/src/app/components/workouts/workoutNew'
 
-
-
 function Main(props) {
 
   return (
