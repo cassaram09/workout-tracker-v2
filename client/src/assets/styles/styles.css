@@ -2306,13 +2306,12 @@ input[type='file'] {
   align-items: center;
   flex-direction: column;
   width: 100%; }
-  .login h1 {
-    padding: 0px 0px 10px; }
-  .login p {
-    color: white; }
-  .login .error {
-    padding: 0px 0px 10px;
-    color: red; }
+
+.login__title {
+  padding: 0px 0px 10px; }
+
+.login__subtitle {
+  color: white; }
 
 .login__form {
   margin-top: 20px; }

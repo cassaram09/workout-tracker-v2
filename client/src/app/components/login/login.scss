@@ -5,19 +5,14 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+}
 
-  h1{
-    padding: 0px 0px 10px;
-  }
+.login__title{
+  padding: 0px 0px 10px;
+}
 
-  p{
-    color: white;
-  }
-
-  .error {
-    padding: 0px 0px 10px;
-    color: red;
-  }
+.login__subtitle{
+  color: white;
 }
 
 .login__form{
