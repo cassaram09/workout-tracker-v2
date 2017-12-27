@@ -1,15 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';  
-import {bindActionCreators} from 'redux'; 
-
 import moment from 'moment';
 
 import $R_Workout from '/src/app/utils/workout'
-import Store from '/src/app/store/store'
-
 import WorkoutForm from '/src/app/components/workouts/workoutForm'
-
 
 import {deepClone, findById} from '/src/app/utils/tools'
 
@@ -65,21 +60,20 @@ class WorkoutSingle extends Component {
     if (this.props.workout && !this.state.editing ) {
       const { name, date, start_time, end_time } = this.props.workout;
 
-      console.log(this.props.workout)
-
       const exercises = this.props.workout.exercises.map(function(exercise){
         return (
           <div className='workout-single__exercise row' key={exercise.id}>
-            <h3>{exercise.name}</h3>
+            <h3 className='workout-single__exercise__title'>{exercise.name}</h3>
             {exercise.exercise_sets.map(function(set, index){
-              return (<p key={set.id}>Set {index + 1} {set.weight} : {set.repetitions}</p>)
+              return (<p className='workout-single__exercise__set'key={set.id}>Set {index + 1} {set.weight} : {set.repetitions}</p>)
             })}
           </div>
         )
       })
+
       return (
         <div className="page workout-single">
-          <h1>{name}</h1> 
+          <h1 className="workout-single__title">{name}</h1> 
 
           <div className='workout-single__actions row'>
             <div className='col-2'>
@@ -102,22 +96,23 @@ class WorkoutSingle extends Component {
             </div>
           </div>
 
-           {exercises}
+          {exercises}
 
         </div>
       )
     } else if  (this.props.workout && this.state.editing ){
       const { name, date, start_time, end_time } = this.props.workout;
+
       return (
         <div className="page workout-single">
-          <h1>{name}</h1> 
+          <h1 className="workout-single__title">{name}</h1> 
           <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} delete={this.delete} />
         </div>
       )
     } else {
       return (
         <div className="page workout-single">
-          <h1>Loading...</h1>
+          <h1 className="workout-single__title">Loading...</h1>
         </div>
       )
     }
@@ -132,13 +127,7 @@ WorkoutSingle.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     workout: findById(state.workouts, ownProps.match.params.id)
-  };
-};
-
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators({dispatchAction: $R_Workout.dispatchAction}, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(WorkoutSingle);
+export default connect(mapStateToProps)(WorkoutSingle);
