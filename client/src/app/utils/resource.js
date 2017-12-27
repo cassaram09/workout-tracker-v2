@@ -1,3 +1,6 @@
+/* For testing purposes only. */
+
+
 class Resource {
   constructor(options){
     const { name, url, headers, state } = options

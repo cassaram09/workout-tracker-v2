@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom';
 
-import Store from '/src/app/store/store'
 import Main from '/src/app/components/main/main';
 import Login from '/src/app/components/login/login';
 import SignUp from '/src/app/components/signUp/signUp';
-
 import SideBar from '/src/app/components/sideBar/sideBar';
 
-
-import $R_User from '/src/app/utils/user'
-
-
+import $R_User from '/src/app/utils/user';
 
 class App extends Component {
 
@@ -42,7 +37,7 @@ class App extends Component {
         <div className='app'>
           <div className='header'>
             <div className='container'>
-              <h1>MyFitnessFriend</h1>
+              <h1 className='app__title'>YourFitnessFriend</h1>
             </div>
           </div>
 
