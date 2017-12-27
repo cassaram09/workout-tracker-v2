@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import moment from 'moment';
 
 import $R_Workout from '/src/app/utils/workout'
-import Store from '/src/app/store/store'
 
 class Workouts extends Component {
   componentWillMount(){
@@ -30,7 +29,7 @@ class Workouts extends Component {
 
     return (
       <div className="page workouts">
-        <h1>Workouts</h1>
+        <h1 className="workouts__title">Workouts</h1>
         {workouts}
       </div>
     )
