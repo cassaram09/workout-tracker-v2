@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { string } from 'prop-types';
 import {connect} from 'react-redux';  
-import {bindActionCreators} from 'redux'; 
+
 import { DefaultAvatar } from '/src/app/utils/constants'
 
 class Avatar extends Component {
@@ -10,13 +10,13 @@ class Avatar extends Component {
   // }
 
   shouldComponentUpdate(nextProps){
-    return nextProps.user.avatar != this.props.user.avatar
+    return nextProps.user.data.avatar != this.props.user.data.avatar
   }
 
   render(){
     return (
       <div className={ `avatar ${this.props.type}` }>
-        <img src={this.props.user.avatar || DefaultAvatar} />
+        <img src={this.props.user.data.avatar || DefaultAvatar} />
       </div>
     )
   }

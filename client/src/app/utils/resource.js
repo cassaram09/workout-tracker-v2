@@ -13,14 +13,18 @@ class Resource {
     this.url = url;
     this.headers = headers;
     this.prefix = name + '_';
-    this.state = state || []
+    this.state = {data: state || [], errors:[]}
 
     // Declare our reducer and resource action holders
     this.reducerActions = {
-      [this.prefix + 'error']: (state, action) => {
-        return Object.assign({}, state, {error: action.data})
+      [this.prefix + 'error']: (state, action) =>{
+        return {data: state.data, errors: [action.data]}
+      },
+      [this.prefix + 'clearErrors']: (state, action) =>{
+        return {data: state.data, errors: []}
       }
-    };
+
+    }
     this.resourceActions = {};
 
     /* 
@@ -30,11 +34,9 @@ class Resource {
      * reducer action (etiher a default or custom action).
     */
     this.reducer = (state = this.state, action) => {
-     
-      if (this.reducerActions[action.type]) {
+      if ( this.reducerActions[action.type] ) {
         return this.reducerActions[action.type](state, action);
       }
-
       return state;
     }
   }
@@ -46,6 +48,18 @@ class Resource {
 Resource.setDispatch = function(dispatch){
   var this2 = this;
   this2.prototype.dispatch = dispatch;
+}
+
+Resource.prototype.clearErrors = function(){
+  this.dispatch({type: this.prefix + 'clearErrors', data: []})
+}
+
+/*  
+ * 
+*/
+Resource.prototype.throwError = function(error){
+  var this2 = this;
+  this2.errors.push(error) 
 }
 
 /*  
@@ -65,14 +79,14 @@ Resource.prototype.dispatchAction = function(action, data) {
     }
     this2.dispatch({type: name, data: response});
   }).catch(error => {
-    this2.dispatch({type:this.prefix + 'error' , data: error});
+    this2.dispatch({type: this.prefix + 'error', data: error});
   })
 }
 
 // Used to set state if not declared during initialization. 
 Resource.prototype.setState = function(state) {
   if ( state ){
-    this.state = state;
+    this.state = {data: state, errors: []};
   }
   return this;
 }
@@ -239,16 +253,16 @@ Resource.prototype.delete = function(url, data, headers){
 }
 
 function removeData(state, action){
-  const newState = Object.assign([], state);
-  const indexToDelete = state.findIndex(exercise => {
+  const newState = Object.assign([], state.data);
+  const indexToDelete = state.data.findIndex(exercise => {
     return exercise.id == action.data.id
   })
   newState.splice(indexToDelete, 1);
-  return newState;
+  return {data: newState, errors: state.errors}
 }
 
 function addData(state, action){
-  return [ ...state.filter(element => element.id !== action.data.id), Object.assign({}, action.data)]
+  return {data: [ ...state.data.filter(element => element.id !== action.data.id), Object.assign({}, action.data)], errors: state.errors}
 }
 
 const RemoteActions = {

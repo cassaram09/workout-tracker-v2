@@ -14,7 +14,9 @@ User.registerNewAction({
   name: 'getCurrentUser', 
   url: API.base + '/current-user', 
   method: 'GET', 
-  reducerFn: ( (state, action) => action.data ) 
+  reducerFn: ( (state, action) => { 
+    return { data: action.data, errors: [...state.errors] } 
+  }) 
 })
 
 // updates data for the current user, returns updated user
@@ -22,7 +24,9 @@ User.registerNewAction({
   name: 'update', 
   url: User.url + '/:id', 
   method: 'PATCH', 
-  reducerFn: ( (state, action) => action.data ) 
+  reducerFn: ( (state, action) => { 
+    return { data: action.data, errors: [...state.errors] } 
+  }) 
 })
 
 // handle image upload
@@ -40,8 +44,10 @@ User.registerNewAction({
   name: 'uploadImage', 
   url: User.url + '/:id', 
   method: 'PATCH', 
-  reducerFn: ( (state, action) => action.data ),
-  resourceFn: uploadImageAction
+  resourceFn: uploadImageAction,
+  reducerFn: ( (state, action) => { 
+    return { data: action.data, errors: [...state.errors] } 
+  }) 
 })
 
 export default User;

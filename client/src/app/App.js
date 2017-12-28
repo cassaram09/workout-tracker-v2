@@ -13,23 +13,23 @@ import $R_User from '/src/app/utils/user';
 class App extends Component {
 
   componentWillMount(){
-    if (this.props.auth.session == true) {
+    if (this.props.auth.data.session == true) {
       $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (this.props.auth.session == true && !this.props.user.id) {
+    if (this.props.auth.data.session == true && !this.props.user.id) {
       $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   render() {
-   if ( this.props.auth.session == true ){
+   if ( this.props.auth.data.session == true ){
       return (
         <div className='app'>
-          <SideBar session={this.props.auth.session} user={this.props.user} />
-          <Main session={this.props.auth.session} user={this.props.user} />
+          <SideBar session={this.props.auth.data.session} user={this.props.user} />
+          <Main session={this.props.auth.data.session} user={this.props.user} />
         </div>
       )
     } else {

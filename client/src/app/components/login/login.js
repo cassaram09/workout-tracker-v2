@@ -33,12 +33,18 @@ class Login extends Component {
 
 
   componentWillUnmount(){
-    $R_Auth.dispatchAction('clearError')
+    console.log($R_Auth)
+    $R_Auth.clearErrors();
   }
-
   
   render(){
-    
+    var errors;
+    if ( this.props.auth.errors.length > 0 ) {
+      errors = this.props.auth.errors.map( (error,index) => {
+        return ( <p key={index}>error</p> )
+      })
+    }
+
     return(
       <div className='login' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
         <div className='container'>
@@ -53,7 +59,7 @@ class Login extends Component {
             </div>
 
             <div className='col-5'>
-              <p className='login__error'>{this.props.auth.error}</p>
+              <div className='login__error'>{errors}</div>
               <form className='login__form' onSubmit={this.onSave} >
                 <div className='field-group'>
                   <input placeholder='Email' className='login__form__email' type='text'  onChange={this.onChange} name='email'/>

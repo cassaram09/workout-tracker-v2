@@ -3,7 +3,7 @@ import {browserRouter} from 'react-router-dom'
 import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
 
-const state = {session: !!sessionStorage.jwt, error: null}
+const state = {session: !!sessionStorage.jwt}
 const headers = {'Content-Type': "application/json"}
 
 const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state})
@@ -15,11 +15,12 @@ const loginReducer = (state, action) => {
     sessionStorage.setItem('jwt', action.data.jwt)
     history.push('/')
     API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-    return {session: !!sessionStorage.jwt}
-  }
-
-  if ( action.data.error ) {
-    return {session: !!sessionStorage.jwt, error: action.data.error}
+    return {
+      data: {
+       session: !!sessionStorage.jwt
+      },
+      errors: state.errors
+    }
   }
 
   return state;
@@ -31,11 +32,12 @@ const signUpReducer = (state, action) => {
     sessionStorage.setItem('jwt', action.data.jwt)
     history.push('/')
     API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-    return {session: !!sessionStorage.jwt}
-  }
-
-  if ( action.data.error ) {
-    return {session: !!sessionStorage.jwt, error: action.data.error}
+    return {
+      data: {
+       session: !!sessionStorage.jwt
+      },
+      errors: state.errors
+    }
   }
 
   return state;
@@ -45,17 +47,26 @@ const signUpReducer = (state, action) => {
 const logOutAction = () => {
   return new Promise((resolve, reject) => {
     sessionStorage.removeItem('jwt');
-    return !sessionStorage.jwt ? resolve({session: false}) : reject(Error("Error"));
+    if ( !sessionStorage.jwt ) {
+      resolve(!!sessionStorage.jwt)
+    } else {
+      reject(Error("Error"));
+    }
   });
 }
 
 // logout Reducer fn
 const logOutReducer = (state, action) => {
-  if ( !sessionStorage.jwt ) {
+  if ( !action.data ) {
     history.push('/');
-    return {session: !!sessionStorage.jwt}
+    return {
+      data: {
+        session: action.data
+      },
+      errors: []
+    }
   }
-  return {session: !!sessionStorage.jwt}
+  return state;
 }
 
 Auth.registerNewAction({
@@ -78,18 +89,6 @@ Auth.registerNewAction({
   method: 'POST',
   resourceFn: logOutAction, 
   reducerFn: logOutReducer
-})
-
-Auth.registerNewAction({
-  name: 'clearError', 
-  resourceFn: function() {
-    return new Promise((resolve, reject) => {
-      resolve({error: null});
-    }); 
-  }, 
-  reducerFn: (state, action) => { 
-    return {session: !!sessionStorage.jwt, error: action.data.error} 
-  }
 })
 
 export default Auth;
