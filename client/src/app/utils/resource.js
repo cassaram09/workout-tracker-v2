@@ -58,9 +58,9 @@ Resource.prototype.clearErrors = function(){
 /*  
  * 
 */
-Resource.prototype.throwError = function(error){
+Resource.prototype.throwError = function({title, detail}){
   var this2 = this;
-  this2.errors.push(error) 
+  this.dispatch({type: this.prefix + 'error', data: {title: title, detail: detail} })
 }
 
 /*  

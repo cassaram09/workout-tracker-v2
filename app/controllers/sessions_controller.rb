@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: auth_params[:email])
 
     if !@user
-      render json: {error: "Email or password incorrect."}
+      render_error_payload(:incorrect_login, status: :forbidden)
       return
     end
 

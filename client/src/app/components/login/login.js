@@ -26,13 +26,14 @@ class Login extends Component {
 
     this.onSave = (event) => {
       event.preventDefault();
+      if ( !this.state.user.email || !this.state.user.password ) {
+        return $R_Auth.throwError({title:'Incorrect login', detail: 'Email and password are required'})
+      }
       return $R_Auth.dispatchAction('login', this.state)
     }
   }
 
-
   componentWillUnmount(){
-    console.log($R_Auth)
     $R_Auth.clearErrors();
   }
   
