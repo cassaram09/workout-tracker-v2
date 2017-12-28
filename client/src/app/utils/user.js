@@ -41,7 +41,7 @@ const uploadImageAction = (data) => {
 }
 
 User.registerNewAction({
-  name: 'uploadImage', 
+  name: 'UPLOAD_IMAGE', 
   url: User.url + '/:id', 
   method: 'PATCH', 
   resourceFn: uploadImageAction,

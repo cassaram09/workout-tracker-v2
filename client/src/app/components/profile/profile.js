@@ -25,14 +25,14 @@ class Profile extends Component {
     this.save = () => {
       var state = deepClone(this.state)
       delete state.user.avatar
-      return $R_User.dispatchAction('update', state)
+      return $R_User.dispatchAction('UPDATE', state)
     }
 
     this.uploadFile = (event) =>{
       event.preventDefault();
       var id = this.props.user.id
       var file = event.target.files[0]
-      return $R_User.dispatchAction('uploadImage', {file: file, id: id})
+      return $R_User.dispatchAction('UPLOAD_IMAGE', {file: file, id: id})
     }
 
   }
@@ -108,7 +108,7 @@ Profile.propTypes = {
 }
 
 function mapStateToProps(state, ownProps) { 
-  return {user: state.user};
+  return {user: state.user.data};
 };
 
 export default connect(mapStateToProps)(Profile);

@@ -1,6 +1,5 @@
 /* For testing purposes only. */
 
-
 class Resource {
   constructor(options){
     const { name, url, headers, state } = options
@@ -15,7 +14,6 @@ class Resource {
     this.prefix = name.toUpperCase() + '_';
     this.state = {data: state || [], errors:[]}
 
-    // Declare our reducer and resource action holders
     this.reducerActions = {}
     this.resourceActions = {};
 
@@ -32,49 +30,39 @@ class Resource {
       return state;
     }
 
-    this.addReducerAction('ERROR',(state, action) =>{
+    /*
+     * Add special error handlers to our resource.
+    */
+    this.addReducerAction('$ERROR',(state, action) =>{
       return {data: state.data, errors: [action.data]}
     })
 
-    this.addReducerAction('CLEAR_ERRORS',(state, action) =>{
+    this.addReducerAction('$CLEAR_ERRORS',(state, action) =>{
       return {data: state.data, errors: []}
     })
 
   }
 }
 
-
 /*  
- * Pass the Store's dispatch function as an argument.
+ * Enable our resource to use our Store's dispatch function.
 */
 Resource.setDispatch = function(dispatch){
   var this2 = this;
   this2.prototype.dispatch = dispatch;
 }
 
-Resource.prototype.clearErrors = function(){
-  this.dispatch({type: this.prefix + 'CLEAR_ERRORS', data: []})
-}
-
 /*  
- * 
-*/
-Resource.prototype.throwError = function({title, detail}){
-  var this2 = this;
-  this.dispatch({type: this.prefix + 'ERROR', data: {title: title, detail: detail} })
-}
-
-/*  
- * Generic dispatch action that accepts the name of the action we want
- * to exectute, plus a data object. 
+ * Dispatch an asynchronous action to our store.
+ *
+ * Accepts the name of the action we want to exectute, plus a data object.
  * Find the action, prefixed by the resource name (to prevent conflicts),
  * then execute it. If the request is successful, return a
  * dispatch function with the type set to the prefixed action name, plus
  * the response data.
 */
-Resource.prototype.dispatchAction = function(actionName, data) {
+Resource.prototype.dispatchAsync = function(actionName, data) {
 
-  const this2 = this
   const name = this.prefix + actionName.toUpperCase();
 
   return this.resourceActions[name](data).then( response => {
@@ -82,20 +70,36 @@ Resource.prototype.dispatchAction = function(actionName, data) {
       throw( response )
     }
     response.json().then(json => {
-      this2.dispatch({type: name, data: json});
+      this.dispatch({type: name, data: json});
     })
   }).catch(error => {
     error.json().then(json => {
-      this2.dispatch({type: this.prefix + 'ERROR', data: json});
+      this.dispatch({type: this.prefix + '$ERROR', data: json});
     })
   })
 }
 
-// Used to set state if not declared during initialization. 
-Resource.prototype.setState = function(state) {
-  if ( state ){
-    this.state = {data: state, errors: []};
+/* 
+ * Dispatch a synchronous action to our store.
+*/
+Resource.prototype.dispatchSync = function(actionName, data) {
+  const name = this.prefix + actionName.toUpperCase();
+  this.dispatch({type: name, data: data});
+}
+
+/*
+ * Register a custom resource action and reducer action. This accepts any
+ * promise based function as a resource function.
+*/
+Resource.prototype.registerNewAction = function(options) {
+  const { name, url, method, reducerFn, resourceFn } = options
+
+  if ( !name || !reducerFn ) {
+    throw("Name and Reducer function are required when registering a new action.")
   }
+
+  this.addResourceAction({name, url, method, resourceFn});
+  this.addReducerAction(name, reducerFn);
   return this;
 }
 
@@ -126,7 +130,9 @@ Resource.prototype.addResourceAction = function(options) {
   return this;
 }
 
-// Create a new reducer action 
+/* 
+ * Adds a new reducer action to our Resource's reducer.  
+*/ 
 Resource.prototype.addReducerAction = function(name, reducerFn) {
   if (!name || !reducerFn){
     throw("Name and Reducer function are required.")
@@ -136,7 +142,9 @@ Resource.prototype.addReducerAction = function(name, reducerFn) {
   return this;
 }
 
-// Update/overwrrite a reducer action (such as a default reducer action) 
+/* 
+ * Update/overwrrite a reducer action (such as a default reducer action)  
+*/ 
 Resource.prototype.updateReducerAction = function(name, reducerFn) {
   if (!name || !reducerFn){
     throw("Name and Reducer function are required.")
@@ -146,7 +154,9 @@ Resource.prototype.updateReducerAction = function(name, reducerFn) {
   return this;
 }
 
-//  Update/overwrrite a resource action (such as a default resouce action) 
+/* 
+ * Update/overwrrite a resource action (such as a default resource action) 
+*/ 
 Resource.prototype.updateResourceAction = function(name, resourceFn) {
   if (!name || !resourceFn ){
     throw("Name and Resource function are required.")
@@ -161,29 +171,13 @@ Resource.prototype.updateResourceAction = function(name, resourceFn) {
  * query(index), get(individual resource), create, update, and delete.
 */
 Resource.prototype.registerRemoteActions = function() { 
-  for ( let name in RemoteActions) {
-    const url = this.url + RemoteActions[name].url;
-    const method = RemoteActions[name].method;
-    const reducerFn =  RemoteActions[name].reducerFn
-    name = name.toUpperCase()
-    this.registerNewAction({url, name, method, reducerFn})
+  for ( let action in this.remoteActions) {
+    const name = '$' + action.toUpperCase()
+    const url = this.url + this.remoteActions[action].url;
+    const method = this.remoteActions[action].method;
+    const reducerFn =  this.remoteActions[action].reducerFn
+    this.registerNewAction({name, url, method, reducerFn})
   }
-  return this;
-}
-
-/*
- * Register a custom resource action and reducer action. This accepts any
- * promise based function as a resource function.
-*/
-Resource.prototype.registerNewAction = function(options) {
-  const { name, url, method, reducerFn, resourceFn } = options
-
-  if ( !name || !reducerFn ) {
-    throw("Name and Reducer function are required when registering a new action.")
-  }
-
-  this.addResourceAction({name, url, method, resourceFn});
-  this.addReducerAction(name, reducerFn);
   return this;
 }
 
@@ -192,7 +186,9 @@ Resource.prototype.registerNewAction = function(options) {
 */
 Resource.prototype.createRequest = function(url, method, body, headers) {
 
-  // Use this to find the right value for param matching
+  /* 
+   * Use this to find the right value for param matching
+  */
   function findValueByKey(obj, key){
     for (let prop in obj) {
       return key === prop ? obj[prop] : findValueByKey(obj[prop], key)
@@ -203,7 +199,7 @@ Resource.prototype.createRequest = function(url, method, body, headers) {
   /* 
    * If we set URL params, let's automatically match the a key to them.
    * eg /api/v1/widgets/:id, search through our object to find an ID
-   * If we're dealing with a widge resource, it should be in the top level
+   * If we're dealing with a widget resource, it should be in the top level
   */
   const urlParams = url.match(/:(\w+)/ig)
 
@@ -229,35 +225,18 @@ Resource.prototype.createRequest = function(url, method, body, headers) {
   return request;
 }
 
-// Wrapper for fetching requests. 
+/*
+ * Fetch our requests. 
+*/
 Resource.prototype.fetchRequest = function(request){
   return fetch(request).then(response => {
-    return response
-    return response.json();
+    return response;
   }).catch(error => {
-    return error
+    console.log(error);
   })
 }
 
-Resource.prototype.post = function(url, data, headers){
-  const request = this.createRequest(url, 'POST', data, headers);
-  return this.fetchRequest(request)
-}
 
-Resource.prototype.get = function(url, data, headers){
-  const request = this.createRequest(url, 'GET', data, headers);
-  return this.fetchRequest(request)
-}
-
-Resource.prototype.patch = function(url, data, headers){
-  const request = this.createRequest(url, 'PATCH', data, headers);
-  return this.fetchRequest(request)
-}
-
-Resource.prototype.delete = function(url, data, headers){
-  const request = this.createRequest(url, 'DELETE', data, headers);
-  return this.fetchRequest(request)
-}
 
 function removeData(state, action){
   const newState = Object.assign([], state.data);
@@ -272,7 +251,7 @@ function addData(state, action){
   return {data: [ ...state.data.filter(element => element.id !== action.data.id), Object.assign({}, action.data)], errors: state.errors}
 }
 
-const RemoteActions = {
+Resource.prototype.remoteActions = {
   query: {
     method: 'GET',
     url: '',
@@ -298,6 +277,26 @@ const RemoteActions = {
     url: '/:id',
     reducerFn: (state, action) => { return removeData(state, action) },
   }
+}
+
+Resource.prototype.post = function(url, data, headers){
+  const request = this.createRequest(url, 'POST', data, headers);
+  return this.fetchRequest(request)
+}
+
+Resource.prototype.get = function(url, data, headers){
+  const request = this.createRequest(url, 'GET', data, headers);
+  return this.fetchRequest(request)
+}
+
+Resource.prototype.patch = function(url, data, headers){
+  const request = this.createRequest(url, 'PATCH', data, headers);
+  return this.fetchRequest(request)
+}
+
+Resource.prototype.delete = function(url, data, headers){
+  const request = this.createRequest(url, 'DELETE', data, headers);
+  return this.fetchRequest(request)
 }
 
 export default Resource;
