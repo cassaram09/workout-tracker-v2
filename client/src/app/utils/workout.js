@@ -12,17 +12,17 @@ Workout.registerRemoteActions();
 
 Workout.updateReducerAction('create', (state, action) => {
   history.push(`/workouts/${action.data.id}`)
-  return [ ...state.filter(element => element.id !== action.data.id), Object.assign({}, action.data)]
+  return {data: [ ...state.data.filter(element => element.id !== action.data.id), Object.assign({}, action.data)], errors: [...state.errors]}
 })
 
 Workout.updateReducerAction('delete', (state, action) => {
   history.push(`/workouts`)
-  const newState = Object.assign([], state);
-  const indexToDelete = state.findIndex(exercise => {
+  const newState = Object.assign([], state.data);
+  const indexToDelete = state.data.findIndex(exercise => {
     return exercise.id == action.data.id
   })
   newState.splice(indexToDelete, 1);
-  return newState;
+  return {data: newState, errors: [...state.errors]};
 })
 
 

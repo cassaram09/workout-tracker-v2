@@ -27,6 +27,9 @@ class WorkoutSingle extends Component {
     }
 
     this.save = (state) => {
+      if ( !this.state.workout.name ) {
+       return $R_Workout.throwError({title: "Invalid fields", detail: 'Name is required'})
+      }
       return $R_Workout.dispatchAction('update', state)
     }
 
@@ -38,6 +41,10 @@ class WorkoutSingle extends Component {
 
     this.toggleEdit = () =>{
       this.setState({editing: !this.state.editing})
+    }
+
+    this.reset = () =>{
+      this.setState({workout: this.props.workout})
     }
 
   }
@@ -57,6 +64,13 @@ class WorkoutSingle extends Component {
   }
 
   render() {
+    var errors;
+    if ( this.props.errors.length > 0 ) {
+      errors = this.props.errors.map( (error,index) => {
+        return ( <p className='login__error__details' key={index}>{error.title}: {error.detail}</p> )
+      })
+    }
+
     if (this.props.workout && !this.state.editing ) {
       const { name, date, start_time, end_time } = this.props.workout;
 
@@ -104,7 +118,7 @@ class WorkoutSingle extends Component {
       return (
         <div className="page workout-single">
           <h1 className="workout-single__title">{name}</h1> 
-          <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} delete={this.delete} />
+          <WorkoutForm  workout={this.state.workout} update={this.update} cancel={this.toggleEdit} save={this.save} delete={this.delete} errors={errors} reset={this.reset} />
         </div>
       )
     } else {
@@ -124,7 +138,8 @@ WorkoutSingle.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    workout: findById(state.workouts, ownProps.match.params.id)
+    workout: findById(state.workouts.data, ownProps.match.params.id),
+    errors: state.workouts.errors
   }
 }
 

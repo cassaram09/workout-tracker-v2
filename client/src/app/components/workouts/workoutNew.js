@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import $R_Workout from '/src/app/utils/workout'
 import WorkoutForm from '/src/app/components/workouts/workoutForm'
@@ -29,18 +30,34 @@ class NewWorkout extends Component {
     }
 
     this.save = (state) => {
+      if ( !this.state.workout.name ) {
+       return $R_Workout.throwError({title: "Invalid fields", detail: 'Name is required'})
+      }
       return $R_Workout.dispatchAction('create', state)
     }
   }
 
   render() {
+    var errors;
+    if ( this.props.workoutErrors.length > 0 ) {
+      errors = this.props.workoutErrors.map( (error,index) => {
+        return ( <p className='login__error__details' key={index}>{error.title}: {error.detail}</p> )
+      })
+    }
+
     return (
       <div className="page new-workout">
         <h1 className="new-workout__title">New Workout</h1>
-        <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} />
+        <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} errors={errors} />
       </div>
     )
   }
 }
 
-export default NewWorkout;
+const mapStateToProps = (state, ownProps) => { 
+  return {
+    workoutErrors: state.workouts.errors,
+  }
+};
+
+export default connect(mapStateToProps)(NewWorkout);

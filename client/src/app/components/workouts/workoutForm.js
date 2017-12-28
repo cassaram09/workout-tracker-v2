@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { object, func } from 'prop-types';
 import moment from 'moment';
+import $R_Workout from '/src/app/utils/workout'
+
 
 import ExerciseForm from '/src/app/components/exercises/exerciseForm'
 import {deepClone} from '/src/app/utils/tools'
@@ -35,10 +37,6 @@ class WorkoutForm extends Component {
 
     this.save = (event) => {
       event.preventDefault();
-
-      if ( !this.props.workout.name ) {
-       return alert('Name is required')
-      }
       
       var workout = deepClone(this.props.workout)
 
@@ -59,6 +57,12 @@ class WorkoutForm extends Component {
       this.props.save({workout: workout})
     }
 
+  }
+
+
+  componentWillUnmount(){
+    this.props.reset();
+    $R_Workout.clearErrors();
   }
 
   render(){
@@ -96,6 +100,7 @@ class WorkoutForm extends Component {
         </div>
 
         <div className='workout-form__fields row'>
+          <div className='login__error'>{this.props.errors}</div>
           <div className='col-3'>
             <input type='text' name='name' value={this.props.workout.name} onChange={this.updateWorkoutField} placeholder='Name' />
           </div>
