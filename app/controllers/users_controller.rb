@@ -2,12 +2,18 @@ class UsersController < ApplicationController
   skip_before_action :authenticate, only: :create
 
   def create
+    if User.find_by(email: user_params[:email])
+      render_error_payload(:invalid_signup, status: :forbidden)
+      return
+    end
+
     @user = User.new(user_params)
+
     if @user.save
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt}
     else 
-      render_error_payload(:foo_limit_exceeded, status: :forbidden)
+      render_error_payload(:invalid_signup, status: :forbidden)
     end
   end
 

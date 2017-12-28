@@ -4,7 +4,6 @@ import { Barbell } from '/src/app/utils/constants'
 import {connect} from 'react-redux';
 
 import $R_Auth from '/src/app/utils/auth';
-import Store from '/src/app/store/store'
 
 class Login extends Component {
   constructor(){

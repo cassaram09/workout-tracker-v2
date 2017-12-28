@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom'
 
 import { Barbell } from '/src/app/utils/constants'
 import $R_Auth from '/src/app/utils/auth';
+import {connect} from 'react-redux';
+
 
 class SignUp extends Component {
   constructor(){
     super()
 
-    this.state={
+    this.state = {
       user: {
         name: '',
         email: '',
@@ -26,13 +28,28 @@ class SignUp extends Component {
 
     this.onSave = event => {
       event.preventDefault();
+      if ( !this.state.user.email || !this.state.user.name || !this.state.user.password || !this.state.user.password_confirmation ) {
+        return $R_Auth.throwError({title:'Invalid signup', detail: 'All fields are required'})
+      }
       return $R_Auth.dispatchAction('signUp', this.state)
     }
   }
 
+  componentWillUnmount(){
+    $R_Auth.clearErrors();
+  }
+
   render(){
+    var errors;
+    if ( this.props.authErrors.length > 0 ) {
+      errors = this.props.authErrors.map( (error,index) => {
+        return ( <p className='login__error__details' key={index}>{error.title}: {error.detail}</p> )
+      })
+    }
+
     return(
       <div className='sign-up' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
+         <div className='login__error'>{errors}</div>
         <form className='sign-up__form' onSubmit={this.onSave} >
           <div className='field-group'>
             <label className='field-group__label' htmlFor='name'>Name</label>
@@ -63,4 +80,10 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = (state, ownProps) => { 
+  return {
+    authErrors: state.auth.errors,
+  }
+};
+
+export default connect(mapStateToProps)(SignUp);

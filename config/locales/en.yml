@@ -32,6 +32,9 @@
 en:
   hello: "Hello world"
   errors:
-    incorrect_login:
-      title: Incorrect login
+    invalid_login:
+      title: Login invalid
       detail: Email or password is incorrect
+    invalid_signup:
+      title: Sign up invalid
+      detail: Account already exists
