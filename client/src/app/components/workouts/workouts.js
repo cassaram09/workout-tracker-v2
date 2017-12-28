@@ -38,7 +38,7 @@ class Workouts extends Component {
 
 function mapStateToProps(state, ownProps){
   return{
-    workouts: state.workouts
+    workouts: state.workouts.data
   }
 }
 

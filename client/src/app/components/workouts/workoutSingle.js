@@ -30,27 +30,23 @@ class WorkoutSingle extends Component {
       if ( !this.state.workout.name ) {
        return $R_Workout.throwError({title: "Invalid fields", detail: 'Name is required'})
       }
-      return $R_Workout.dispatchAction('update', state)
+      return $R_Workout.dispatchAction('UPDATE', state)
     }
 
     this.delete = (event) => {
       event.preventDefault();
-      return $R_Workout.dispatchAction('delete', {id: this.state.workout.id})
+      return $R_Workout.dispatchAction('DELETE', {id: this.state.workout.id})
 
     }
 
     this.toggleEdit = () =>{
-      this.setState({editing: !this.state.editing})
+      this.setState({editing: !this.state.editing, workout: this.props.workout})
+      $R_Workout.clearErrors();
     }
-
-    this.reset = () =>{
-      this.setState({workout: this.props.workout})
-    }
-
   }
 
   componentDidMount(){
-    return $R_Workout.dispatchAction('get', {id: this.props.match.params.id})
+    return $R_Workout.dispatchAction('GET', {id: this.props.match.params.id})
   }
 
   componentWillUpdate(nextProps, nextState) {

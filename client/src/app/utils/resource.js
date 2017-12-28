@@ -9,22 +9,14 @@ class Resource {
       throw("Name is required when creating a new Resource.")
     }
 
-    this.name = name;
+    this.name = name.toUpperCase();
     this.url = url;
     this.headers = headers;
-    this.prefix = name + '_';
+    this.prefix = name.toUpperCase() + '_';
     this.state = {data: state || [], errors:[]}
 
     // Declare our reducer and resource action holders
-    this.reducerActions = {
-      [this.prefix + 'error']: (state, action) =>{
-        return {data: state.data, errors: [action.data]}
-      },
-      [this.prefix + 'clearErrors']: (state, action) =>{
-        return {data: state.data, errors: []}
-      }
-
-    }
+    this.reducerActions = {}
     this.resourceActions = {};
 
     /* 
@@ -39,6 +31,15 @@ class Resource {
       }
       return state;
     }
+
+    this.addReducerAction('ERROR',(state, action) =>{
+      return {data: state.data, errors: [action.data]}
+    })
+
+    this.addReducerAction('CLEAR_ERRORS',(state, action) =>{
+      return {data: state.data, errors: []}
+    })
+
   }
 }
 
@@ -52,7 +53,7 @@ Resource.setDispatch = function(dispatch){
 }
 
 Resource.prototype.clearErrors = function(){
-  this.dispatch({type: this.prefix + 'clearErrors', data: []})
+  this.dispatch({type: this.prefix + 'CLEAR_ERRORS', data: []})
 }
 
 /*  
@@ -60,7 +61,7 @@ Resource.prototype.clearErrors = function(){
 */
 Resource.prototype.throwError = function({title, detail}){
   var this2 = this;
-  this.dispatch({type: this.prefix + 'error', data: {title: title, detail: detail} })
+  this.dispatch({type: this.prefix + 'ERROR', data: {title: title, detail: detail} })
 }
 
 /*  
@@ -71,9 +72,11 @@ Resource.prototype.throwError = function({title, detail}){
  * dispatch function with the type set to the prefixed action name, plus
  * the response data.
 */
-Resource.prototype.dispatchAction = function(action, data) {
+Resource.prototype.dispatchAction = function(actionName, data) {
+
   const this2 = this
-  const name = this.prefix + action;
+  const name = this.prefix + actionName.toUpperCase();
+
   return this.resourceActions[name](data).then( response => {
     if ( !response.ok){
       throw( response )
@@ -83,7 +86,7 @@ Resource.prototype.dispatchAction = function(action, data) {
     })
   }).catch(error => {
     error.json().then(json => {
-      this2.dispatch({type: this.prefix + 'error', data: json});
+      this2.dispatch({type: this.prefix + 'ERROR', data: json});
     })
   })
 }
@@ -108,7 +111,7 @@ Resource.prototype.addResourceAction = function(options) {
     throw("Name is required when adding a resource action.")
   }
 
-  const actionName = this.prefix + name;
+  const actionName = this.prefix + name.toUpperCase();
 
   // Use a resourceFN if available, else use default resource action
   if ( resourceFn ) {
@@ -128,7 +131,7 @@ Resource.prototype.addReducerAction = function(name, reducerFn) {
   if (!name || !reducerFn){
     throw("Name and Reducer function are required.")
   }
-  const actionName = this.prefix + name;
+  const actionName = this.prefix +  name.toUpperCase();
   this.reducerActions[actionName] = this.reducerActions[actionName] || reducerFn;
   return this;
 }
@@ -138,7 +141,7 @@ Resource.prototype.updateReducerAction = function(name, reducerFn) {
   if (!name || !reducerFn){
     throw("Name and Reducer function are required.")
   }
-  const actionName = this.prefix + name;
+  const actionName = this.prefix +  name.toUpperCase();
   this.reducerActions[actionName] = reducerFn;
   return this;
 }
@@ -148,7 +151,7 @@ Resource.prototype.updateResourceAction = function(name, resourceFn) {
   if (!name || !resourceFn ){
     throw("Name and Resource function are required.")
   }
-  const actionName = this.prefix + name;
+  const actionName = this.prefix + name.toUpperCase();
   this.reducerActions[actionName] = resourceFn;
   return this;
 }
@@ -162,6 +165,7 @@ Resource.prototype.registerRemoteActions = function() {
     const url = this.url + RemoteActions[name].url;
     const method = RemoteActions[name].method;
     const reducerFn =  RemoteActions[name].reducerFn
+    name = name.toUpperCase()
     this.registerNewAction({url, name, method, reducerFn})
   }
   return this;
@@ -272,7 +276,7 @@ const RemoteActions = {
   query: {
     method: 'GET',
     url: '',
-    reducerFn: (state, action) => { return action.data },
+    reducerFn: (state, action) => { return {data: action.data, errors: [...state.errors]} },
   },
   get: {
     method: 'GET',

@@ -28,7 +28,7 @@ class Login extends Component {
       if ( !this.state.user.email || !this.state.user.password ) {
         return $R_Auth.throwError({title:'Incorrect login', detail: 'Email and password are required'})
       }
-      return $R_Auth.dispatchAction('login', this.state)
+      return $R_Auth.dispatchAction('LOGIN', this.state)
     }
   }
 

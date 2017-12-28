@@ -34,7 +34,10 @@ class NewWorkout extends Component {
        return $R_Workout.throwError({title: "Invalid fields", detail: 'Name is required'})
       }
       return $R_Workout.dispatchAction('create', state)
+    
+      $R_Workout.clearErrors();
     }
+
   }
 
   render() {
@@ -48,7 +51,7 @@ class NewWorkout extends Component {
     return (
       <div className="page new-workout">
         <h1 className="new-workout__title">New Workout</h1>
-        <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} errors={errors} />
+        <WorkoutForm  workout={this.state.workout} update={this.update} save={this.save} errors={errors} reset={this.reset} />
       </div>
     )
   }

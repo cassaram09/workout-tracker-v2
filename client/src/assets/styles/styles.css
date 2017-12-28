@@ -2263,18 +2263,6 @@ input[type='file'] {
   body .app__title {
     font-size: 1.5em; } }
 
-.exercise-form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-
-.exercise-form__fields th {
-  text-align: left; }
-
-.exercise-set__button {
-  padding: 5px 10px; }
-
 .dashboard__actions {
   margin-bottom: 20px;
   padding: 20px;
@@ -2289,6 +2277,52 @@ input[type='file'] {
 
 .workouts__row {
   background: #F8FCFF; }
+
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+
+.exercise-form__fields th {
+  text-align: left; }
+
+.exercise-set__button {
+  padding: 5px 10px; }
+
+.avatar {
+  width: 50px;
+  height: 50px; }
+  .avatar img {
+    object-fit: cover;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    max-width: 100px;
+    display: block;
+    box-shadow: 1px 1px 3px -1px #333;
+    -moz-box-shadow: 1px 1px 3px -1px #333;
+    -webkit-box-shadow: 1px 1px 3px -1px #333;
+    -o-box-shadow: 1px 1px 3px -1px #333;
+    background: white; }
+  .avatar.sidebar__avatar {
+    margin: 20px auto; }
+
+.profile__form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+  .profile__form .field-group {
+    max-width: 300px; }
+
+.input__checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 10px; }
+
+.profile__form__image-upload {
+  background: transparent; }
 
 .login {
   display: flex;
@@ -2320,45 +2354,82 @@ input[type='file'] {
 .login__error {
   height: 40px; }
 
-.avatar {
-  width: 50px;
-  height: 50px; }
-  .avatar img {
-    object-fit: cover;
-    border-radius: 100%;
-    width: 100%;
-    height: 100%;
-    max-width: 100px;
-    display: block;
-    box-shadow: 1px 1px 3px -1px #333;
-    -moz-box-shadow: 1px 1px 3px -1px #333;
-    -webkit-box-shadow: 1px 1px 3px -1px #333;
-    -o-box-shadow: 1px 1px 3px -1px #333;
-    background: white; }
-  .avatar.sidebar__avatar {
-    margin: 20px auto; }
+.workout-form__actions {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-form__fields {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  width: 100%;
+  background: #F8FCFF; }
+
+.workout-form__actions__button {
+  margin-right: 20px; }
+
+.workout-single__button {
+  margin-right: 20px; }
+
+.workout-single__actions {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__details {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__exercise {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  opacity: 1;
+  transition: opacity 100ms linear;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+  .workouts__row:last-child {
+    margin-bottom: 0px; }
+  .workouts__row:hover {
+    opacity: 0.5; }
+  .workouts__row:active {
+    transform: translateY(1px); }
+
+.workouts__row__title {
+  flex: 0 0 100%;
+  padding: 0px; }
+
+.workouts__row__date {
+  flex: 1 1 25%; }
+
+.workouts__row__start-time {
+  flex: 1 1 25%; }
+
+.workouts__row__end-time {
+  flex: 1 1 25%; }
+
+.workouts__row__details {
+  flex: 1 1 25%;
+  text-align: right; }
 
 .main {
   height: 100vh;
   flex: 1 1 auto;
   overflow: scroll;
   background: #4A4D54; }
-
-.profile__form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-  .profile__form .field-group {
-    max-width: 300px; }
-
-.input__checkbox {
-  width: 15px;
-  height: 15px;
-  margin: 10px; }
-
-.profile__form__image-upload {
-  background: transparent; }
 
 .sidebar {
   background: #f9fbff;
@@ -2476,77 +2547,6 @@ input[type='file'] {
   margin: 10px;
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px 39px; }
-
-.workout-form__actions {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-form__fields {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  width: 100%;
-  background: #F8FCFF; }
-
-.workout-form__actions__button {
-  margin-right: 20px; }
-
-.workout-single__button {
-  margin-right: 20px; }
-
-.workout-single__actions {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-single__details {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-single__exercise {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workouts__row {
-  opacity: 1;
-  transition: opacity 100ms linear;
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 10px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-  .workouts__row:last-child {
-    margin-bottom: 0px; }
-  .workouts__row:hover {
-    opacity: 0.5; }
-  .workouts__row:active {
-    transform: translateY(1px); }
-
-.workouts__row__title {
-  flex: 0 0 100%;
-  padding: 0px; }
-
-.workouts__row__date {
-  flex: 1 1 25%; }
-
-.workouts__row__start-time {
-  flex: 1 1 25%; }
-
-.workouts__row__end-time {
-  flex: 1 1 25%; }
-
-.workouts__row__details {
-  flex: 1 1 25%;
-  text-align: right; }
 
 /* endinject */
 /* ----- UTILITIES ----- */

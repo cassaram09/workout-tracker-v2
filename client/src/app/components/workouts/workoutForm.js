@@ -59,12 +59,6 @@ class WorkoutForm extends Component {
 
   }
 
-
-  componentWillUnmount(){
-    this.props.reset();
-    $R_Workout.clearErrors();
-  }
-
   render(){
 
     const date = moment(this.props.workout.date).format('l')

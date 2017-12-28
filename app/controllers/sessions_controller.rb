@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   def create
 
     if invalid(auth_params)
-      render_error_payload(:incorrect_login, status: :forbidden)
+      render_error_payload(:invalid_login, status: :forbidden)
       return 
     end
 
     @user = User.find_by(email: auth_params[:email])
 
     if !@user
-      render_error_payload(:incorrect_login, status: :forbidden)
+      render_error_payload(:invalid_login, status: :forbidden)
       return
     end
 
