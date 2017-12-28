@@ -2263,33 +2263,6 @@ input[type='file'] {
   body .app__title {
     font-size: 1.5em; } }
 
-.dashboard__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.dashboard__reports {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workouts__row {
-  background: #F8FCFF; }
-
-.exercise-form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-
-.exercise-form__fields th {
-  text-align: left; }
-
-.exercise-set__button {
-  padding: 5px 10px; }
-
 .avatar {
   width: 50px;
   height: 50px; }
@@ -2308,21 +2281,20 @@ input[type='file'] {
   .avatar.sidebar__avatar {
     margin: 20px auto; }
 
-.profile__form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
+.dashboard__actions {
   margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
   background: #F8FCFF; }
-  .profile__form .field-group {
-    max-width: 300px; }
 
-.input__checkbox {
-  width: 15px;
-  height: 15px;
-  margin: 10px; }
+.dashboard__reports {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
 
-.profile__form__image-upload {
-  background: transparent; }
+.workouts__row {
+  background: #F8FCFF; }
 
 .login {
   display: flex;
@@ -2353,6 +2325,24 @@ input[type='file'] {
 
 .login__error {
   height: 40px; }
+
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+
+.exercise-form__fields th {
+  text-align: left; }
+
+.exercise-set__button {
+  padding: 5px 10px; }
+
+.main {
+  height: 100vh;
+  flex: 1 1 auto;
+  overflow: scroll;
+  background: #4A4D54; }
 
 .workout-form__actions {
   margin-bottom: 20px;
@@ -2425,11 +2415,29 @@ input[type='file'] {
   flex: 1 1 25%;
   text-align: right; }
 
-.main {
+.sign-up {
+  display: flex;
   height: 100vh;
-  flex: 1 1 auto;
-  overflow: scroll;
-  background: #4A4D54; }
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .sign-up .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.sign-up__form {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.sign-up__sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px; }
 
 .sidebar {
   background: #f9fbff;
@@ -2524,29 +2532,21 @@ input[type='file'] {
   body .sidebar__nav__list__item {
     margin: 20px; } }
 
-.sign-up {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-  .sign-up .error {
-    padding: 0px 0px 10px;
-    color: red; }
-
-.sign-up__form {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.sign-up__sign-up-link {
-  text-decoration: underline;
-  color: blue;
-  margin: 10px;
+.profile__form {
   box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px; }
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+  .profile__form .field-group {
+    max-width: 300px; }
+
+.input__checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 10px; }
+
+.profile__form__image-upload {
+  background: transparent; }
 
 /* endinject */
 /* ----- UTILITIES ----- */

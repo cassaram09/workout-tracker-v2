@@ -18,7 +18,7 @@ class SideBar extends Component {
       if (this.state.showNav){
         this.toggleNav()
       }
-      return $R_Auth.dispatchAction('logout')
+      return $R_Auth.dispatchSync('LOGOUT')
     }
 
     this.activeNavLink = (match, location) => {

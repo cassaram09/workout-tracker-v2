@@ -10,12 +10,12 @@ const Workout = new Resource({
 
 Workout.registerRemoteActions();
 
-Workout.updateReducerAction('create', (state, action) => {
+Workout.updateReducerAction('$CREATE', (state, action) => {
   history.push(`/workouts/${action.data.id}`)
   return {data: [ ...state.data.filter(element => element.id !== action.data.id), Object.assign({}, action.data)], errors: [...state.errors]}
 })
 
-Workout.updateReducerAction('delete', (state, action) => {
+Workout.updateReducerAction('$DELETE', (state, action) => {
   history.push(`/workouts`)
   const newState = Object.assign([], state.data);
   const indexToDelete = state.data.findIndex(exercise => {

@@ -31,11 +31,12 @@ class NewWorkout extends Component {
 
     this.save = (state) => {
       if ( !this.state.workout.name ) {
-       return $R_Workout.throwError({title: "Invalid fields", detail: 'Name is required'})
+       return $R_Workout.dispatchSync('$ERROR', {title: "Invalid fields", detail: 'Name is required'})
       }
-      return $R_Workout.dispatchAction('create', state)
+
+      return $R_Workout.dispatchAsync('$CREATE', state)
     
-      $R_Workout.clearErrors();
+      $R_Workout.dispatchSync('$CLEAR_ERRORS')
     }
 
   }

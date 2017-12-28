@@ -11,7 +11,7 @@ const User = new Resource({
 
 // fetches data for the current user
 User.registerNewAction({
-  name: 'getCurrentUser', 
+  name: 'GET_CURRENT_USER', 
   url: API.base + '/current-user', 
   method: 'GET', 
   reducerFn: ( (state, action) => { 
@@ -21,7 +21,7 @@ User.registerNewAction({
 
 // updates data for the current user, returns updated user
 User.registerNewAction({
-  name: 'update', 
+  name: '$UPDATE', 
   url: User.url + '/:id', 
   method: 'PATCH', 
   reducerFn: ( (state, action) => { 
@@ -35,7 +35,7 @@ const uploadImageAction = (data) => {
     const req = request.patch(User.url + '/' + data.id).set('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`)
       req.attach('user[avatar]', data.file);
       req.end(function(error, response){
-        resolve(response.body);
+        resolve(response);
       });
   });
 }
@@ -46,6 +46,7 @@ User.registerNewAction({
   method: 'PATCH', 
   resourceFn: uploadImageAction,
   reducerFn: ( (state, action) => { 
+    debugger
     return { data: action.data, errors: [...state.errors] } 
   }) 
 })

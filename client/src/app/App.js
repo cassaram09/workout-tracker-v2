@@ -14,13 +14,13 @@ class App extends Component {
 
   componentWillMount(){
     if (this.props.auth.data.session == true) {
-      $R_User.dispatchAction('getCurrentUser')
+      $R_User.dispatchAsync('GET_CURRENT_USER')
     }
   }
 
   componentDidUpdate(prevProps, prevState){
     if (this.props.auth.data.session == true && !this.props.user.data.id) {
-      $R_User.dispatchAction('getCurrentUser')
+      $R_User.dispatchAsync('GET_CURRENT_USER')
     }
   }
 

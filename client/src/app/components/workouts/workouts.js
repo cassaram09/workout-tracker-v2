@@ -8,7 +8,7 @@ import $R_Workout from '/src/app/utils/workout'
 
 class Workouts extends Component {
   componentWillMount(){
-    $R_Workout.dispatchAction('query')
+    $R_Workout.dispatchAsync('$QUERY')
   }
 
   render() {

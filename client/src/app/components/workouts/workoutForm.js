@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { object, func } from 'prop-types';
 import moment from 'moment';
-import $R_Workout from '/src/app/utils/workout'
-
 
 import ExerciseForm from '/src/app/components/exercises/exerciseForm'
 import {deepClone} from '/src/app/utils/tools'

@@ -69,9 +69,15 @@ Resource.prototype.dispatchAsync = function(actionName, data) {
     if ( !response.ok){
       throw( response )
     }
-    response.json().then(json => {
-      this.dispatch({type: name, data: json});
-    })
+
+    if ( response.json ) {
+      response.json().then(json => {
+        this.dispatch({type: name, data: json});
+      })
+    } else {
+      this.dispatch({type: name, data: response.body});
+    }
+    
   }).catch(error => {
     error.json().then(json => {
       this.dispatch({type: this.prefix + '$ERROR', data: json});
@@ -185,7 +191,6 @@ Resource.prototype.registerRemoteActions = function() {
  * Dynamically creates requests to a remote endpoint.
 */
 Resource.prototype.createRequest = function(url, method, body, headers) {
-
   /* 
    * Use this to find the right value for param matching
   */
@@ -215,6 +220,7 @@ Resource.prototype.createRequest = function(url, method, body, headers) {
   } else {
     body = undefined;
   }
+
 
   let request = new Request(url, {
     method: method,

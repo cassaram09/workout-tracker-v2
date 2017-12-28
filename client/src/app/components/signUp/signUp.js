@@ -29,14 +29,14 @@ class SignUp extends Component {
     this.onSave = event => {
       event.preventDefault();
       if ( !this.state.user.email || !this.state.user.name || !this.state.user.password || !this.state.user.password_confirmation ) {
-        return $R_Auth.throwError({title:'Invalid signup', detail: 'All fields are required'})
+        return $R_Auth.dispatchSync('$ERROR', {title:'Invalid signup', detail: 'All fields are required'})
       }
-      return $R_Auth.dispatchAction('signUp', this.state)
+      return $R_Auth.dispatchAsync('SIGNUP', this.state)
     }
   }
 
   componentWillUnmount(){
-    $R_Auth.clearErrors();
+    $R_Auth.dispatchSync('$CLEAR_ERRORS');
   }
 
   render(){
