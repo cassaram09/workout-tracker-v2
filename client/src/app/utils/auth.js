@@ -1,9 +1,9 @@
-import Resource from 'r3-library';
+import Resource from '/src/app/utils/resource'
 import {browserRouter} from 'react-router-dom'
 import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
 
-const state = !!sessionStorage.jwt
+const state = {session: !!sessionStorage.jwt, error: null}
 const headers = {'Content-Type': "application/json"}
 
 const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state})
@@ -15,11 +15,11 @@ const loginReducer = (state, action) => {
     sessionStorage.setItem('jwt', action.data.jwt)
     history.push('/')
     API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-    return !!sessionStorage.jwt
+    return {session: !!sessionStorage.jwt}
   }
 
   if ( action.data.error ) {
-    return {error: action.data.error}
+    return {session: !!sessionStorage.jwt, error: action.data.error}
   }
 
   return state;
@@ -31,11 +31,11 @@ const signUpReducer = (state, action) => {
     sessionStorage.setItem('jwt', action.data.jwt)
     history.push('/')
     API.headers['AUTHORIZATION']= `Bearer ${action.data.jwt}`
-    return !!sessionStorage.jwt
+    return {session: !!sessionStorage.jwt}
   }
 
   if ( action.data.error ) {
-    return {error: action.data.error}
+    return {session: !!sessionStorage.jwt, error: action.data.error}
   }
 
   return state;
@@ -53,9 +53,9 @@ const logOutAction = () => {
 const logOutReducer = (state, action) => {
   if ( !sessionStorage.jwt ) {
     history.push('/');
-    return !!sessionStorage.jwt
+    return {session: !!sessionStorage.jwt}
   }
-  return !!sessionStorage.jwt
+  return {session: !!sessionStorage.jwt}
 }
 
 Auth.registerNewAction({
@@ -78,6 +78,18 @@ Auth.registerNewAction({
   method: 'POST',
   resourceFn: logOutAction, 
   reducerFn: logOutReducer
+})
+
+Auth.registerNewAction({
+  name: 'clearError', 
+  resourceFn: function() {
+    return new Promise((resolve, reject) => {
+      resolve({error: null});
+    }); 
+  }, 
+  reducerFn: (state, action) => { 
+    return {session: !!sessionStorage.jwt, error: action.data.error} 
+  }
 })
 
 export default Auth;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 import { Barbell } from '/src/app/utils/constants'
+import {connect} from 'react-redux';
 
 import $R_Auth from '/src/app/utils/auth';
 import Store from '/src/app/store/store'
@@ -9,11 +10,12 @@ class Login extends Component {
   constructor(){
     super()
 
-    this.state={
+    this.state = {
       user: {
         email: '',
         password: ''
-      }
+      },
+      error: false
     }
 
     this.onChange = (event) =>{
@@ -25,11 +27,18 @@ class Login extends Component {
 
     this.onSave = (event) => {
       event.preventDefault();
-      return $R_Auth.dispatchAction('login', this.state)
+      return $R_Auth.dispatchAction('login', {user: this.state.user})
     }
   }
 
+
+  componentWillUnmount(){
+    $R_Auth.dispatchAction('clearError')
+  }
+
+  
   render(){
+    
     return(
       <div className='login' style={{background: `url(${Barbell}) center center no-repeat`, backgroundSize: 'cover'}}>
         <div className='container'>
@@ -44,6 +53,7 @@ class Login extends Component {
             </div>
 
             <div className='col-5'>
+              <p className='login__error'>{this.props.auth.error}</p>
               <form className='login__form' onSubmit={this.onSave} >
                 <div className='field-group'>
                   <input placeholder='Email' className='login__form__email' type='text'  onChange={this.onChange} name='email'/>
@@ -52,7 +62,7 @@ class Login extends Component {
                   <input placeholder='Password' className='login__form__password' type='password' onChange={this.onChange} name='password'/>
                 </div>
                 <div className='field-group'>
-                  <button className='button login__form__submit -light' type='submit'>Login</button>
+                  <button className='button login__form__submit' type='submit'>Login</button>
                 </div>
               </form>
 
@@ -66,7 +76,13 @@ class Login extends Component {
       </div>
     )
   }
-
 }
 
-export default Login;
+
+const mapStateToProps = (state, ownProps) => { 
+  return {
+    auth: state.auth,
+  }
+};
+
+export default connect(mapStateToProps)(Login);

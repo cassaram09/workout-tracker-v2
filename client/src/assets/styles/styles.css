@@ -2263,29 +2263,6 @@ input[type='file'] {
   body .app__title {
     font-size: 1.5em; } }
 
-.login {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-
-.login__title {
-  padding: 0px 0px 10px; }
-
-.login__subtitle {
-  color: white; }
-
-.login__form {
-  margin-top: 20px; }
-
-.login__sign-up-link {
-  text-decoration: underline;
-  color: white; }
-  .login__sign-up-link:hover {
-    color: #618DFF; }
-
 .avatar {
   width: 50px;
   height: 50px; }
@@ -2347,11 +2324,29 @@ input[type='file'] {
 .profile__form__image-upload {
   background: transparent; }
 
-.main {
+.sign-up {
+  display: flex;
   height: 100vh;
-  flex: 1 1 auto;
-  overflow: scroll;
-  background: #4A4D54; }
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .sign-up .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.sign-up__form {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.sign-up__sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px; }
 
 .workout-form__actions {
   margin-bottom: 20px;
@@ -2424,29 +2419,39 @@ input[type='file'] {
   flex: 1 1 25%;
   text-align: right; }
 
-.sign-up {
+.login {
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%; }
-  .sign-up .error {
-    padding: 0px 0px 10px;
-    color: red; }
 
-.sign-up__form {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
+.login__title {
+  padding: 0px 0px 10px; }
 
-.sign-up__sign-up-link {
+.login__subtitle {
+  color: white; }
+
+.login__form {
+  margin-top: 20px; }
+
+.login__sign-up-link {
   text-decoration: underline;
-  color: blue;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px; }
+  color: white; }
+  .login__sign-up-link:hover {
+    color: #618DFF; }
+
+.login__error {
+  font-size: 1em;
+  color: red;
+  height: 20px; }
+
+.main {
+  height: 100vh;
+  flex: 1 1 auto;
+  overflow: scroll;
+  background: #4A4D54; }
 
 .sidebar {
   background: #f9fbff;

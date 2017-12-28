@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   def create
 
     if invalid(auth_params)
-      render json: {error: "Email and Password required."}, status: 401
+      render json: {error: "Email and password are required."}, status: 401
       return 
     end
 
     @user = User.find_by(email: auth_params[:email])
 
     if !@user
-      render json: {error: "User or password not correct."}
+      render json: {error: "Email or password incorrect."}
       return
     end
 

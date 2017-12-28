@@ -9,7 +9,7 @@ import '/src/assets/styles/styles.min.css'
 import App from '/src/app/app';
 import Store from '/src/app/store/store'
 import history from '/src/app/utils/history'
-import Resource from 'r3-library';
+import Resource from '/src/app/utils/resource';
 
 var resource = Resource;
 

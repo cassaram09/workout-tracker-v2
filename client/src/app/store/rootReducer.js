@@ -7,7 +7,7 @@ import $R_Workouts from '/src/app/utils/workout'
 const rootReducer = combineReducers({
   workouts: $R_Workouts.reducer,
   user: $R_User.reducer,
-  session: $R_Auth.reducer,
+  auth: $R_Auth.reducer,
 })
 
 export default rootReducer;

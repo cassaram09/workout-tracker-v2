@@ -13,23 +13,23 @@ import $R_User from '/src/app/utils/user';
 class App extends Component {
 
   componentWillMount(){
-    if (this.props.session == true) {
+    if (this.props.auth.session == true) {
       $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (this.props.session == true && !this.props.user.id) {
+    if (this.props.auth.session == true && !this.props.user.id) {
       $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   render() {
-   if ( this.props.session == true ){
+   if ( this.props.auth.session == true ){
       return (
         <div className='app'>
-          <SideBar session={this.props.session} user={this.props.user} />
-          <Main session={this.props.session} user={this.props.user} />
+          <SideBar session={this.props.auth.session} user={this.props.user} />
+          <Main session={this.props.auth.session} user={this.props.user} />
         </div>
       )
     } else {
@@ -59,7 +59,7 @@ class App extends Component {
 
 const mapStateToProps = (state, ownProps) => { 
   return {
-    session: state.session,
+    auth: state.auth,
     user: state.user
   }
 };

@@ -16,7 +16,11 @@ class Resource {
     this.state = state || []
 
     // Declare our reducer and resource action holders
-    this.reducerActions = {};
+    this.reducerActions = {
+      [this.prefix + 'error']: (state, action) => {
+        return Object.assign({}, state, {error: action.data})
+      }
+    };
     this.resourceActions = {};
 
     /* 
@@ -26,9 +30,11 @@ class Resource {
      * reducer action (etiher a default or custom action).
     */
     this.reducer = (state = this.state, action) => {
+     
       if (this.reducerActions[action.type]) {
         return this.reducerActions[action.type](state, action);
       }
+
       return state;
     }
   }
@@ -38,7 +44,8 @@ class Resource {
  * Pass the Store's dispatch function as an argument.
 */
 Resource.setDispatch = function(dispatch){
-  this.prototype.dispatch = dispatch;
+  var this2 = this;
+  this2.prototype.dispatch = dispatch;
 }
 
 /*  
@@ -50,11 +57,15 @@ Resource.setDispatch = function(dispatch){
  * the response data.
 */
 Resource.prototype.dispatchAction = function(action, data) {
+  const this2 = this
   const name = this.prefix + action;
   return this.resourceActions[name](data).then( response => {
-    this.dispatch({type: name, data: response});
+    if ( response.error ){
+      throw ('error!')
+    }
+    this2.dispatch({type: name, data: response});
   }).catch(error => {
-    throw(error);
+    this2.dispatch({type:this.prefix + 'error' , data: error});
   })
 }
 
@@ -74,8 +85,8 @@ Resource.prototype.setState = function(state) {
 Resource.prototype.addResourceAction = function(options) {
   const { name, url, method, resourceFn } = options
 
-  if ( !name || !url || !method ) {
-    throw("Name, Url Method are required when adding a resource action.")
+  if ( !name ) {
+    throw("Name is required when adding a resource action.")
   }
 
   const actionName = this.prefix + name;
@@ -115,7 +126,7 @@ Resource.prototype.updateReducerAction = function(name, reducerFn) {
 
 //  Update/overwrrite a resource action (such as a default resouce action) 
 Resource.prototype.updateResourceAction = function(name, resourceFn) {
-  if (!name || !resourceFn){
+  if (!name || !resourceFn ){
     throw("Name and Resource function are required.")
   }
   const actionName = this.prefix + name;
@@ -144,8 +155,8 @@ Resource.prototype.registerRemoteActions = function() {
 Resource.prototype.registerNewAction = function(options) {
   const { name, url, method, reducerFn, resourceFn } = options
 
-  if ( !name || !url || !method || !reducerFn ) {
-    throw("Name, Url, Method, Reducer function, and Resource function are required when registering a new action.")
+  if ( !name || !reducerFn ) {
+    throw("Name and Reducer function are required when registering a new action.")
   }
 
   this.addResourceAction({name, url, method, resourceFn});
@@ -198,6 +209,9 @@ Resource.prototype.createRequest = function(url, method, body, headers) {
 // Wrapper for fetching requests. 
 Resource.prototype.fetchRequest = function(request){
   return fetch(request).then(response => {
+    if (!response.ok) {
+      throw {error: true, message: Error(response.statusText)};
+    }
     return response.json();
   }).catch(error => {
     return error;

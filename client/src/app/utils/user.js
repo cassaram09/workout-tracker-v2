@@ -1,4 +1,4 @@
-import Resource from 'r3-library';
+import Resource from '/src/app/utils/resource'
 import API from '/src/app/utils/api';
 import request from 'superagent';
 
