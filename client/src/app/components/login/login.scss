@@ -16,7 +16,7 @@
 }
 
 .login__form{
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .login__sign-up-link{
@@ -28,8 +28,11 @@
   }
 }
 
-.login__error{
-  font-size: 1em;
+.login__error__details{
+  font-size: 0.8em;
   color: red;
-  height:20px;
+}
+
+.login__error {
+  height: 40px;
 }

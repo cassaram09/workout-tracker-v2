@@ -22,6 +22,12 @@ class ApplicationController < ActionController::API
     end
   end
 
+  protected
+  
+  def render_error_payload(identifier, status: :bad_request)
+    render json: ErrorPayload.new(identifier, status), status: status
+  end
+
   
   private
 
@@ -39,4 +45,6 @@ class ApplicationController < ActionController::API
   def auth_key_present?
     !!request.env.fetch("HTTP_AUTHORIZATION", "").scan(/Bearer/).flatten.first
   end
+
+
 end

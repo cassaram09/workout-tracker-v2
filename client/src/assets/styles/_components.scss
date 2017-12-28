@@ -2,15 +2,21 @@
 
 @import "./src/app/app.scss";
 
-@import "./src/app/components/avatar/avatar.scss";
-
-@import "./src/app/components/dashboard/dashboard.scss";
-
 @import "./src/app/components/exercises/exerciseForm.scss";
 
 @import "./src/app/components/exercises/exerciseSet.scss";
 
+@import "./src/app/components/dashboard/dashboard.scss";
+
+@import "./src/app/components/login/login.scss";
+
+@import "./src/app/components/avatar/avatar.scss";
+
+@import "./src/app/components/main/main.scss";
+
 @import "./src/app/components/profile/profile.scss";
+
+@import "./src/app/components/sideBar/sideBar.scss";
 
 @import "./src/app/components/signUp/signUp.scss";
 
@@ -19,11 +25,5 @@
 @import "./src/app/components/workouts/workoutSingle.scss";
 
 @import "./src/app/components/workouts/workouts.scss";
-
-@import "./src/app/components/login/login.scss";
-
-@import "./src/app/components/main/main.scss";
-
-@import "./src/app/components/sideBar/sideBar.scss";
 
 /* endinject */

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
 
     if invalid(auth_params)
-      render json: {error: "Email and password are required."}, status: 401
+      render_error_payload(:incorrect_login, status: :forbidden)
       return 
     end
 

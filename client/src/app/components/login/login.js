@@ -14,8 +14,7 @@ class Login extends Component {
       user: {
         email: '',
         password: ''
-      },
-      error: false
+      }
     }
 
     this.onChange = (event) =>{
@@ -27,7 +26,7 @@ class Login extends Component {
 
     this.onSave = (event) => {
       event.preventDefault();
-      return $R_Auth.dispatchAction('login', {user: this.state.user})
+      return $R_Auth.dispatchAction('login', this.state)
     }
   }
 
@@ -39,9 +38,9 @@ class Login extends Component {
   
   render(){
     var errors;
-    if ( this.props.auth.errors.length > 0 ) {
-      errors = this.props.auth.errors.map( (error,index) => {
-        return ( <p key={index}>error</p> )
+    if ( this.props.authErrors.length > 0 ) {
+      errors = this.props.authErrors.map( (error,index) => {
+        return ( <p className='login__error__details' key={index}>{error.title}: {error.detail}</p> )
       })
     }
 
@@ -87,7 +86,8 @@ class Login extends Component {
 
 const mapStateToProps = (state, ownProps) => { 
   return {
-    auth: state.auth,
+    authData: state.auth.data,
+    authErrors: state.auth.errors,
   }
 };
 

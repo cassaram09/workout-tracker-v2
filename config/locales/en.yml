@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  errors:
+    incorrect_login:
+      title: Incorrect login
+      detail: Email or password is incorrect

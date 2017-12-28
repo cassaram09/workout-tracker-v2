@@ -19,17 +19,19 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (this.props.auth.data.session == true && !this.props.user.id) {
+    if (this.props.auth.data.session == true && !this.props.user.data.id) {
       $R_User.dispatchAction('getCurrentUser')
     }
   }
 
   render() {
-   if ( this.props.auth.data.session == true ){
+    let session = this.props.auth.data.session;
+    let user =  this.props.user.data;
+    if ( this.props.auth.data.session == true ){
       return (
         <div className='app'>
-          <SideBar session={this.props.auth.data.session} user={this.props.user} />
-          <Main session={this.props.auth.data.session} user={this.props.user} />
+          <SideBar session={session} user={user} />
+          <Main session={session} user={user} />
         </div>
       )
     } else {

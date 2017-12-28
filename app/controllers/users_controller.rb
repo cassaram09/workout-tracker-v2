@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt}
     else 
-      render json: {error: "Sign up failed."}, status: 500
+      render_error_payload(:foo_limit_exceeded, status: :forbidden)
     end
   end
 

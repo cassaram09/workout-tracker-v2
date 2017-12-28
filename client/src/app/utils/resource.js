@@ -42,6 +42,7 @@ class Resource {
   }
 }
 
+
 /*  
  * Pass the Store's dispatch function as an argument.
 */
@@ -74,12 +75,16 @@ Resource.prototype.dispatchAction = function(action, data) {
   const this2 = this
   const name = this.prefix + action;
   return this.resourceActions[name](data).then( response => {
-    if ( response.error ){
-      throw ('error!')
+    if ( !response.ok){
+      throw( response )
     }
-    this2.dispatch({type: name, data: response});
+    response.json().then(json => {
+      this2.dispatch({type: name, data: json});
+    })
   }).catch(error => {
-    this2.dispatch({type: this.prefix + 'error', data: error});
+    error.json().then(json => {
+      this2.dispatch({type: this.prefix + 'error', data: json});
+    })
   })
 }
 
@@ -223,12 +228,10 @@ Resource.prototype.createRequest = function(url, method, body, headers) {
 // Wrapper for fetching requests. 
 Resource.prototype.fetchRequest = function(request){
   return fetch(request).then(response => {
-    if (!response.ok) {
-      throw {error: true, message: Error(response.statusText)};
-    }
+    return response
     return response.json();
   }).catch(error => {
-    return error;
+    return error
   })
 }
 

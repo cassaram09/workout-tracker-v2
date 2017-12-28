@@ -51,7 +51,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state, ownProps){
   return{
-    workout: state.workouts[state.workouts.length-1]
+    workout: state.workouts.data[state.workouts.data.length-1]
   }
 }
 
