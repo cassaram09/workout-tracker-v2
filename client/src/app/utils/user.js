@@ -32,11 +32,13 @@ User.registerNewAction({
 // handle image upload
 const uploadImageAction = (data) => {
   return new Promise((resolve, reject) => {
-    const req = request.patch(User.url + '/' + data.id).set('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`)
-      req.attach('user[avatar]', data.file);
-      req.end(function(error, response){
-        resolve(response);
-      });
+    request
+    .patch(`${User.url}/${data.id}`)
+    .set('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`)
+    .attach('user[avatar]', data.file)
+    .end(function(error, response){
+      resolve(response);
+    });
   });
 }
 
@@ -45,10 +47,7 @@ User.registerNewAction({
   url: User.url + '/:id', 
   method: 'PATCH', 
   resourceFn: uploadImageAction,
-  reducerFn: ( (state, action) => { 
-    debugger
-    return { data: action.data, errors: [...state.errors] } 
-  }) 
+  reducerFn: (state, action) => ( { data: action.data, errors: [...state.errors] } )
 })
 
 export default User;
