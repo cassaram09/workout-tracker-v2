@@ -8,7 +8,7 @@ const headers = {'Content-Type': "application/json"}
 
 const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state})
 
-//login action
+// Login reducer and action registration.
 const loginReducer = (state, action) => {
   if ( action.data.jwt ) {
     sessionStorage.setItem('jwt', action.data.jwt)
@@ -25,7 +25,15 @@ const loginReducer = (state, action) => {
   return state;
 }
 
-//sign up action
+Auth.registerNewAction({
+  name: 'LOGIN', 
+  url: '/login', 
+  method: 'POST', 
+  reducerFn: loginReducer
+})
+
+
+// Sign up reducer and action registration.
 const signUpReducer = (state, action) => {
   if ( action.data.jwt ) {
     sessionStorage.setItem('jwt', action.data.jwt)
@@ -42,28 +50,6 @@ const signUpReducer = (state, action) => {
   return state;
 }
 
-// logout resource action
-const logOutAction = () => {
-  return new Promise((resolve, reject) => {
-    
-    if ( !sessionStorage.jwt ) {
-      resolve(!!sessionStorage.jwt)
-    } else {
-      reject(Error("Error"));
-    }
-  });
-}
-
-// logout Reducer fn
-const logOutReducer = 
-
-Auth.registerNewAction({
-  name: 'LOGIN', 
-  url: '/login', 
-  method: 'POST', 
-  reducerFn: loginReducer
-})
-
 Auth.registerNewAction({
   name: 'SIGNUP', 
   url: '/signup', 
@@ -71,6 +57,7 @@ Auth.registerNewAction({
   reducerFn: signUpReducer
 })
 
+// Log out reducer (sync action)
 Auth.addReducerAction('LOGOUT', (state, action) => {
   sessionStorage.removeItem('jwt');
   if ( !sessionStorage.jwt ) {

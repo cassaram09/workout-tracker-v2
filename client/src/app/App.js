@@ -18,9 +18,17 @@ class App extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nexState){
+    if ( !this.props.user.data.id && !nextProps.user.data.id ) {
+      $R_User.dispatchAsync('GET_CURRENT_USER')
+      return false
+    }
+    return true;
+  }
+
   componentDidUpdate(prevProps, prevState){
     if (this.props.auth.data.session == true && !this.props.user.data.id) {
-      $R_User.dispatchAsync('GET_CURRENT_USER')
+      
     }
   }
 

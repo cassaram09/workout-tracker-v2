@@ -11,9 +11,7 @@ import Store from '/src/app/store/store'
 import history from '/src/app/utils/history'
 import Resource from '/src/app/utils/resource';
 
-var resource = Resource;
-
-Resource.setDispatch(Store.dispatch)
+Resource.configure({dispatch: Store.dispatch})
 
 ReactDOM.render(
   <Provider store={Store}>

@@ -49,7 +49,7 @@ class Resource {
 /*  
  * Enable our resource to use our Store's dispatch function.
 */
-Resource.setDispatch = function(dispatch){
+Resource.configure = function({dispatch}){
   var this2 = this;
   this2.prototype.dispatch = dispatch;
 }
@@ -73,7 +73,6 @@ Resource.prototype.dispatchAsync = function(actionName, data) {
     }
     this.dispatch({type: name, data: response.body});
   }).catch(error => {
-    debugger
     this.dispatch({type: this.prefix + '$ERROR', data: error.body});
   })
 }
