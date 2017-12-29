@@ -41,10 +41,6 @@ class SignUp extends Component {
     }
   }
 
-  componentWillUnmount(){
-    
-  }
-
   render(){
     var errors;
     if ( this.props.authErrors.length > 0 ) {
