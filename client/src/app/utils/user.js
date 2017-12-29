@@ -10,7 +10,7 @@ const User = new Resource({
 })
 
 // fetches data for the current user
-User.registerNewAction({
+User.registerAsync({
   name: 'GET_CURRENT_USER', 
   url: API.base + '/current-user', 
   method: 'GET', 
@@ -20,7 +20,7 @@ User.registerNewAction({
 })
 
 // updates data for the current user, returns updated user
-User.registerNewAction({
+User.registerAsync({
   name: '$UPDATE', 
   url: User.url + '/:id', 
   method: 'PATCH', 
@@ -42,10 +42,8 @@ const uploadImageAction = (data) => {
   });
 }
 
-User.registerNewAction({
+User.registerAsync({
   name: 'UPLOAD_IMAGE', 
-  url: User.url + '/:id', 
-  method: 'PATCH', 
   resourceFn: uploadImageAction,
   reducerFn: (state, action) => ( { data: action.data, errors: [...state.errors] } )
 })
