@@ -111,22 +111,22 @@ class Resource {
       get: {
         method: 'GET',
         url: '/:id',
-        reducerFn: (state, action) => { return addData(state, action) },
+        reducerFn: (state, action) => { return this[addData](state, action) },
       },
       create: {
         method: 'POST',
         url: '',
-        reducerFn: (state, action) => { return addData(state, action) },
+        reducerFn: (state, action) => { return this[addData](state, action) },
       },
       update: {
         method: 'PATCH',
         url: '/:id',
-        reducerFn: (state, action) => { return addData(state, action) },
+        reducerFn: (state, action) => { return this[addData](state, action) },
       },
       delete: {
         method: 'DELETE',
         url: '/:id',
-        reducerFn: (state, action) => { return removeData(state, action) },
+        reducerFn: (state, action) => { return this[removeData](state, action) },
       }
     }
   }
@@ -140,7 +140,7 @@ class Resource {
     }
 
     for (let prop in obj) {
-      return key === prop ? obj[prop] : findValueByKey(obj[prop], key)
+      return key === prop ? obj[prop] : this[findValueByKey](obj[prop], key)
     }
     return null;
   }
@@ -203,6 +203,7 @@ Resource.prototype.dispatchAsync = function(actionName, data) {
     }
     this.dispatch({type: name, data: response.body});
   }).catch(error => {
+    debugger
     this.dispatch({type: this.prefix + '$ERROR', data: error.body});
   })
 }
@@ -285,12 +286,14 @@ Resource.prototype.updateResourceAction = function(name, resourceFn) {
  * query(index), get(individual resource), create, update, and delete.
 */
 Resource.prototype.registerRemoteActions = function() { 
-  for ( let action in this.remoteActions) {
+  const actions = this[remoteActions]()
+
+  for ( let action in actions) {
     const name = '$' + action.toUpperCase()
-    const url = this.url + this.remoteActions[action].url;
-    const method = this.remoteActions[action].method;
-    const reducerFn =  this.remoteActions[action].reducerFn
-    this.registerNewAction({name, url, method, reducerFn})
+    const url = this.url + actions[action].url;
+    const method = actions[action].method;
+    const reducerFn =  actions[action].reducerFn
+    this.registerAsync({name, url, method, reducerFn})
   }
   return this;
 }
@@ -312,7 +315,7 @@ Resource.prototype.fetchRequest = function(url, method, body, headers) {
 
     if (urlParams) {
       for ( let param of urlParams ){
-        url = url.replace(param, findValueByKey(body, param.substring(1)))
+        url = url.replace(param, this[findValueByKey](body, param.substring(1)))
       }
     }
 

@@ -25,5 +25,6 @@ Workout.updateReducerAction('$DELETE', (state, action) => {
   return {data: newState, errors: [...state.errors]};
 })
 
+debugger
 
 export default Workout;

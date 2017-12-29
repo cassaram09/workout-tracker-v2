@@ -62,6 +62,7 @@ class WorkoutSingle extends Component {
   render() {
     var errors;
     if ( this.props.errors.length > 0 ) {
+      debugger
       errors = this.props.errors.map( (error,index) => {
         return ( <p className='login__error__details' key={index}>{error.title}: {error.detail}</p> )
       })
