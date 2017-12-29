@@ -1,5 +1,7 @@
 /* For testing purposes only. */
 
+import request from 'superagent';
+
 class Resource {
   constructor(options){
     const { name, url, headers, state } = options
@@ -69,19 +71,10 @@ Resource.prototype.dispatchAsync = function(actionName, data) {
     if ( !response.ok){
       throw( response )
     }
-
-    if ( response.json ) {
-      response.json().then(json => {
-        this.dispatch({type: name, data: json});
-      })
-    } else {
-      this.dispatch({type: name, data: response.body});
-    }
-    
+    this.dispatch({type: name, data: response.body});
   }).catch(error => {
-    error.json().then(json => {
-      this.dispatch({type: this.prefix + '$ERROR', data: json});
-    })
+    debugger
+    this.dispatch({type: this.prefix + '$ERROR', data: error.body});
   })
 }
 
@@ -128,8 +121,7 @@ Resource.prototype.addResourceAction = function(options) {
     this.resourceActions[actionName] = resourceFn
   } else {
     this.resourceActions[actionName] = (data) => {
-      var request = this.createRequest(url, method, data, this.headers);
-      return this.fetchRequest(request);
+      return this.fetchRequest(url, method, data, this.headers);
     };
   }
 
@@ -190,60 +182,58 @@ Resource.prototype.registerRemoteActions = function() {
 /*
  * Dynamically creates requests to a remote endpoint.
 */
-Resource.prototype.createRequest = function(url, method, body, headers) {
-  /* 
-   * Use this to find the right value for param matching
-  */
-  function findValueByKey(obj, key){
-    for (let prop in obj) {
-      return key === prop ? obj[prop] : findValueByKey(obj[prop], key)
+Resource.prototype.fetchRequest = function(url, method, body, headers) {
+  return new Promise( (resolve, reject) => {
+    /* 
+     * If we set URL params, let's automatically match the a key to them.
+     * eg /api/v1/widgets/:id, search through our object to find an ID
+     * If we're dealing with a widget resource, it should be in the top level
+    */
+    const urlParams = url.match(/:(\w+)/ig)
+
+    if (urlParams) {
+      for ( let param of urlParams ){
+        url = url.replace(param, findValueByKey(body, param.substring(1)))
+      }
     }
-    return null;
-  }
 
-  /* 
-   * If we set URL params, let's automatically match the a key to them.
-   * eg /api/v1/widgets/:id, search through our object to find an ID
-   * If we're dealing with a widget resource, it should be in the top level
-  */
-  const urlParams = url.match(/:(\w+)/ig)
-
-  if (urlParams) {
-    for ( let param of urlParams ){
-      url = url.replace(param, findValueByKey(body, param.substring(1)))
+    if ( method == 'GET' ) {
+      request(method, url)
+      .query(body)
+      .set(headers)
+      .end( (error, response) => {
+        resolve(response)
+      })
+      return
     }
-  }
 
-  // Not permitted to send a body with GET/HEAD requests
-  if (body && method != 'GET'){
-    body = JSON.stringify(body);
-  } else {
-    body = undefined;
-  }
+    if (method == 'POST' || method == 'PATCH' || method == 'PUT' || method == 'DELETE' ) {
+      request(method, url)
+      .send(body)
+      .set(headers)
+      .end( (error, response) => {
+        resolve(response)
+      })
+      return
+    }
 
-
-  let request = new Request(url, {
-    method: method,
-    headers: new Headers(headers),
-    body: body
-  });
-
-  return request;
-}
-
-/*
- * Fetch our requests. 
-*/
-Resource.prototype.fetchRequest = function(request){
-  return fetch(request).then(response => {
-    return response;
-  }).catch(error => {
-    console.log(error);
+    reject('Invalid request.')
   })
 }
 
+/* 
+ * Use this to find the right value for param matching
+*/
+function findValueByKey(obj, key){
+  for (let prop in obj) {
+    return key === prop ? obj[prop] : findValueByKey(obj[prop], key)
+  }
+  return null;
+}
 
-
+/* 
+ * Generic function for removing a piece of data from our store.
+*/
 function removeData(state, action){
   const newState = Object.assign([], state.data);
   const indexToDelete = state.data.findIndex(exercise => {
@@ -253,6 +243,9 @@ function removeData(state, action){
   return {data: newState, errors: state.errors}
 }
 
+/* 
+ * Generic function for adding a piece of data to our store.
+*/
 function addData(state, action){
   return {data: [ ...state.data.filter(element => element.id !== action.data.id), Object.assign({}, action.data)], errors: state.errors}
 }
@@ -283,26 +276,6 @@ Resource.prototype.remoteActions = {
     url: '/:id',
     reducerFn: (state, action) => { return removeData(state, action) },
   }
-}
-
-Resource.prototype.post = function(url, data, headers){
-  const request = this.createRequest(url, 'POST', data, headers);
-  return this.fetchRequest(request)
-}
-
-Resource.prototype.get = function(url, data, headers){
-  const request = this.createRequest(url, 'GET', data, headers);
-  return this.fetchRequest(request)
-}
-
-Resource.prototype.patch = function(url, data, headers){
-  const request = this.createRequest(url, 'PATCH', data, headers);
-  return this.fetchRequest(request)
-}
-
-Resource.prototype.delete = function(url, data, headers){
-  const request = this.createRequest(url, 'DELETE', data, headers);
-  return this.fetchRequest(request)
 }
 
 export default Resource;
