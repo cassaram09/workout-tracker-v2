@@ -89,10 +89,16 @@ class Resource {
    *
    * Adds a new reducer action to our Resource's reducer.  
   */ 
-  [addReducerAction](name, reducerFn) {
+  [addReducerAction] (options) {
+    const { name, reducerFn } = options
+
     if (!name || !reducerFn){
       throw( new Error("Name and Reducer function are required when adding a reducer action.") )
     }
+
+    const actionName = this.prefix +  name.toUpperCase();
+    this.reducerActions[actionName] = this.reducerActions[actionName] || reducerFn;
+    return this;
   }
 
   [remoteActions] () { 
@@ -229,7 +235,7 @@ Resource.prototype.registerAsync = function(options) {
   }
 
   this[addResourceAction]({name, url, method, resourceFn});
-  this[addReducerAction](name, reducerFn);
+  this[addReducerAction]({name, reducerFn});
 
   return this;
 }
@@ -245,7 +251,7 @@ Resource.prototype.registerSync = function(options) {
     throw( new Error("Name and Reducer function are required when registering a new Sync action.") )
   }
 
-  this[addReducerAction](name, reducerFn);
+  this[addReducerAction]({name, reducerFn});
 
   return this;
 }

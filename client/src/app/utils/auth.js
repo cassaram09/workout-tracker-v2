@@ -3,10 +3,12 @@ import {browserRouter} from 'react-router-dom'
 import history from '/src/app/utils/history'
 import API from '/src/app/utils/api';
 
-const state = {session: !!sessionStorage.jwt}
-const headers = {'Content-Type': "application/json"}
-
-const Auth = new Resource({name: 'auth', url: '', headers: headers, state: state})
+const Auth = new Resource({
+  name: 'auth', 
+  url: '', 
+  headers: {'Content-Type': "application/json"}, 
+  state: {session: !!sessionStorage.jwt}
+})
 
 // Login reducer and action registration.
 const loginReducer = (state, action) => {
@@ -25,7 +27,7 @@ const loginReducer = (state, action) => {
   return state;
 }
 
-Auth.registerNewAction({
+Auth.registerAsync({
   name: 'LOGIN', 
   url: '/login', 
   method: 'POST', 
@@ -50,7 +52,7 @@ const signUpReducer = (state, action) => {
   return state;
 }
 
-Auth.registerNewAction({
+Auth.registerAsync({
   name: 'SIGNUP', 
   url: '/signup', 
   method: 'POST', 
@@ -58,18 +60,21 @@ Auth.registerNewAction({
 })
 
 // Log out reducer (sync action)
-Auth.addReducerAction('LOGOUT', (state, action) => {
-  sessionStorage.removeItem('jwt');
-  if ( !sessionStorage.jwt ) {
-    history.push('/');
-    return {
-      data: {
-        session: action.data
-      },
-      errors: []
+Auth.registerSync({
+  name: 'LOGOUT',
+  reducerFn: (state, action) => {
+    sessionStorage.removeItem('jwt');
+    if ( !sessionStorage.jwt ) {
+      history.push('/');
+      return {
+        data: {
+          session: action.data
+        },
+        errors: []
+      }
     }
+    return state;
   }
-  return state;
 })
 
 export default Auth;

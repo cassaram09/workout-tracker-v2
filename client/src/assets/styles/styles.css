@@ -2281,21 +2281,6 @@ input[type='file'] {
   .avatar.sidebar__avatar {
     margin: 20px auto; }
 
-.dashboard__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.dashboard__reports {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workouts__row {
-  background: #F8FCFF; }
-
 .login {
   display: flex;
   height: 100vh;
@@ -2326,6 +2311,27 @@ input[type='file'] {
 .login__error {
   height: 40px; }
 
+.main {
+  height: 100vh;
+  flex: 1 1 auto;
+  overflow: scroll;
+  background: #4A4D54; }
+
+.dashboard__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.dashboard__reports {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  background: #F8FCFF; }
+
 .exercise-form {
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
@@ -2337,107 +2343,6 @@ input[type='file'] {
 
 .exercise-set__button {
   padding: 5px 10px; }
-
-.main {
-  height: 100vh;
-  flex: 1 1 auto;
-  overflow: scroll;
-  background: #4A4D54; }
-
-.workout-form__actions {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-form__fields {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  width: 100%;
-  background: #F8FCFF; }
-
-.workout-form__actions__button {
-  margin-right: 20px; }
-
-.workout-single__button {
-  margin-right: 20px; }
-
-.workout-single__actions {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-single__details {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workout-single__exercise {
-  margin-bottom: 20px;
-  padding: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workouts__row {
-  opacity: 1;
-  transition: opacity 100ms linear;
-  cursor: pointer;
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 10px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-  .workouts__row:last-child {
-    margin-bottom: 0px; }
-  .workouts__row:hover {
-    opacity: 0.5; }
-  .workouts__row:active {
-    transform: translateY(1px); }
-
-.workouts__row__title {
-  flex: 0 0 100%;
-  padding: 0px; }
-
-.workouts__row__date {
-  flex: 1 1 25%; }
-
-.workouts__row__start-time {
-  flex: 1 1 25%; }
-
-.workouts__row__end-time {
-  flex: 1 1 25%; }
-
-.workouts__row__details {
-  flex: 1 1 25%;
-  text-align: right; }
-
-.sign-up {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%; }
-  .sign-up .error {
-    padding: 0px 0px 10px;
-    color: red; }
-
-.sign-up__form {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa; }
-
-.sign-up__sign-up-link {
-  text-decoration: underline;
-  color: blue;
-  margin: 10px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px 39px; }
 
 .sidebar {
   background: #f9fbff;
@@ -2547,6 +2452,101 @@ input[type='file'] {
 
 .profile__form__image-upload {
   background: transparent; }
+
+.sign-up {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+  .sign-up .error {
+    padding: 0px 0px 10px;
+    color: red; }
+
+.sign-up__form {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa; }
+
+.sign-up__sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px 39px; }
+
+.workout-form__actions {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-form__fields {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  width: 100%;
+  background: #F8FCFF; }
+
+.workout-form__actions__button {
+  margin-right: 20px; }
+
+.workout-single__button {
+  margin-right: 20px; }
+
+.workout-single__actions {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__details {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workout-single__exercise {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  opacity: 1;
+  transition: opacity 100ms linear;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+  .workouts__row:last-child {
+    margin-bottom: 0px; }
+  .workouts__row:hover {
+    opacity: 0.5; }
+  .workouts__row:active {
+    transform: translateY(1px); }
+
+.workouts__row__title {
+  flex: 0 0 100%;
+  padding: 0px; }
+
+.workouts__row__date {
+  flex: 1 1 25%; }
+
+.workouts__row__start-time {
+  flex: 1 1 25%; }
+
+.workouts__row__end-time {
+  flex: 1 1 25%; }
+
+.workouts__row__details {
+  flex: 1 1 25%;
+  text-align: right; }
 
 /* endinject */
 /* ----- UTILITIES ----- */
