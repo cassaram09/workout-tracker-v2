@@ -203,7 +203,6 @@ Resource.prototype.dispatchAsync = function(actionName, data) {
     }
     this.dispatch({type: name, data: response.body});
   }).catch(error => {
-    debugger
     this.dispatch({type: this.prefix + '$ERROR', data: error.body});
   })
 }
@@ -217,7 +216,7 @@ Resource.prototype.dispatchSync = function(actionName, data) {
   }
 
   const name = this.prefix + actionName.toUpperCase();
-  this.dispatch({type: name, data: data});
+  Resource.prototype.dispatch({type: name, data: data});
 }
 
 /*

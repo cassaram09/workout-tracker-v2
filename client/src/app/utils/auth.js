@@ -56,7 +56,7 @@ Auth.registerAsync({
   name: 'SIGNUP', 
   url: '/signup', 
   method: 'POST', 
-  reducerFn: signUpReducer
+  reducerFn: loginReducer
 })
 
 // Log out reducer (sync action)

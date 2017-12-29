@@ -35,8 +35,14 @@ class SignUp extends Component {
     }
   }
 
+  componentWillUpdate(nextProps, nextState){
+    if (nextProps.match.path != this.props.match.path ) {
+      $R_Auth.dispatchSync('$CLEAR_ERRORS')
+    }
+  }
+
   componentWillUnmount(){
-    $R_Auth.dispatchSync('$CLEAR_ERRORS');
+    
   }
 
   render(){
