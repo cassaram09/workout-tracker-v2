@@ -2281,6 +2281,33 @@ input[type='file'] {
   .avatar.sidebar__avatar {
     margin: 20px auto; }
 
+.dashboard__actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.dashboard__reports {
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #aaa;
+  background: #F8FCFF; }
+
+.workouts__row {
+  background: #F8FCFF; }
+
+.exercise-form {
+  box-shadow: 1px 1px 1px 1px #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #F8FCFF; }
+
+.exercise-form__fields th {
+  text-align: left; }
+
+.exercise-set__button {
+  padding: 5px 10px; }
+
 .login {
   display: flex;
   height: 100vh;
@@ -2317,32 +2344,21 @@ input[type='file'] {
   overflow: scroll;
   background: #4A4D54; }
 
-.dashboard__actions {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.dashboard__reports {
-  margin-bottom: 20px;
-  padding: 20px;
-  box-shadow: 1px 1px 1px 1px #aaa;
-  background: #F8FCFF; }
-
-.workouts__row {
-  background: #F8FCFF; }
-
-.exercise-form {
+.profile__form {
   box-shadow: 1px 1px 1px 1px #aaa;
   padding: 20px;
   margin-bottom: 20px;
   background: #F8FCFF; }
+  .profile__form .field-group {
+    max-width: 300px; }
 
-.exercise-form__fields th {
-  text-align: left; }
+.input__checkbox {
+  width: 15px;
+  height: 15px;
+  margin: 10px; }
 
-.exercise-set__button {
-  padding: 5px 10px; }
+.profile__form__image-upload {
+  background: transparent; }
 
 .sidebar {
   background: #f9fbff;
@@ -2436,22 +2452,6 @@ input[type='file'] {
     justify-content: center; }
   body .sidebar__nav__list__item {
     margin: 20px; } }
-
-.profile__form {
-  box-shadow: 1px 1px 1px 1px #aaa;
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #F8FCFF; }
-  .profile__form .field-group {
-    max-width: 300px; }
-
-.input__checkbox {
-  width: 15px;
-  height: 15px;
-  margin: 10px; }
-
-.profile__form__image-upload {
-  background: transparent; }
 
 .sign-up {
   display: flex;
